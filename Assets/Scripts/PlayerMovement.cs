@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement current;
     public float moveSpeed;
     public float horizontal;
     public float vertical;
     private Rigidbody rb;
+    bool canMove;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        current = this;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
     }
@@ -24,12 +27,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 forwardDirection = vertical * transform.forward;
-        Vector3 sidewaysDirection = horizontal * transform.right;
+        if (canMove)
+        {
+            Vector3 forwardDirection = vertical * transform.forward;
+            Vector3 sidewaysDirection = horizontal * transform.right;
 
-        Vector3 moveDirection = forwardDirection + sidewaysDirection;
-        moveDirection *= Time.deltaTime * moveSpeed;
+            Vector3 moveDirection = forwardDirection + sidewaysDirection;
+            moveDirection *= Time.deltaTime * moveSpeed;
 
-        rb.MovePosition(moveDirection + transform.position);
+            rb.MovePosition(moveDirection + transform.position);
+        }
+    }
+
+    public void SetMovement(bool value)
+    {
+        canMove = value;
     }
 }
