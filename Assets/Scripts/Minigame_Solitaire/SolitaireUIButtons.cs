@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SolitaireUIButtons : MonoBehaviour
 {
+    
     public GameObject highScorePanel;
 
     // Start is called before the first frame update
@@ -25,8 +26,10 @@ public class SolitaireUIButtons : MonoBehaviour
         ResetScene();
     }
 
+    
     public void ResetScene()
     {
+
         // find all the cards and remove them
         SolitaireUpdateSprite[] cards = FindObjectsOfType<SolitaireUpdateSprite>();
         foreach (SolitaireUpdateSprite card in cards)

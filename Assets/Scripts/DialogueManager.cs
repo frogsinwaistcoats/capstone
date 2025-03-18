@@ -102,6 +102,7 @@ public class DialogueManager : MonoBehaviour
     {
         waitingForChoice = false;
         anim.enabled = false;
+
         multiChoiceVisuals.SetActive(false);
         dialogueVisuals.SetActive(false);
 

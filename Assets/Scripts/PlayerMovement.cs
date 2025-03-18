@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
         current = this;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        canMove = true;
     }
 
     // Update is called once per frame
