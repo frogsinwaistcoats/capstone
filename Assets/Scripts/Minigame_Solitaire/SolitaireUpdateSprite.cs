@@ -17,8 +17,10 @@ public class SolitaireUpdateSprite : MonoBehaviour
     {
         //generates matching deck
         List<string> deck = Solitaire.GenerateDeck();
+#pragma warning disable 0618
         solitaire = FindObjectOfType<Solitaire>();
         userInput = FindObjectOfType<SolitaireUserInput>();
+#pragma warning restore 0618
 
         //matches card face to card name
         int i = 0;

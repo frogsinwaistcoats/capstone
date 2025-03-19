@@ -111,3 +111,14 @@ public class DialogueManager : MonoBehaviour
     }
 
 }
+
+public class PlayerData
+{
+    public string characterName;
+    public int characterLevel;
+}
+
+public class SaveData
+{
+    public PlayerData playerData;
+}
