@@ -4,6 +4,7 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    
     public static DialogueManager current;
     private NPC currentNPC;
     private DialogueNode currentDialogue;
