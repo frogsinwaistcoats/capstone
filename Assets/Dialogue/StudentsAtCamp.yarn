@@ -1,0 +1,28 @@
+﻿title: Start
+---
+Ernest: Lets go explore the camp!
+===
+
+title: StudentOne
+---
+<<declare $playSolitaire = false>>
+Student One: Do you want to play solitaire?
+    -> No thanks.
+    -> Sure!
+        <<set $playSolitaire to true>>
+===
+
+title: StudentTwo
+---
+Student Two: Hi Ernest!
+    -> Hi!
+===
+
+title: StudentThree
+---
+Student Three: Do you wanna go fishing with me later?
+    -> Sure!
+        Student Three: Yay!
+    -> No thanks.
+        Student Three: Thats okay.
+===

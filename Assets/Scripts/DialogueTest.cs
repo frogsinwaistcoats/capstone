@@ -6,6 +6,7 @@ using System.Collections;
 
 public class DialogueTest : MonoBehaviour
 {
+    /*
     public static DialogueTest current;
 
     [SerializeField] private GameObject prompt;
@@ -85,4 +86,5 @@ public class DialogueTest : MonoBehaviour
         yield return new WaitForSeconds(1f);
         dialogueFinished = true;
     }
+    */
 }
