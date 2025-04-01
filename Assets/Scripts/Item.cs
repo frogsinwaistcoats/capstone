@@ -1,17 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Item
+public class Item : MonoBehaviour
 {
-    public enum ItemType
+    [SerializeField]
+    private string itemName;
+
+    [SerializeField]
+    private int quantity;
+
+    [SerializeField]
+    private Sprite sprite;
+
+    [TextArea]
+    [SerializeField]
+    private string itemDescription;
+
+    private InventoryManager inventoryManager;
+
+    void Start()
     {
-        Daisy,
-        Poppy,
-        Dandelion, 
-        Buttercup,
+        inventoryManager = GameObject.Find("MenuCanvas").GetComponent<InventoryManager>();
     }
 
-    public ItemType itemType;
-    public int amount;
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
+            Destroy(gameObject);
+        }
+    }
+
 }

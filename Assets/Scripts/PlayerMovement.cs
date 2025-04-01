@@ -3,9 +3,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement current;
-    private Inventory inventory;
-
-    [SerializeField] private UI_Inventory uiInventory;
 
     public float moveSpeed;
     public float horizontal;
@@ -13,11 +10,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     bool canMove;
 
-    private void Awake()
-    {
-        inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
-    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
