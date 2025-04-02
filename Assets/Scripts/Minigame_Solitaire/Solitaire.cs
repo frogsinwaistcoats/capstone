@@ -206,7 +206,7 @@ public class Solitaire : MonoBehaviour
         {
             // draw 3 new cards
             tripsOnDisplay.Clear();
-            float yOffset = -2.5f;
+            float yOffset = -2f;
             float zOffset = -0.2f;
 
             foreach (string card in deckTrips[deckLocation])

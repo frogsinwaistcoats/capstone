@@ -82,5 +82,6 @@ public class YarnInteractable : MonoBehaviour
     public void OnTriggerExit(Collider other)
     {
         playerFound = false;
+        prompt.SetActive(false);
     }
 }

@@ -182,8 +182,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7250435181913574013}
-  - {fileID: 6627911937516852873}
   - {fileID: 8015636126942265892}
+  - {fileID: 6627911937516852873}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -247,6 +247,7 @@ MonoBehaviour:
   isFull: 0
   itemDescription: 
   emptySprite: {fileID: 0}
+  maxNumOfItems: 100
   quantityText: {fileID: 2289544057071202911}
   itemImage: {fileID: 5016916769243086349}
   itemDescriptionImage: {fileID: 0}
@@ -288,7 +289,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -110, y: 25}
+  m_AnchoredPosition: {x: -120.38, y: 31.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4689633475536888893

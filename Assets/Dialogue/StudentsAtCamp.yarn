@@ -8,6 +8,7 @@ title: StudentOne
 <<declare $playSolitaire = false>>
 Student One: Do you want to play solitaire?
     -> No thanks.
+        Student One: Okay! Maybe later?
     -> Sure!
         <<set $playSolitaire to true>>
 ===
@@ -25,4 +26,12 @@ Student Three: Do you wanna go fishing with me later?
         Student Three: Yay!
     -> No thanks.
         Student Three: Thats okay.
+===
+
+title: Teacher
+---
+Teacher: The Forest is out of bounds.
+    -> Why?
+        Teacher: BECAUSE I SAID SO
+    -> okay.
 ===
