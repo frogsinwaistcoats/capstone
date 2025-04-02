@@ -1,31 +1,32 @@
-﻿title: Start
----
-Ernest: Lets go explore the camp!
-===
-
-title: StudentOne
+﻿title: StudentOne
 ---
 <<declare $playSolitaire = false>>
-Student One: Do you want to play solitaire?
+Patty: Do you want to play solitaire?
     -> No thanks.
-        Student One: Okay! Maybe later?
+        Patty: Okay! Maybe later?
     -> Sure!
         <<set $playSolitaire to true>>
 ===
 
 title: StudentTwo
 ---
-Student Two: Hi Ernest!
+Talia: Hi Ernest!
     -> Hi!
 ===
 
 title: StudentThree
 ---
-Student Three: Do you wanna go fishing with me later?
+Angler: Do you wanna go fishing with me later?
     -> Sure!
-        Student Three: Yay!
+        Angler: Yay!
     -> No thanks.
-        Student Three: Thats okay.
+        Angler: Thats okay.
+===
+
+title: StudentFour
+---
+Ruby: Camp is gonna be so fun!
+Ruby: You should go explore!
 ===
 
 title: Teacher
