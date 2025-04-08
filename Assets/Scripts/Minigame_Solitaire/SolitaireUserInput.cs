@@ -15,7 +15,7 @@ public class SolitaireUserInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        solitaire = FindObjectOfType<Solitaire>();
+        solitaire = FindFirstObjectByType<Solitaire>();
         slot1 = this.gameObject;
     }
 

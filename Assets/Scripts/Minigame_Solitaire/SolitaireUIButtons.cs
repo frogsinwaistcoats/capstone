@@ -31,7 +31,7 @@ public class SolitaireUIButtons : MonoBehaviour
     {
 
         // find all the cards and remove them
-        SolitaireUpdateSprite[] cards = FindObjectsOfType<SolitaireUpdateSprite>();
+        SolitaireUpdateSprite[] cards = FindObjectsByType<SolitaireUpdateSprite>(FindObjectsSortMode.None);
         foreach (SolitaireUpdateSprite card in cards)
         {
             Destroy(card.gameObject);
@@ -39,12 +39,13 @@ public class SolitaireUIButtons : MonoBehaviour
 
         ClearTopValues();
         // deal new cards
-        FindObjectOfType<Solitaire>().PlayCards();
+        Solitaire solitaire = FindFirstObjectByType<Solitaire>();
+        solitaire.PlayCards();
     }
 
     public void ClearTopValues()
     {
-        SolitaireSelectable[] selectables = FindObjectsOfType<SolitaireSelectable>();
+        SolitaireSelectable[] selectables = FindObjectsByType<SolitaireSelectable>(FindObjectsSortMode.None);
         foreach (SolitaireSelectable selectable in selectables)
         {
             if (selectable.CompareTag("Top"))
