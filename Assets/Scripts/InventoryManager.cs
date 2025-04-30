@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public GameObject InventoryMenu;
+    public GameObject inventory;
+    public GameObject itemsMenu;
+    public GameObject questsMenu;
+    public GameObject thoughtsMenu;
+    public GameObject settingsMenu;
     private bool menuActivated;
     public ItemSlot[] itemSlot;
 
@@ -20,16 +24,54 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab) && menuActivated)
         {
             Time.timeScale = 1;
-            InventoryMenu.SetActive(false);
+            inventory.SetActive(false);
             menuActivated = false;
         }
         else if (Input.GetKeyDown(KeyCode.Tab) && !menuActivated)
         {
             Time.timeScale = 0;
-            InventoryMenu.SetActive(true);
+            inventory.SetActive(true);
             menuActivated = true;
         }
     }
+
+    public void OpenInventory()
+    {
+        itemsMenu.SetActive(true);
+
+        thoughtsMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        questsMenu.SetActive(false);
+    }
+
+    public void OpenSettings()
+    {
+        settingsMenu.SetActive(true);
+
+        thoughtsMenu.SetActive(false);
+        questsMenu.SetActive(false);
+        itemsMenu.SetActive(false);
+    }
+
+    public void OpenQuests()
+    {
+        questsMenu.SetActive(true);
+
+        thoughtsMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        itemsMenu.SetActive(false);
+    }
+
+    public void OpenThoughts()
+    {
+        thoughtsMenu.SetActive(true);
+
+        questsMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        itemsMenu.SetActive(false);
+    }
+
+
 
     /*
     public void UseItem(string itemName)
