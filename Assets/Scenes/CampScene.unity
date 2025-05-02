@@ -7347,7 +7347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueView: {fileID: 1092953993}
   continueActionType: 1
-  continueActionKeyCode: 13
+  continueActionKeyCode: 101
   continueActionButtonName: Jump
   continueActionOnButtonRelease: 1
   continueActionReference: {fileID: 0}
@@ -8473,7 +8473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -88.1, y: -54.7}
+  m_AnchoredPosition: {x: -88.1001, y: -54.69995}
   m_SizeDelta: {x: 108.2, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1158060683
@@ -12319,7 +12319,7 @@ GameObject:
   - component: {fileID: 1795482024}
   - component: {fileID: 1795482023}
   m_Layer: 0
-  m_Name: DayCounter
+  m_Name: DayCounterText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12341,7 +12341,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -35.6, y: -58.429993}
+  m_AnchoredPosition: {x: -35.600098, y: -58.42993}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1795482023
@@ -14219,7 +14219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueView: {fileID: 189576712}
   continueActionType: 1
-  continueActionKeyCode: 13
+  continueActionKeyCode: 101
   continueActionButtonName: Jump
   continueActionOnButtonRelease: 1
   continueActionReference: {fileID: 0}

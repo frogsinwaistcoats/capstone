@@ -23,6 +23,16 @@ public class GameManager : MonoBehaviour
             Debug.Log("Duplicate GameManager Destroyed");
             Destroy(gameObject);
         }
+
+        if (dayCounterText == null)
+        {
+            GameObject textObject = GameObject.Find("---- UI ----/OtherCanvas/DayCounterText");
+            if (textObject != null)
+            {
+                dayCounterText = textObject.GetComponent<TextMeshProUGUI>();
+                UpdateDayText();
+            }
+        }
     }
 
     private void Update()
@@ -36,6 +46,11 @@ public class GameManager : MonoBehaviour
     public void StartNewDay()
     {
         currentDay++;
+        UpdateDayText();
+    }
+
+    public void UpdateDayText()
+    {
         dayCounterText.text = "Day " + currentDay.ToString();
     }
 }
