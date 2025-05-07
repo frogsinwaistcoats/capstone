@@ -48,14 +48,6 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("MainMenu");
         }
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            SaveSystem.Save();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SaveSystem.Load();
-        }
     }
 
     public void StartNewDay()
