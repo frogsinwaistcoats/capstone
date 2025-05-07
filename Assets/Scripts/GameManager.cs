@@ -7,11 +7,7 @@ using Yarn.Unity;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public int currentDay = 1;
-    public TextMeshProUGUI dayCounterText;
-
-    private DialogueRunner dialogueRunner;
-
+    public DayManager dayManager;
     public PlayerMovement player { get; set; }
     
 
@@ -19,26 +15,12 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null)
         {
-            Debug.Log("GameManager Set Up");
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Debug.Log("Duplicate GameManager Destroyed");
             Destroy(gameObject);
-        }
-
-        dialogueRunner = FindFirstObjectByType<DialogueRunner>();
-
-        if (dayCounterText == null)
-        {
-            GameObject textObject = GameObject.Find("---- UI ----/OtherCanvas/DayCounterText");
-            if (textObject != null)
-            {
-                dayCounterText = textObject.GetComponent<TextMeshProUGUI>();
-                UpdateDayText();
-            }
         }
     }
 
@@ -48,23 +30,6 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("MainMenu");
         }
-    }
-
-    public void StartNewDay()
-    {
-        currentDay++;
-        UpdateDayText();
-
-        //set yarn variable
-        if(dialogueRunner != null)
-        {
-            dialogueRunner.VariableStorage.SetValue("$day", currentDay);
-        }
-    }
-
-    public void UpdateDayText()
-    {
-        dayCounterText.text = "Day " + currentDay.ToString();
     }
 }
 

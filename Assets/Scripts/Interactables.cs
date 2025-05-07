@@ -10,10 +10,12 @@ public class Interactables : MonoBehaviour
     public GameObject cutscenePrefab;
 
     GameManager gameManager;
+    DayManager dayManager;
 
     private void Start()
     {
         gameManager = FindAnyObjectByType<GameManager>();
+        dayManager = FindAnyObjectByType<DayManager>();
     }
 
 
@@ -25,7 +27,7 @@ public class Interactables : MonoBehaviour
 
             if (gameObject.CompareTag("Tent"))
             {
-                gameManager.StartNewDay();
+                dayManager.StartNewDay();
                 StartCoroutine(DayNightCutscene(cutscenePrefab));
                
             }
@@ -47,10 +49,10 @@ public class Interactables : MonoBehaviour
     IEnumerator DayNightCutscene(GameObject obj)
     {
         obj.SetActive(true);
-        gameManager.dayCounterText.gameObject.SetActive(false);
+        dayManager.dayCounterText.gameObject.SetActive(false);
         yield return new WaitForSeconds(3);
         obj.SetActive(false);
-        gameManager.dayCounterText.gameObject.SetActive(true);
+        dayManager.dayCounterText.gameObject.SetActive(true);
     }
 
 }

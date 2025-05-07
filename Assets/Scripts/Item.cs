@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.VFX;
 using Yarn.Unity;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, IDataPersistence
 {
     [SerializeField]
     private string itemName;
@@ -18,7 +19,34 @@ public class Item : MonoBehaviour
 
     private InventoryManager inventoryManager;
     private bool playerFound = false;
+    private bool collected = false;
     [SerializeField] private GameObject prompt;
+
+    [SerializeField] private string id;
+
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
+
+    public void LoadData(GameData data)
+    {
+        data.flowersCollected.TryGetValue(id, out collected);
+        if (collected)
+        {
+            CollectItem();
+        }
+    }
+
+    public void SaveData(GameData data)
+    {
+        if (data.flowersCollected.ContainsKey(id))
+        {
+            data.flowersCollected.Remove(id);
+        }
+        data.flowersCollected.Add(id, collected);
+    }
 
     void Start()
     {
@@ -29,17 +57,22 @@ public class Item : MonoBehaviour
     {
         if (playerFound && Input.GetKeyDown(KeyCode.E))
         {
+            CollectItem();
             prompt.SetActive(false);
-            int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
-            if (leftOverItems <= 0)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                quantity = leftOverItems;
-            }
-            
+        }
+    }
+
+    public void CollectItem()
+    {
+        collected = true;
+        int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
+        if (leftOverItems <= 0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            quantity = leftOverItems;
         }
     }
 
