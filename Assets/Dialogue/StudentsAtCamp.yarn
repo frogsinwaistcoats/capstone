@@ -8,31 +8,10 @@ Patty: Do you want to play solitaire?
         <<set $playSolitaire to true>>
 ===
 
-title: Variables
----
-<<declare $day = 1>>
-===
-
 title: StudentTwo
 ---
-<<if $day == 1>>
-    <<jump TaliaDay1>>
-<<elseif $day == 2>>
-    <<jump TaliaDay2>>
-<<else>>
 Talia: Hi Ernest!
     -> Hi!
-<<endif>>
-===
-
-title: TaliaDay1
----
-Talia: Hi! How are you?
-===
-
-title: TaliaDay2
----
-Talia: What's Up?
 ===
 
 title: StudentThree

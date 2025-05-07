@@ -2,25 +2,20 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Yarn.Unity;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager current;
     public int currentDay = 1;
     public TextMeshProUGUI dayCounterText;
 
-    private DialogueRunner dialogueRunner;
-
-    public PlayerMovement player { get; set; }
-    
 
     private void Awake()
     {
-        if (instance == null)
+        if (current == null)
         {
             Debug.Log("GameManager Set Up");
-            instance = this;
+            current = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -28,8 +23,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("Duplicate GameManager Destroyed");
             Destroy(gameObject);
         }
-
-        dialogueRunner = FindFirstObjectByType<DialogueRunner>();
 
         if (dayCounterText == null)
         {
@@ -48,26 +41,12 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("MainMenu");
         }
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            SaveSystem.Save();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SaveSystem.Load();
-        }
     }
 
     public void StartNewDay()
     {
         currentDay++;
         UpdateDayText();
-
-        //set yarn variable
-        if(dialogueRunner != null)
-        {
-            dialogueRunner.VariableStorage.SetValue("$day", currentDay);
-        }
     }
 
     public void UpdateDayText()
@@ -75,4 +54,3 @@ public class GameManager : MonoBehaviour
         dayCounterText.text = "Day " + currentDay.ToString();
     }
 }
-

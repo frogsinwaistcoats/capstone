@@ -45,23 +45,4 @@ public class PlayerMovement : MonoBehaviour
     {
         canMove = value;
     }
-
-    #region Save and Load
-
-    public void Save(ref PlayerSaveData data)
-    {
-        data.position = transform.position;
-    }
-
-    public void Load(PlayerSaveData data)
-    {
-        transform.position = data.position;
-    }
-
-    #endregion
-}
-
-public struct PlayerSaveData
-{
-    public Vector3 position;
 }
