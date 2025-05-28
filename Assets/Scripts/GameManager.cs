@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public DayManager dayManager;
     public PlayerMovement player { get; set; }
+    private GameObject quitConfirm;
     
 
     private void Awake()
@@ -22,14 +23,26 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        quitConfirm = GameObject.Find("---- UI ----/OtherCanvas/QuitConfirm");
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("MainMenu");
+            quitConfirm.SetActive(true);
         }
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Return()
+    {
+        quitConfirm.SetActive(false);
     }
 }
 
