@@ -52,8 +52,10 @@ Ruby: You should go explore!
 
 title: Teacher
 ---
-Teacher: The Forest is out of bounds.
-    -> Why?
-        Teacher: BECAUSE I SAID SO
-    -> okay.
+<<declare $sneakingOut = false>>
+Teacher: ARE YOU TRYING TO SNEAK OUT??
+    -> ...yes
+        <<set $sneakingOut to true>>
+    -> No...
+        Teacher: GOOD. NOW SCRAM!
 ===

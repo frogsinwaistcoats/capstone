@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     public float vertical;
     private Rigidbody rb;
     bool canMove;
-
+    public Transform startingPos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,5 +54,10 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     public void SetMovement(bool value)
     {
         canMove = value;
+    }
+
+    public void ResetPos()
+    {
+        this.transform.position = startingPos.position;
     }
 }

@@ -48,6 +48,13 @@ public class YarnInteractable : MonoBehaviour
         {
             SceneManager.LoadScene("MinigameSolitaire");
         }
+
+        bool sneakingOut;
+        variableStorage.TryGetValue("$sneakingOut", out sneakingOut);
+        if (sneakingOut)
+        {
+            SceneManager.LoadScene("MinigameSneakingOut");
+        }
     }
 
     private void StartConversation()

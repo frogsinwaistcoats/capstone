@@ -7,10 +7,12 @@ using Yarn.Unity;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public DayManager dayManager;
+    //public DayManager dayManager;
     public PlayerMovement player { get; set; }
     private GameObject quitConfirm;
-    
+    private GameObject controls;
+    private GameObject resetPosButton;
+
 
     private void Awake()
     {
@@ -24,14 +26,20 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        quitConfirm = GameObject.Find("---- UI ----/OtherCanvas/QuitConfirm");
+        
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            quitConfirm = GameObject.Find("---- UI ----/OtherCanvas/QuitConfirm");
+            controls = GameObject.Find("---- UI ----/OtherCanvas/Controls");
+            resetPosButton = GameObject.Find("---- UI ----/OtherCanvas/Reset");
+
             quitConfirm.SetActive(true);
+            controls.SetActive(false);
+            resetPosButton.SetActive(false);
         }
     }
 
@@ -42,7 +50,15 @@ public class GameManager : MonoBehaviour
 
     public void Return()
     {
+        Debug.Log("clicked return");
+
+        quitConfirm = GameObject.Find("---- UI ----/OtherCanvas/QuitConfirm");
+        controls = GameObject.Find("---- UI ----/OtherCanvas/Controls");
+        resetPosButton = GameObject.Find("---- UI ----/OtherCanvas/Reset");
+
         quitConfirm.SetActive(false);
+        controls.SetActive(true);
+        resetPosButton.SetActive(true);
     }
 }
 

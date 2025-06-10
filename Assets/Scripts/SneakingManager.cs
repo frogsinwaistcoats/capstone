@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using JetBrains.Annotations;
-using Unity.PlasticSCM.Editor.WebApi;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SneakingManager : MonoBehaviour
 {
@@ -49,8 +45,9 @@ public class SneakingManager : MonoBehaviour
         if(isMoving && sneakingTeacher.isLooking)
         {
             Debug.Log("FAIL");
-            transform.position = startingPos;
-            targetPos = transform.position;
+            SceneManager.LoadScene("CampScene");
+            //transform.position = startingPos;
+            //targetPos = transform.position;
         }
     }
 
