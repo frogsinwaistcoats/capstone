@@ -1,15 +1,20 @@
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private PlayableDirector playableDirector;
+
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        playableDirector.Play();
     }
 
     public void QuitGame()
     {
         Application.Quit();
     }
+
+    
 }
