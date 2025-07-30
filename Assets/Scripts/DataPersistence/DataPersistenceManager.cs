@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class DataPersistenceManager : MonoBehaviour
 {
+    /*
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
 
@@ -75,4 +76,5 @@ public class DataPersistenceManager : MonoBehaviour
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<IDataPersistence>();
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
+    */
 }

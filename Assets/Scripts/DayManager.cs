@@ -2,13 +2,13 @@ using UnityEngine;
 using TMPro;
 using Yarn.Unity;
 
-public class DayManager : MonoBehaviour, IDataPersistence
+public class DayManager : MonoBehaviour//, IDataPersistence
 {
     public int dayCount { get; private set; } = 1;
     public TextMeshProUGUI dayCounterText;
     private DialogueRunner dialogueRunner;
 
-
+    /*
     public void LoadData(GameData data)
     {
         this.dayCount = data.dayCount;
@@ -18,6 +18,7 @@ public class DayManager : MonoBehaviour, IDataPersistence
     {
         data.dayCount = this.dayCount;
     }
+    */
 
     private void Start()
     {

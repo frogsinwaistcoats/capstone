@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.VFX;
 using Yarn.Unity;
 
-public class Item : MonoBehaviour, IDataPersistence
+public class Item : MonoBehaviour//, IDataPersistence
 {
     [SerializeField]
     private string itemName;
@@ -19,7 +19,7 @@ public class Item : MonoBehaviour, IDataPersistence
 
     private InventoryManager inventoryManager;
     private bool playerFound = false;
-    private bool collected = false;
+    //private bool collected = false;
     [SerializeField] private GameObject prompt;
 
     [SerializeField] private string id;
@@ -30,6 +30,7 @@ public class Item : MonoBehaviour, IDataPersistence
         id = System.Guid.NewGuid().ToString();
     }
 
+    /*
     public void LoadData(GameData data)
     {
         data.flowersCollected.TryGetValue(id, out collected);
@@ -47,6 +48,7 @@ public class Item : MonoBehaviour, IDataPersistence
         }
         data.flowersCollected.Add(id, collected);
     }
+    */
 
     void Start()
     {
@@ -64,7 +66,7 @@ public class Item : MonoBehaviour, IDataPersistence
 
     public void CollectItem()
     {
-        collected = true;
+        //collected = true;
         int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
         if (leftOverItems <= 0)
         {

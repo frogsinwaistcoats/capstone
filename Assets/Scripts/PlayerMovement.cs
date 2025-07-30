@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour, IDataPersistence
+public class PlayerMovement : MonoBehaviour//, IDataPersistence
 {
     public static PlayerMovement current;
 
@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
         rb.freezeRotation = true;
         canMove = true;
     }
-
+    /*
     public void LoadData(GameData data)
     {
         this.transform.position = data.playerPosition;
@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     {
         data.playerPosition = this.transform.position;
     }
+    */
 
     // Update is called once per frame
     void Update()

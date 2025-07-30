@@ -4,6 +4,7 @@ using System.IO;
 
 public class FileDataHandler
 {
+    /*
     private string dataDirPath = "";
     private string dataFileName = "";
 
@@ -67,4 +68,5 @@ public class FileDataHandler
             Debug.LogError("Error occured when trying to save file: " + fullPath + "\n" + e);
         }
     }
+    */
 }
