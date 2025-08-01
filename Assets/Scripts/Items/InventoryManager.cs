@@ -89,6 +89,7 @@ public class InventoryManager : MonoBehaviour
 
     public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
     {
+        CallCollectQuestSteps(itemName);
         for (int i = 0; i < itemSlot.Length; i++)
         {
             if(itemSlot[i].isFull == false && itemSlot[i].itemName == itemName || itemSlot[i].quantity == 0)
@@ -112,5 +113,33 @@ public class InventoryManager : MonoBehaviour
             itemSlot[i].selectedShader.SetActive(false);
             itemSlot[i].thisItemSelected = false;
         }
+    }
+
+    //when a quest is active, everytime a new item is added, the quest will check to see if it needs this item
+    public void CallCollectQuestSteps(string itemName)
+    {
+        CollectFlowersQuestStep collectFlowersQuestStep = FindAnyObjectByType<CollectFlowersQuestStep>();
+        if (collectFlowersQuestStep != null)
+        {
+            collectFlowersQuestStep.ItemCollected(itemName);
+        }
+
+        //add other quests here
+        
+    }
+
+    //when a quest is started, it gets the current count of the items needed
+    public int GetItemCount(string itemName)
+    {
+        int quantity = 0;
+        foreach(ItemSlot i in itemSlot)
+        {
+            if (i.itemName == itemName)
+            {
+                quantity += i.quantity;
+            } 
+        }
+
+        return quantity;
     }
 }

@@ -76,7 +76,7 @@ public class Item : MonoBehaviour//, IDataPersistence
         {
             quantity = leftOverItems;
         }
-    }
+    } 
 
     private void OnTriggerEnter(Collider other)
     {
