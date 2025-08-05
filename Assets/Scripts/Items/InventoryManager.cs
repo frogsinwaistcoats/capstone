@@ -26,12 +26,16 @@ public class InventoryManager : MonoBehaviour
             Time.timeScale = 1;
             inventory.SetActive(false);
             menuActivated = false;
+
+            FindAnyObjectByType<AudioManager>().Play("OpenBook");
         }
         else if (Input.GetKeyDown(KeyCode.Tab) && !menuActivated)
         {
             Time.timeScale = 0;
             inventory.SetActive(true);
             menuActivated = true;
+
+            FindAnyObjectByType<AudioManager>().Play("OpenBook");
         }
     }
 
