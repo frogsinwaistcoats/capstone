@@ -1,41 +1,57 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SneakingTeacherController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public Transform movePoint;
 
-    public LayerMask whatStopsMovement;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public Node currentNode;
+    public List<Node> path = new List<Node>();
+
+
+
+    public SneakingPlayerController player;
+
+    public float speed = 3f;
+
+
+
+    private void Update()
     {
-        movePoint.parent = null;
+        Engage();
+
+        
+
+        CreatePath();
     }
 
-    // Update is called once per frame
-    void Update()
+    
+
+    void Engage()
     {
-        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-
-        if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
+        if (path.Count == 0)
         {
-            //change this line to npc
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
-            {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, whatStopsMovement))
-                {
-                    movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * 2, 0f, 0f);
-                }
+            path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.FindNearestNode(player.transform.position));
+        }
+    }
 
-            }
-            else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
-            {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, whatStopsMovement))
-                {
-                    movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * 2, 0f);
-                }
+    
 
+    public void CreatePath()
+    {
+        if (path.Count > 0)
+        {
+            int x = 0;
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(path[x].transform.position.x, path[x].transform.position.y, -2), speed * Time.deltaTime);
+
+            if (Vector2.Distance(transform.position, path[x].transform.position) < 0.1f)
+            {
+                currentNode = path[x];
+                path.RemoveAt(x);
             }
         }
     }

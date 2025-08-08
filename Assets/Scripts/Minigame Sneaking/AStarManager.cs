@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class AStarManager : MonoBehaviour
@@ -60,7 +59,7 @@ public class AStarManager : MonoBehaviour
             {
                 float heldGScore = currentNode.gScore + Vector2.Distance(currentNode.transform.position, connectedNode.transform.position);
 
-                if (heldGScore < currentNode.gScore)
+                if (heldGScore < connectedNode.gScore)
                 {
                     connectedNode.cameFrom = currentNode;
                     connectedNode.gScore = heldGScore;
@@ -75,5 +74,47 @@ public class AStarManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public Node FindNearestNode(Vector2 pos)
+    {
+        Node foundNode = null;
+        float minDistance = float.MaxValue;
+
+        foreach (Node node in FindObjectsByType<Node>(FindObjectsSortMode.None))
+        {
+            float currentDistance = Vector2.Distance(pos, node.transform.position);
+
+            if (currentDistance < minDistance)
+            {
+                minDistance = currentDistance;
+                foundNode = node;
+            }
+        }
+
+        return foundNode;
+    }
+
+    public Node FindFurthestNode(Vector2 pos)
+    {
+        Node foundNode = null;
+        float maxDistance = default;
+
+        foreach (Node node in FindObjectsByType<Node>(FindObjectsSortMode.None))
+        {
+            float currentDistance = Vector2.Distance(pos, node.transform.position);
+            if (currentDistance > maxDistance)
+            {
+                maxDistance = currentDistance;
+                foundNode = node;
+            }
+        }
+
+        return foundNode;
+    }
+
+    public Node[] AllNodes()
+    {
+        return FindObjectsByType<Node>(FindObjectsSortMode.None);
     }
 }

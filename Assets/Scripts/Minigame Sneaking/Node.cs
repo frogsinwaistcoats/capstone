@@ -17,10 +17,9 @@ public class Node : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
-
-        if (connections.Count > 0 )
+        if (connections.Count > 0)
         {
+            Gizmos.color = Color.blue;
             for (int i = 0; i < connections.Count; i++)
             {
                 Gizmos.DrawLine(transform.position, connections[i].transform.position);
