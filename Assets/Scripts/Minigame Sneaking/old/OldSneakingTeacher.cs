@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SneakingTeacher : MonoBehaviour
+public class OldSneakingTeacher : MonoBehaviour
 {
     public float timer = 3;
     public bool isLooking = false;

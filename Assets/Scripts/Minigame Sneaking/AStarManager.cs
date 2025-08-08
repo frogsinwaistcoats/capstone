@@ -95,6 +95,7 @@ public class AStarManager : MonoBehaviour
         return foundNode;
     }
 
+    /*
     public Node FindFurthestNode(Vector2 pos)
     {
         Node foundNode = null;
@@ -112,6 +113,7 @@ public class AStarManager : MonoBehaviour
 
         return foundNode;
     }
+    */
 
     public Node[] AllNodes()
     {

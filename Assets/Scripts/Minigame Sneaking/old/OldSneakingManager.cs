@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SneakingManager : MonoBehaviour
+public class OldSneakingManager : MonoBehaviour
 {
     public GameObject[] bushes;
     public Vector3 bushOffset;
@@ -12,7 +12,7 @@ public class SneakingManager : MonoBehaviour
     public bool isMoving = false;
     private Vector3 startingPos;
 
-    public SneakingTeacher sneakingTeacher;
+    public OldSneakingTeacher sneakingTeacher;
 
     private void Awake()
     {

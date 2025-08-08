@@ -53,7 +53,7 @@ public class YarnInteractable : MonoBehaviour
         variableStorage.TryGetValue("$sneakingOut", out sneakingOut);
         if (sneakingOut)
         {
-            SceneManager.LoadScene("MinigameSneakingOut");
+            SceneManager.LoadScene("Sneaking");
         }
     }
 

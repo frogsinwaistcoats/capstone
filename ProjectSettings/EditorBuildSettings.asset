@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MinigameSolitaire.unity
     guid: cdab94aabdfb6164199dc84631cf3485
   - enabled: 1
-    path: Assets/Scenes/MinigameSneakingOut.unity
-    guid: 7bb0701aa639c7b4ca24c33a1658def3
+    path: Assets/Scenes/Sneaking.unity
+    guid: d9d4268495a442444acd4277893d60a0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
