@@ -10,6 +10,7 @@ TagManager:
   - Card
   - Tent
   - SneakingExit
+  - Activator
   layers:
   - Default
   - TransparentFX
@@ -46,6 +47,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Arrows
+    uniqueID: 432879831
     locked: 0
   m_RenderingLayers:
   - Default
