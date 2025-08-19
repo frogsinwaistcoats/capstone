@@ -3,15 +3,39 @@ using UnityEngine.InputSystem;
 
 public class UnpackingItem : MonoBehaviour
 {
-    [SerializeField] Camera mainCamera;
+    public bool isBeingHeld;
 
     private void Start()
     {
-        mainCamera = FindAnyObjectByType<Camera>();
+        isBeingHeld = true;
     }
 
     private void Update()
     {
-        Debug.Log(Input.mousePosition);
+        if (isBeingHeld)
+        {
+            MoveWithMouse();
+        }
+    }
+
+    private void MoveWithMouse()
+    {
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition.z = 0f;
+        transform.position = mouseWorldPosition;
+    }
+
+    private void OnMouseDown()
+    {
+        // can also use: isBeingHeld = !isBeingHeld;
+
+        if (isBeingHeld == true)
+        {
+            isBeingHeld = false;
+        }
+        else
+        {
+            isBeingHeld = true;
+        }
     }
 }
