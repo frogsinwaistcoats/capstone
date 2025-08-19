@@ -4,18 +4,24 @@ using UnityEngine.InputSystem;
 public class UnpackingItem : MonoBehaviour
 {
     public bool isBeingHeld;
-
-    private void Start()
-    {
-        isBeingHeld = true;
-    }
+    public GameObject outline;
+    public LayerMask targetLayer;
+    public Sprite placedSprite;
 
     private void Update()
     {
         if (isBeingHeld)
         {
             MoveWithMouse();
+            outline.SetActive(true);
         }
+        else
+        {
+            outline.SetActive(false);
+        }
+
+
+        
     }
 
     private void MoveWithMouse()
@@ -25,17 +31,23 @@ public class UnpackingItem : MonoBehaviour
         transform.position = mouseWorldPosition;
     }
 
+    
     private void OnMouseDown()
     {
         // can also use: isBeingHeld = !isBeingHeld;
 
-        if (isBeingHeld == true)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector3(0f, 0f, 10f), Mathf.Infinity, targetLayer);
+        if (hit.collider != null)
         {
+            Debug.Log(gameObject.name + " is over " + hit.collider.gameObject.name);
+
             isBeingHeld = false;
-        }
-        else
-        {
-            isBeingHeld = true;
+            transform.position = hit.collider.transform.position;
+
+            if(placedSprite != null)
+            {
+                GetComponent<SpriteRenderer>().sprite = placedSprite;
+            }
         }
     }
 }
