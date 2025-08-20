@@ -213,7 +213,6 @@ MonoBehaviour:
   itemName: Daisy
   quantity: 1
   sprite: {fileID: 21300000, guid: aca4f0382dc90854184139136926b754, type: 3}
-  polaroid: {fileID: 21300000, guid: 2e37b56b5b0da6d48a34b637883e7d55, type: 3}
   itemDescription: the best mario character
   prompt: {fileID: 1031773225393480280}
   id: 
