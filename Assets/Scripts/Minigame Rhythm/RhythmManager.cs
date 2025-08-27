@@ -10,7 +10,7 @@ public class RhythmManager : MonoBehaviour
     public bool startPlaying;
 
     public int currentScore;
-    public int scorePerNote = 100;
+    public int scorePerNote = 1;
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI multiText;
@@ -31,7 +31,7 @@ public class RhythmManager : MonoBehaviour
     {
         if (!startPlaying)
         {
-            if (Input.anyKeyDown)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 startPlaying = true;
                 beatScroller.hasStarted = true;

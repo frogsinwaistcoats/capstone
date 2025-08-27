@@ -9880,6 +9880,132 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9227e43788716e9449d285b37b9af577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &2106998489
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 428264608466190140, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1264764252014037346, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794846533194157829, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248551709922898587, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_text
+      value: 'Get to the pink bushes on the right side.
+
+        Don''t get caught
+        by the teacher.
+
+        Use arrows to move. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248551709922898587, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248551709922898587, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248551709922898587, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_paragraphSpacing
+      value: 55.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248551709922898587, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0ade5eabefe412846b8b1f8a0dad2c68, type: 3}
 --- !u!1 &2126624317
 GameObject:
   m_ObjectHideFlags: 0
@@ -10045,3 +10171,4 @@ SceneRoots:
   - {fileID: 249724829}
   - {fileID: 256336106}
   - {fileID: 798689269}
+  - {fileID: 2106998489}

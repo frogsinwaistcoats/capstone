@@ -1,8 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
-using Unity.VisualScripting;
-using UnityEditor.ShortcutManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
