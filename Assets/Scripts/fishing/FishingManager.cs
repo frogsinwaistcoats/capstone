@@ -1,20 +1,30 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class FishingManager : MonoBehaviour
 {
+    public static FishingManager instance;
+
     public GameObject button;
     public Canvas canvas;
+    public float spawnDelay;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
-        Instantiate(button, canvas.transform);
+        //Instantiate(button, canvas.transform);
+        InvokeRepeating("SpawnButton", 0f, spawnDelay);
     }
 
-    private void Update()
+    
+
+    public void SpawnButton()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(button, canvas.transform);
-        }
+        Instantiate(button, canvas.transform);
     }
 }

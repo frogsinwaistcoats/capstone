@@ -19,7 +19,7 @@ public class FishingButton : MonoBehaviour
     public Image buttonFill;
     public Transform targetPos;
     public float duration;
-    public bool isFilling;
+    public bool hasMissed;
 
     private void Awake()
     {
@@ -29,21 +29,22 @@ public class FishingButton : MonoBehaviour
 
     private void Start()
     {
+        int spawnPointX = UnityEngine.Random.Range(200, 1720);
+        int spawnPointY = UnityEngine.Random.Range(100, 980);
+
+        Vector2 spawnPos = new Vector2(spawnPointX, spawnPointY);
+        transform.position = spawnPos;
+
         GenerateRandomKeyCode();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(chosenKey))
+        if (!hasMissed && Input.GetKeyDown(chosenKey))
         {
             Destroy(gameObject);
+            Fish.instance.MoveForward();
         }
-
-        if (isFilling)
-        {
-            
-        }
-        
     }
 
     void GenerateRandomKeyCode()
@@ -51,6 +52,7 @@ public class FishingButton : MonoBehaviour
         int randomIndex = UnityEngine.Random.Range(0, possibleKeys.Length);
         chosenKey = possibleKeys[randomIndex];
         keyText.text = chosenKey.ToString();
+        hasMissed = false;
         StartCoroutine(FillButton(targetPos, duration));
     }
 
@@ -65,5 +67,14 @@ public class FishingButton : MonoBehaviour
             yield return null;
         }
         transform.position = targetPos.position;
+        hasMissed = true;
+        Fish.instance.MoveBack();
+        StartCoroutine(DestroyKey());
+    }
+
+    IEnumerator DestroyKey()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 }

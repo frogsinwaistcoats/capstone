@@ -148,7 +148,7 @@ MonoBehaviour:
   buttonFill: {fileID: 7822484932643284012}
   targetPos: {fileID: 5410795588662252846}
   duration: 1.5
-  isFilling: 0
+  hasMissed: 0
 --- !u!1 &4703993624546702444
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +322,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 106.58, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7133582713638133692
 CanvasRenderer:
