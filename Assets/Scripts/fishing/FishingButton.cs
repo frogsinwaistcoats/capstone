@@ -6,8 +6,7 @@ using System.Collections;
 
 public class FishingButton : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private TextMeshProUGUI keyText;
+    [SerializeField] private Image buttonImage;
     [SerializeField] private KeyCode chosenKey;
     public KeyCode[] possibleKeys = 
         { KeyCode.A, KeyCode.B, KeyCode.C, KeyCode.D, KeyCode.E, KeyCode.F, 
@@ -15,17 +14,12 @@ public class FishingButton : MonoBehaviour
         KeyCode.M, KeyCode.N, KeyCode.O, KeyCode.P, KeyCode.Q, KeyCode.R, 
         KeyCode.S, KeyCode.T, KeyCode.U, KeyCode.V, KeyCode.W, KeyCode.X, 
         KeyCode.Y, KeyCode.Z };
-
+    public Sprite[] possibleKeySprites;
     public Image buttonFill;
     public Transform targetPos;
     public float duration;
     public bool hasMissed;
-
-    private void Awake()
-    {
-        sr = GetComponentInChildren<SpriteRenderer>();
-        keyText = GetComponentInChildren<TextMeshProUGUI>();
-    }
+    public Vector3 scale;
 
     private void Start()
     {
@@ -34,6 +28,7 @@ public class FishingButton : MonoBehaviour
 
         Vector2 spawnPos = new Vector2(spawnPointX, spawnPointY);
         transform.position = spawnPos;
+        transform.localScale = scale;
 
         GenerateRandomKeyCode();
     }
@@ -51,7 +46,7 @@ public class FishingButton : MonoBehaviour
     {
         int randomIndex = UnityEngine.Random.Range(0, possibleKeys.Length);
         chosenKey = possibleKeys[randomIndex];
-        keyText.text = chosenKey.ToString();
+        buttonImage.sprite = possibleKeySprites[randomIndex];
         hasMissed = false;
         StartCoroutine(FillButton(targetPos, duration));
     }

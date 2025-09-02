@@ -10,6 +10,8 @@ public class FishingManager : MonoBehaviour
     public Canvas canvas;
     public float spawnDelay;
 
+    public GameObject successScreen;
+
     private void Awake()
     {
         instance = this;
@@ -26,5 +28,11 @@ public class FishingManager : MonoBehaviour
     public void SpawnButton()
     {
         Instantiate(button, canvas.transform);
+    }
+
+    public void EndGame()
+    {
+        CancelInvoke();
+        successScreen.SetActive(true);
     }
 }
