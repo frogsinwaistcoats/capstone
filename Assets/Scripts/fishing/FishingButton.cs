@@ -6,7 +6,6 @@ using System.Collections;
 
 public class FishingButton : MonoBehaviour
 {
-    [SerializeField] private Image buttonImage;
     [SerializeField] private KeyCode chosenKey;
     public KeyCode[] possibleKeys = 
         { KeyCode.A, KeyCode.B, KeyCode.C, KeyCode.D, KeyCode.E, KeyCode.F, 
@@ -14,21 +13,17 @@ public class FishingButton : MonoBehaviour
         KeyCode.M, KeyCode.N, KeyCode.O, KeyCode.P, KeyCode.Q, KeyCode.R, 
         KeyCode.S, KeyCode.T, KeyCode.U, KeyCode.V, KeyCode.W, KeyCode.X, 
         KeyCode.Y, KeyCode.Z };
-    public Sprite[] possibleKeySprites;
-    public Image buttonFill;
-    public Transform targetPos;
-    public float duration;
+    public AnimationClip[] possibleKeyAnims;
     public bool hasMissed;
-    public Vector3 scale;
+    public Animator animator;
 
     private void Start()
     {
-        int spawnPointX = UnityEngine.Random.Range(200, 1720);
-        int spawnPointY = UnityEngine.Random.Range(100, 980);
+        int spawnPointX = UnityEngine.Random.Range(-14, 14);
+        int spawnPointY = UnityEngine.Random.Range(-5, -8);
 
         Vector2 spawnPos = new Vector2(spawnPointX, spawnPointY);
         transform.position = spawnPos;
-        transform.localScale = scale;
 
         GenerateRandomKeyCode();
     }
@@ -44,32 +39,20 @@ public class FishingButton : MonoBehaviour
 
     void GenerateRandomKeyCode()
     {
-        int randomIndex = UnityEngine.Random.Range(0, possibleKeys.Length);
+        int randomIndex = UnityEngine.Random.Range(0, possibleKeys.Length - 1);
         chosenKey = possibleKeys[randomIndex];
-        buttonImage.sprite = possibleKeySprites[randomIndex];
+        animator.Play(possibleKeyAnims[randomIndex].name);
+
         hasMissed = false;
-        StartCoroutine(FillButton(targetPos, duration));
+        StartCoroutine(TrackButton());
     }
 
-    IEnumerator FillButton(Transform targetPos, float timeToMove)
+    
+    IEnumerator TrackButton()
     {
-        Vector3 startPos = buttonFill.transform.position;
-        float t = 0f;
-        while (t < 1f)
-        {
-            t += Time.deltaTime / timeToMove;
-            buttonFill.transform.position = Vector3.Lerp(startPos, targetPos.position, t);
-            yield return null;
-        }
-        transform.position = targetPos.position;
+        yield return new WaitForSeconds(possibleKeyAnims[0].length);
         hasMissed = true;
         Fish.instance.MoveBack();
-        StartCoroutine(DestroyKey());
-    }
-
-    IEnumerator DestroyKey()
-    {
-        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 }

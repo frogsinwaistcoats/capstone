@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -11,6 +12,9 @@ public class FishingManager : MonoBehaviour
     public float spawnDelay;
 
     public GameObject successScreen;
+    public GameObject failScreen;
+
+    [SerializeField] private List<GameObject> activeKeys = new List<GameObject>();
 
     private void Awake()
     {
@@ -23,16 +27,27 @@ public class FishingManager : MonoBehaviour
         InvokeRepeating("SpawnButton", 0f, spawnDelay);
     }
 
-    
-
     public void SpawnButton()
     {
-        Instantiate(button, canvas.transform);
+        GameObject newKey = Instantiate(button);
+        activeKeys.Add(newKey);
     }
 
-    public void EndGame()
+    public IEnumerator EndGame()
     {
         CancelInvoke();
+        yield return new WaitForSeconds(1f);
         successScreen.SetActive(true);
+    }
+
+    public IEnumerator FailGame()
+    {
+        CancelInvoke();
+        foreach (GameObject key in activeKeys)
+        {
+            Destroy(key);
+        }
+        yield return new WaitForSeconds(1f);
+        failScreen.SetActive(true);
     }
 }
