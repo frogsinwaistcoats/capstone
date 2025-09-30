@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour//, IDataPersistence
     private Rigidbody rb;
     bool canMove;
     public Transform startingPos;
+    public SpriteRenderer sr;
+
+    public Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,6 +39,9 @@ public class PlayerMovement : MonoBehaviour//, IDataPersistence
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+
+                 
+        
     }
 
     private void FixedUpdate()
@@ -48,7 +54,21 @@ public class PlayerMovement : MonoBehaviour//, IDataPersistence
             Vector3 moveDirection = forwardDirection + sidewaysDirection;
             moveDirection *= Time.deltaTime * moveSpeed;
 
-            rb.MovePosition(moveDirection + transform.position);
+            //changes anim state
+            animator.SetBool("isMoving", moveDirection != Vector3.zero);
+
+            //flips sprite direction
+            if (horizontal > 0.1f)
+            {
+                sr.flipX = false;
+            }
+            else if (horizontal < -0.1f)
+            {
+                sr.flipX = true;
+            }
+
+
+                rb.MovePosition(moveDirection + transform.position);
         }
     }
 
