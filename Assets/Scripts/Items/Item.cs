@@ -17,7 +17,7 @@ public class Item : MonoBehaviour//, IDataPersistence
     [SerializeField]
     private string itemDescription;
 
-    private InventoryManager inventoryManager;
+    public InventoryManager inventoryManager;
     private bool playerFound = false;
     //private bool collected = false;
     [SerializeField] private GameObject prompt;
@@ -52,7 +52,7 @@ public class Item : MonoBehaviour//, IDataPersistence
 
     void Start()
     {
-        inventoryManager = GameObject.Find("MenuCanvas").GetComponent<InventoryManager>();
+        //inventoryManager = InventoryManager.instance;
     }
 
     private void Update()

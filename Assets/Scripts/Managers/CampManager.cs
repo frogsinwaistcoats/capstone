@@ -9,38 +9,34 @@ public class CampManager : MonoBehaviour
     public static CampManager instance;
     //public DayManager dayManager;
     public PlayerMovement player { get; set; }
-    private GameObject quitConfirm;
-    private GameObject controls;
-    private GameObject resetPosButton;
+    public GameObject quitConfirm;
+
+    private bool isActive;
+
+    public InventoryManager inventoryManager;
 
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-        
+        instance = this;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isActive && !inventoryManager.menuActivated)
         {
-            quitConfirm = GameObject.Find("---- UI ----/OtherCanvas/QuitConfirm");
-            controls = GameObject.Find("---- UI ----/OtherCanvas/Controls");
-            resetPosButton = GameObject.Find("---- UI ----/OtherCanvas/Reset");
-
             quitConfirm.SetActive(true);
-            controls.SetActive(false);
-            resetPosButton.SetActive(false);
+            isActive = true;
         }
+        else if (Input.GetKeyDown(KeyCode.Escape) && isActive && !inventoryManager.menuActivated)
+        {
+            Return();
+        }
+        else if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            Return();
+        }
+
     }
 
     public void MainMenu()
@@ -53,12 +49,8 @@ public class CampManager : MonoBehaviour
         Debug.Log("clicked return");
 
         quitConfirm = GameObject.Find("---- UI ----/OtherCanvas/QuitConfirm");
-        controls = GameObject.Find("---- UI ----/OtherCanvas/Controls");
-        resetPosButton = GameObject.Find("---- UI ----/OtherCanvas/Reset");
 
         quitConfirm.SetActive(false);
-        controls.SetActive(true);
-        resetPosButton.SetActive(true);
+        isActive = false;
     }
 }
-

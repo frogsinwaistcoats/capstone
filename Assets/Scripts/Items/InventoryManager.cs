@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager instance;
+
     public GameObject inventory;
     public GameObject itemsMenu;
     public GameObject questsMenu;
-    public GameObject thoughtsMenu;
     public GameObject settingsMenu;
-    private bool menuActivated;
+    public bool menuActivated;
     public ItemSlot[] itemSlot;
 
     public ItemSO[] itemSOs;
@@ -15,7 +16,7 @@ public class InventoryManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame
@@ -37,13 +38,20 @@ public class InventoryManager : MonoBehaviour
 
             FindAnyObjectByType<AudioManager>().Play("OpenBook");
         }
+        else if (Input.GetKeyDown(KeyCode.Escape) && menuActivated)
+        {
+            Time.timeScale = 1;
+            inventory.SetActive(false);
+            menuActivated = false;
+
+            FindAnyObjectByType<AudioManager>().Play("OpenBook");
+        }
     }
 
-    public void OpenInventory()
+    public void OpenItems()
     {
         itemsMenu.SetActive(true);
 
-        thoughtsMenu.SetActive(false);
         settingsMenu.SetActive(false);
         questsMenu.SetActive(false);
     }
@@ -52,7 +60,6 @@ public class InventoryManager : MonoBehaviour
     {
         settingsMenu.SetActive(true);
 
-        thoughtsMenu.SetActive(false);
         questsMenu.SetActive(false);
         itemsMenu.SetActive(false);
     }
@@ -61,21 +68,9 @@ public class InventoryManager : MonoBehaviour
     {
         questsMenu.SetActive(true);
 
-        thoughtsMenu.SetActive(false);
         settingsMenu.SetActive(false);
         itemsMenu.SetActive(false);
     }
-
-    public void OpenThoughts()
-    {
-        thoughtsMenu.SetActive(true);
-
-        questsMenu.SetActive(false);
-        settingsMenu.SetActive(false);
-        itemsMenu.SetActive(false);
-    }
-
-
 
     /*
     public void UseItem(string itemName)
@@ -93,7 +88,6 @@ public class InventoryManager : MonoBehaviour
 
     public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
     {
-        CallCollectQuestSteps(itemName);
         for (int i = 0; i < itemSlot.Length; i++)
         {
             if(itemSlot[i].isFull == false && itemSlot[i].itemName == itemName || itemSlot[i].quantity == 0)
@@ -119,18 +113,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    //when a quest is active, everytime a new item is added, the quest will check to see if it needs this item
-    public void CallCollectQuestSteps(string itemName)
-    {
-        CollectFlowersQuestStep collectFlowersQuestStep = FindAnyObjectByType<CollectFlowersQuestStep>();
-        if (collectFlowersQuestStep != null)
-        {
-            collectFlowersQuestStep.ItemCollected(itemName);
-        }
-
-        //add other quests here
-        
-    }
+    
 
     //when a quest is started, it gets the current count of the items needed
     public int GetItemCount(string itemName)
