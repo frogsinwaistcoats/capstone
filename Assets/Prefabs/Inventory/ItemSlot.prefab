@@ -246,7 +246,7 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 70c391096bca6494eac5d8458d95bef0, type: 3}
   isFull: 0
   itemDescription: 
-  emptySprite: {fileID: 0}
+  emptySprite: {fileID: 21300000, guid: 70c391096bca6494eac5d8458d95bef0, type: 3}
   maxNumOfItems: 100
   quantityText: {fileID: 2289544057071202911}
   itemImage: {fileID: 5016916769243086349}

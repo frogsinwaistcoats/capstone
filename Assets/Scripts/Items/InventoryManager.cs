@@ -72,30 +72,17 @@ public class InventoryManager : MonoBehaviour
         itemsMenu.SetActive(false);
     }
 
-    /*
-    public void UseItem(string itemName)
-    {
-        for (int i = 0; i < itemSOs.Length; i++)
-        {
-            if (itemSOs[i].itemName == itemName)
-            {
-                itemSOs[i].UseItem();
-            }
-        }
-    }
-    */
 
-
-    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
+    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, Sprite itemDescriptionSprite)
     {
         for (int i = 0; i < itemSlot.Length; i++)
         {
             if(itemSlot[i].isFull == false && itemSlot[i].itemName == itemName || itemSlot[i].quantity == 0)
             {
-                int leftOverItems = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription);
+                int leftOverItems = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemDescriptionSprite);
                 if (leftOverItems > 0)
                 {
-                    leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription);
+                    leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription, itemDescriptionSprite);
                 }
                 return leftOverItems;
             }

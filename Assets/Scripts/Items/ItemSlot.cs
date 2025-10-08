@@ -9,6 +9,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public string itemName;
     public int quantity;
     public Sprite itemSprite;
+    public Sprite itemSpriteBig;
     public bool isFull;
     public string itemDescription;
     public Sprite emptySprite;
@@ -34,7 +35,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         inventoryManager = GameObject.Find("MenuCanvas").GetComponent<InventoryManager>();
     }
 
-    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
+    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, Sprite itemSpriteBig)
     {
         //check to see if the slot is already full
         if (isFull)
@@ -47,6 +48,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         this.itemSprite = itemSprite;
         itemImage.sprite = itemSprite;
         this.itemDescription = itemDescription;
+        this.itemSpriteBig = itemSpriteBig;
 
         this.quantity += quantity;
         if (this.quantity >= maxNumOfItems)
@@ -93,9 +95,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         inventoryManager.DeselectAllSlots();
         selectedShader.SetActive(true);
         thisItemSelected = true;
+
         itemDescriptionNameText.text = itemName;
         itemDescriptionText.text = itemDescription;
-        itemDescriptionImage.sprite = itemSprite;
+        itemDescriptionImage.sprite = itemSpriteBig;
+
         if(itemDescriptionImage.sprite == null)
         {
             itemDescriptionImage.sprite = emptySprite;

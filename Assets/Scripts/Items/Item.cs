@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.VFX;
 using Yarn.Unity;
@@ -16,10 +17,14 @@ public class Item : MonoBehaviour//, IDataPersistence
     [TextArea]
     [SerializeField]
     private string itemDescription;
+    [SerializeField] private Sprite itemDescriptionSprite;
+
+    public GameObject photograph;
 
     public InventoryManager inventoryManager;
     private bool playerFound = false;
-    //private bool collected = false;
+    
+    private bool collected = false;
     [SerializeField] private GameObject prompt;
 
     [SerializeField] private string id;
@@ -30,25 +35,6 @@ public class Item : MonoBehaviour//, IDataPersistence
         id = System.Guid.NewGuid().ToString();
     }
 
-    /*
-    public void LoadData(GameData data)
-    {
-        data.flowersCollected.TryGetValue(id, out collected);
-        if (collected)
-        {
-            CollectItem();
-        }
-    }
-
-    public void SaveData(GameData data)
-    {
-        if (data.flowersCollected.ContainsKey(id))
-        {
-            data.flowersCollected.Remove(id);
-        }
-        data.flowersCollected.Add(id, collected);
-    }
-    */
 
     void Start()
     {
@@ -57,20 +43,21 @@ public class Item : MonoBehaviour//, IDataPersistence
 
     private void Update()
     {
-        if (playerFound && Input.GetKeyDown(KeyCode.E))
+        if (playerFound && Input.GetKeyDown(KeyCode.E) && !collected)
         {
             CollectItem();
             prompt.SetActive(false);
+            StartCoroutine(ShowPhoto());
         }
     }
 
     public void CollectItem()
     {
-        //collected = true;
-        int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
+        collected = true;
+        int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription, itemDescriptionSprite);
         if (leftOverItems <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else
         {
@@ -78,16 +65,31 @@ public class Item : MonoBehaviour//, IDataPersistence
         }
     } 
 
+    public IEnumerator ShowPhoto()
+    {
+        Debug.Log("Show photo");
+        photograph.SetActive(true);
+        yield return new WaitForSeconds(2);
+        photograph.SetActive(false);
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
-        playerFound = true;
-        prompt.SetActive(true);
+        if (!collected)
+        {
+            playerFound = true;
+            prompt.SetActive(true);
+        }
+        
     }
 
     public void OnTriggerExit(Collider other)
     {
-        playerFound = false;
-        prompt.SetActive(false);
+        if (!collected)
+        {
+            playerFound = false;
+            prompt.SetActive(false);
+        }
     }
-
 }

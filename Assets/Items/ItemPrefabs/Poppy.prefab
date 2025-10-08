@@ -212,8 +212,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Poppy
   quantity: 1
-  sprite: {fileID: 21300000, guid: 9c3c999c928519f4c9f9735c1b4bb867, type: 3}
-  polaroid: {fileID: 21300000, guid: 2e37b56b5b0da6d48a34b637883e7d55, type: 3}
+  sprite: {fileID: 21300000, guid: 7984827c5024c414eaef2f5b486b0c23, type: 3}
   itemDescription: i hope this isn't a sleeping poppy...
+  itemDescriptionSprite: {fileID: 21300000, guid: 7c205918dad2be948b0495dd0ef91291, type: 3}
+  photograph: {fileID: 6436903831870578034, guid: f58e7d9067367fd47bcc2c92f76cdaca, type: 3}
+  inventoryManager: {fileID: 0}
   prompt: {fileID: 1161028811472219591}
   id: 
