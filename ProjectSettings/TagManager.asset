@@ -11,6 +11,18 @@ TagManager:
   - Tent
   - SneakingExit
   - Activator
+  - Bread
+  - Fish
+  - Tomato
+  - Egg
+  - Onion
+  - Lettuce
+  - Pattie
+  - Bacon
+  - Pickle
+  - Cheese
+  - Avocado
+  - Mushroom
   layers:
   - Default
   - TransparentFX

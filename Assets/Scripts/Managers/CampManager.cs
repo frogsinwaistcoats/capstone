@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
 
-public class GameManager : MonoBehaviour
+public class CampManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static CampManager instance;
     //public DayManager dayManager;
     public PlayerMovement player { get; set; }
     private GameObject quitConfirm;

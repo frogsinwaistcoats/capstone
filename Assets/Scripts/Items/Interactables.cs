@@ -9,12 +9,12 @@ public class Interactables : MonoBehaviour
     [SerializeField] private GameObject prompt;
     public GameObject cutscenePrefab;
 
-    GameManager gameManager;
+    CampManager gameManager;
     DayManager dayManager;
 
     private void Start()
     {
-        gameManager = FindAnyObjectByType<GameManager>();
+        gameManager = FindAnyObjectByType<CampManager>();
         dayManager = FindAnyObjectByType<DayManager>();
     }
 

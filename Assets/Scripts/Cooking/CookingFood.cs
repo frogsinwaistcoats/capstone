@@ -13,6 +13,7 @@ public class CookingFood : MonoBehaviour
 
     public Vector2 pivotOffset;
     private Vector2 originalOffset;
+    [SerializeField] private Quaternion originalRotation;
 
     public Transform[] gridTargets;
     [SerializeField] private List<CookingGrids> claimedGrids = new List<CookingGrids>();
@@ -28,6 +29,7 @@ public class CookingFood : MonoBehaviour
     private void Start()
     {
         startPos = transform.position;
+        originalRotation = transform.rotation;
         //objCollider = GetComponent<Collider2D>();
         sr = GetComponent<SpriteRenderer>();
         originalOffset = pivotOffset;
@@ -48,6 +50,7 @@ public class CookingFood : MonoBehaviour
         {
             //outline.SetActive(false);
         }
+
     }
 
     private void RotateFood()
@@ -65,6 +68,8 @@ public class CookingFood : MonoBehaviour
         mouseWorldPosition.z = 0f;
         transform.position = mouseWorldPosition;
     }
+
+
 
 
     private void OnMouseDown()
@@ -128,22 +133,28 @@ public class CookingFood : MonoBehaviour
         // if blocked, return to start position, else snap to grid
         if (isBlocked)
         {
-            transform.position = startPos;
-            transform.rotation = Quaternion.identity;
-            pivotOffset = originalOffset;
-            foreach(CookingGrids grid in claimedGrids)
-            {
-                if(grid != null)
-                {
-                    grid.isAvailable = true;
-                }
-            }
-            claimedGrids.Clear();
+            ReturnToBoard();
         }
         else
         {
             isOnBoard = true;
         }
+    }
+
+    public void ReturnToBoard()
+    {
+        pivotOffset = originalOffset;
+        transform.position = startPos;
+        transform.rotation = originalRotation;
+
+        foreach (CookingGrids grid in claimedGrids)
+        {
+            if (grid != null)
+            {
+                grid.isAvailable = true;
+            }
+        }
+        claimedGrids.Clear();
     }
 
     private void SnapToGrid()

@@ -19,7 +19,7 @@ public class LeafHolder : MonoBehaviour
 
     private void Start()
     {
-        // ADD LATER to make sure the first group is selected for the first playthrough, then second group for the next playthrough, etc.
+        // ADD LATER    make sure the first group is selected for the first playthrough, then second group for the next playthrough, etc.
 
         int selectedGroup = Random.Range(0, leafGroup.Length - 1);
 
