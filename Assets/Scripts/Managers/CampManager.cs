@@ -11,10 +11,6 @@ public class CampManager : MonoBehaviour
     public PlayerMovement player { get; set; }
     public GameObject quitConfirm;
 
-    private bool isActive;
-
-    public InventoryManager inventoryManager;
-
 
     private void Awake()
     {
@@ -23,6 +19,7 @@ public class CampManager : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Escape) && !isActive && !inventoryManager.menuActivated)
         {
             quitConfirm.SetActive(true);
@@ -36,21 +33,12 @@ public class CampManager : MonoBehaviour
         {
             Return();
         }
+        */
 
     }
 
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
-    }
-
-    public void Return()
-    {
-        Debug.Log("clicked return");
-
-        quitConfirm = GameObject.Find("---- UI ----/OtherCanvas/QuitConfirm");
-
-        quitConfirm.SetActive(false);
-        isActive = false;
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // opens items menu
         if (Input.GetKeyDown(KeyCode.Tab) && menuActivated)
         {
             Time.timeScale = 1;
@@ -35,10 +37,41 @@ public class InventoryManager : MonoBehaviour
             Time.timeScale = 0;
             inventory.SetActive(true);
             menuActivated = true;
+            OpenItems();
+
+            FindAnyObjectByType<AudioManager>().Play("OpenBook");
+        }
+
+        // opens settings menu
+        else if (Input.GetKeyDown(KeyCode.Escape) && !menuActivated)
+        {
+            Time.timeScale = 0;
+            inventory.SetActive(true);
+            menuActivated = true;
+            OpenSettings();
 
             FindAnyObjectByType<AudioManager>().Play("OpenBook");
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && menuActivated)
+        {
+            Time.timeScale = 1;
+            inventory.SetActive(false);
+            menuActivated = false;
+
+            FindAnyObjectByType<AudioManager>().Play("OpenBook");
+        }
+
+        // opens quests menu
+        else if (Input.GetKeyDown(KeyCode.Q) && !menuActivated)
+        {
+            Time.timeScale = 0;
+            inventory.SetActive(true);
+            menuActivated = true;
+            OpenQuests();
+
+            FindAnyObjectByType<AudioManager>().Play("OpenBook");
+        }
+        else if (Input.GetKeyDown(KeyCode.Q) && menuActivated)
         {
             Time.timeScale = 1;
             inventory.SetActive(false);
@@ -115,5 +148,24 @@ public class InventoryManager : MonoBehaviour
         }
 
         return quantity;
+    }
+
+    public void ReturnToMain()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void CloseMenu()
+    {
+        Time.timeScale = 1;
+        inventory.SetActive(false);
+        menuActivated = false;
+
+        FindAnyObjectByType<AudioManager>().Play("OpenBook");
     }
 }
