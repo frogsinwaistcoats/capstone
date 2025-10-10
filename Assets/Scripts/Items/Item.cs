@@ -1,9 +1,8 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.VFX;
-using Yarn.Unity;
+using UnityEngine.UI;
 
-public class Item : MonoBehaviour//, IDataPersistence
+public class Item : MonoBehaviour
 {
     [SerializeField]
     private string itemName;
@@ -20,6 +19,7 @@ public class Item : MonoBehaviour//, IDataPersistence
     [SerializeField] private Sprite itemDescriptionSprite;
 
     public GameObject photograph;
+    public Image photoFlower;
 
     public InventoryManager inventoryManager;
     private bool playerFound = false;
@@ -69,6 +69,7 @@ public class Item : MonoBehaviour//, IDataPersistence
     {
         Debug.Log("Show photo");
         photograph.SetActive(true);
+        photoFlower.sprite = itemDescriptionSprite;
         yield return new WaitForSeconds(2);
         photograph.SetActive(false);
     }
