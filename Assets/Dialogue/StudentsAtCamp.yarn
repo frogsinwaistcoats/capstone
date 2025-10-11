@@ -1,9 +1,9 @@
 ﻿title: StudentOne
 ---
 <<declare $playSolitaire = false>>
-Patty: Do you want to play solitaire?
+Poppy: Do you want to play solitaire?
     -> No thanks.
-        Patty: Okay! Maybe later?
+        Poppy: Okay! Maybe later?
     -> Sure!
         <<set $playSolitaire to true>>
 ===
