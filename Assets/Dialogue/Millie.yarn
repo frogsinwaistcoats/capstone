@@ -1,12 +1,12 @@
 ﻿title: Millie
 ---
+<<wait 0.1>>
 <<if $day == 1>>
     <<jump Millie_Day1>>
 <<endif>>
 ===
 
 title: Millie_Day1
-tags:
 ---
 Millie: I wonder if I could find a frog...
 ===

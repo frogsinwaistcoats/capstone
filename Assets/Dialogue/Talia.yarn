@@ -1,12 +1,22 @@
 ﻿title: Talia
 ---
+<<wait 0.1>>
 <<if $day == 1>>
     <<jump Talia_Day1>>
+<<elseif $day == 2>>
+    <<jump Talia_Day2>>
 <<endif>>
 ===
 
 title: Talia_Day1
-tags:
 ---
 Talia: Hey Ernest! I'm glad I brought my deck of cards. We should definitely play later.
+===
+
+title: Talia_Day2
+---
+Talia: Hey Ernest! Would you like to play solitaire with me?
+    -> Ernest: Yes
+        <<set $playSolitaire = true>>
+    -> Ernest: Maybe later
 ===

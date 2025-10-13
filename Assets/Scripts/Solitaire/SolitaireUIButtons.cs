@@ -58,6 +58,6 @@ public class SolitaireUIButtons : MonoBehaviour
 
     public void QuitMinigame()
     {
-        SceneManager.LoadScene("CampScene");
+        GameManager.instance.LoadCampScene();
     }
 }

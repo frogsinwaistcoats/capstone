@@ -152,7 +152,7 @@ public class InventoryManager : MonoBehaviour
 
     public void ReturnToMain()
     {
-        SceneManager.LoadScene("MainMenu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame()

@@ -1,15 +1,22 @@
 ﻿title: MrWilson
 ---
+<<wait 0.1>>
 <<if $day == 1>>
     <<jump MrWilson_Day1>>
 <<endif>>
 ===
 
-title: MrWilson_Day1
-tags:
+title: MrWilson_Intro
 ---
-Mr Wilson: Good afternoon students! I want to give you all a warm welcome to where we'll be spending the rest of our week together.
-Mr Wilson: We'll be leaving on Friday, so I hope you can make the most of the natural scenery while we're here.
-Mr Wilson: You are encouraged to explore, however, for your own safety the forest has been made out of bounds. You are not to enter.
-Mr Wilson: On a lighter note, we'll hold a campfire each night to sing and tell stories before you are all to return to your tents for the night.
+Mr Wilson: Good afternoon students! I want to give you all a warm welcome to where we'll be spending the rest of our week together. 
+Mr Wilson: We'll be leaving on Friday, so I hope you can make the most of the natural scenery while we're here. 
+Mr Wilson: You are encouraged to explore, however, for your own safety the forest has been made out of bounds. You are not to enter. 
+Mr Wilson: On a lighter note, we'll hold a campfire each night to sing and tell stories before you are all to return to your tents for the night. 
+Mr Wilson: Now go to your assigned tents to unpack your bags.
+
+===
+
+title: MrWilson_Day1
+---
+Mr Wilson: Have fun and be safe, kids. 
 ===

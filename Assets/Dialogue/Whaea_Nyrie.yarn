@@ -1,7 +1,10 @@
 ﻿title: WhaeaNyrie
 ---
-<<if $day == 1>>
+<<wait 0.1>>
+<<if $campfireStoryRead == true>>
     <<wait 0.1>>
+    <<jump WhaeaNyrie_OutOfBounds>>
+<<elseif $campfireStoryRead == false && $day == 1>>
     <<jump WhaeaNyrie_Day1>>
 <<endif>>
 ===
@@ -9,4 +12,16 @@
 title: WhaeaNyrie_Day1
 ---
 Whaea Nyrie: Where do you think you're going?
+===
+
+title: WhaeaNyrie_OutOfBounds
+---
+Whaea Nyrie: Where do you think you're going?
+Ernest: I'm just exploring. 
+Whaea Nyrie: You are not allowed into the forest, remember?
+Ernest: … 
+Whaea Nyrie: If I catch you doing that again you'll be in serious trouble
+
+if day 2, and night time
+Ernest: I need to get out of the teacher's sight.
 ===

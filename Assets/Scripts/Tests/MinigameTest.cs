@@ -8,22 +8,22 @@ public class MinigameTest : MonoBehaviour
 
     public void Unpacking()
     {
-        SceneManager.LoadScene("Unpacking");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Unpacking");
     }
 
     public void SneakingOut()
     {
-        SceneManager.LoadScene("Sneaking");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Sneaking");
     }
 
     public void Rhythm()
     {
-        SceneManager.LoadScene("Rhythm");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Rhythm");
     }
 
     public void HomePage()
     {
-        SceneManager.LoadScene("TestMinigames");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("TestMinigames");
     }
 
     public void Instructions()

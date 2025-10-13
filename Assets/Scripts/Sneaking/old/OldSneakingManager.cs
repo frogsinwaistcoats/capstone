@@ -45,7 +45,7 @@ public class OldSneakingManager : MonoBehaviour
         if(isMoving && sneakingTeacher.isLooking)
         {
             Debug.Log("FAIL");
-            SceneManager.LoadScene("CampScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("CampScene");
             //transform.position = startingPos;
             //targetPos = transform.position;
         }

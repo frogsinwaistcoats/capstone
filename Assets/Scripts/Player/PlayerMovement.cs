@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour//, IDataPersistence
 {
-    public static PlayerMovement current;
+    public static PlayerMovement instance;
 
     public float moveSpeed;
     public float horizontal;
     public float vertical;
     private Rigidbody rb;
-    bool canMove;
+    public bool canMove;
     public Transform startingPos;
     public SpriteRenderer sr;
 
@@ -17,31 +17,25 @@ public class PlayerMovement : MonoBehaviour//, IDataPersistence
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        current = this;
+        instance = this;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        canMove = true;
-    }
-    /*
-    public void LoadData(GameData data)
-    {
-        this.transform.position = data.playerPosition;
-    }
 
-    public void SaveData(GameData data)
-    {
-        data.playerPosition = this.transform.position;
+        if (DayManager.instance.dayCount == 1)
+        {
+            canMove = false;
+        }
+        else
+        {
+            canMove = true;
+        }
     }
-    */
 
     // Update is called once per frame
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-
-                 
-        
     }
 
     private void FixedUpdate()
@@ -80,5 +74,10 @@ public class PlayerMovement : MonoBehaviour//, IDataPersistence
     public void ResetPos()
     {
         this.transform.position = startingPos.position;
+    }
+
+    public Vector3 ReturnCurrentTransform()
+    {
+        return transform.position;
     }
 }

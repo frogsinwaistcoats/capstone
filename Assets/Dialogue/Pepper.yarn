@@ -1,13 +1,19 @@
 ﻿title: Pepper
 ---
+<<wait 0.1>>
 <<if $day == 1>>
-    <<wait 0.1>>
     <<jump Pepper_Day1>>
+<<elseif $day == 2>>
+    <<jump Pepper_Day2>>
 <<endif>>
 ===
 
 title: Pepper_Day1
-tags:
 ---
 Pepper: This is way better than sitting in class.
+===
+
+title: Pepper_Day2
+---
+Pepper: I saw a wolf on the peaks!… just kidding. 
 ===

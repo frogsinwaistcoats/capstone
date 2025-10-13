@@ -46,6 +46,6 @@ public class SneakingManager : MonoBehaviour
 
     public void NextScene()
     {
-        SceneManager.LoadScene("CampScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("CampScene");
     }
 }

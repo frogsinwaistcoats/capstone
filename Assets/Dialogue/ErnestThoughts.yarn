@@ -1,0 +1,17 @@
+﻿title: ErnestThoughts
+tags:
+---
+<<wait 0.1>>
+<<if $day == 2>>
+    <<jump Ernest_Day2>>
+<<endif>>
+===
+
+title: Ernest_Day2
+---
+Ernest: I wonder if that myth was really true… 
+Ernest: Whether it's true or not, I need to see what's in that forest before we leave. 
+Ernest: Maybe if I find a way to sneak out… nobody will see me. 
+===
+
+

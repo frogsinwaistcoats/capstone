@@ -1,5 +1,6 @@
 ﻿title: Poppy
 ---
+<<wait 0.1>>
 <<if $day == 1>>
     <<jump Poppy_Day1>>
 <<elseif $day == 2>>
@@ -8,13 +9,11 @@
 ===
 
 title: Poppy_Day1
-tags:
 ---
 Poppy: The sun is so bright!
 ===
 
 title: Poppy_Day2
-tags:
 ---
-Poppy: The sun is so bright!
+Poppy: No wolves haunted your dreams last night, right Ernest? 
 ===

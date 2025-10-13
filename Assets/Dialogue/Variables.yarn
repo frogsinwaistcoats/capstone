@@ -1,4 +1,8 @@
 ﻿title: Variables
 ---
 <<declare $day = 1>>
+<<declare $playSolitaire = false>>
+
+<<declare $campfireStoryRead = false>>
+<<declare $hasUnpacked = false>>
 ===

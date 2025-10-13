@@ -11,9 +11,12 @@ public class YarnInteractable : MonoBehaviour
     [SerializeField] private GameObject prompt;
 
     private DialogueRunner dialogueRunner;
+
     private bool interactable = true;
     private bool isCurrentConversation = false;
     private InMemoryVariableStorage variableStorage;
+
+    private GameManager gameManager;
 
     bool playerFound;
 
@@ -22,6 +25,7 @@ public class YarnInteractable : MonoBehaviour
         dialogueRunner = FindAnyObjectByType<DialogueRunner>();
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
         playerMovement = FindAnyObjectByType<PlayerMovement>();
+        gameManager = FindAnyObjectByType<GameManager>();
     }
 
     public void OnMouseDown()
@@ -47,7 +51,7 @@ public class YarnInteractable : MonoBehaviour
         variableStorage.TryGetValue("$playSolitaire", out playSolitaire);
         if (playSolitaire)
         {
-            SceneManager.LoadScene("Solitaire");
+            gameManager.LoadSolitaire();
         }
 
         bool sneakingOut;

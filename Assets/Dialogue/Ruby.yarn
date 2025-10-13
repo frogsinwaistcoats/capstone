@@ -1,12 +1,26 @@
 ﻿title: Ruby
 ---
-<<if $day == 1>>
+<<wait 0.1>>
+<<if $day == 1 && $hasUnpacked == false>>
     <<jump Ruby_Day1>>
+<<elseif $day == 1 && $hasUnpacked == true>>
+    <<jump Ruby_Day1_afterUnpacking>>
+<<elseif $day == 2>>
+    <<jump Ruby_Day2>>
 <<endif>>
 ===
 
 title: Ruby_Day1
-tags:
+---
+Ruby: Hey Ernest! I just finished unpacking my bag, you should do the same before exploring the camp!
+===
+
+title: Ruby_Day1_afterUnpacking
 ---
 Ruby: Have you checked out the camp? You should go explore!
+===
+
+title: Ruby_Day2
+---
+Ruby: Good morning Ernest! Have you seen Talia's game of cards yet? You should go check it out! 
 ===
