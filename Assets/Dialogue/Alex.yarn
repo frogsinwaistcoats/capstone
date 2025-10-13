@@ -1,0 +1,12 @@
+﻿title: Alex
+---
+<<if $day == 1>>
+    <<jump Alex_Day1>>
+<<endif>>
+===
+
+title: Alex_Day1
+tags:
+---
+Alex: yo.
+===

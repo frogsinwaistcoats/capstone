@@ -1,0 +1,13 @@
+﻿title: Pepper
+---
+<<if $day == 1>>
+    <<wait 0.1>>
+    <<jump Pepper_Day1>>
+<<endif>>
+===
+
+title: Pepper_Day1
+tags:
+---
+Pepper: This is way better than sitting in class.
+===

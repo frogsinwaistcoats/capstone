@@ -1,0 +1,12 @@
+﻿title: Ruby
+---
+<<if $day == 1>>
+    <<jump Ruby_Day1>>
+<<endif>>
+===
+
+title: Ruby_Day1
+tags:
+---
+Ruby: Have you checked out the camp? You should go explore!
+===

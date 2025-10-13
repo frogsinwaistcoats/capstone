@@ -1,0 +1,4 @@
+﻿title: Variables
+---
+<<declare $day = 1>>
+===

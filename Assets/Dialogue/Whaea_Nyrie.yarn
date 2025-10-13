@@ -1,0 +1,12 @@
+﻿title: WhaeaNyrie
+---
+<<if $day == 1>>
+    <<wait 0.1>>
+    <<jump WhaeaNyrie_Day1>>
+<<endif>>
+===
+
+title: WhaeaNyrie_Day1
+---
+Whaea Nyrie: Where do you think you're going?
+===

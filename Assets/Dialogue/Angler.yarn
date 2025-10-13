@@ -1,0 +1,12 @@
+﻿title: Angler
+---
+<<if $day == 1>>
+    <<jump Angler_Day1>>
+<<endif>>
+===
+
+title: Angler_Day1
+tags:
+---
+Angler: Hey Ernest. There's a lot of fish in here! You should come by the lake later.
+===

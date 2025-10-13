@@ -1,0 +1,12 @@
+﻿title: Talia
+---
+<<if $day == 1>>
+    <<jump Talia_Day1>>
+<<endif>>
+===
+
+title: Talia_Day1
+tags:
+---
+Talia: Hey Ernest! I'm glad I brought my deck of cards. We should definitely play later.
+===

@@ -35,6 +35,7 @@ public class YarnInteractable : MonoBehaviour
         {
             prompt.SetActive(false);
             playerMovement.SetMovement(false);
+            playerMovement.animator.SetBool("isMoving", false);
             if (interactable && !dialogueRunner.IsDialogueRunning)
             {
                 StartConversation();
@@ -46,7 +47,7 @@ public class YarnInteractable : MonoBehaviour
         variableStorage.TryGetValue("$playSolitaire", out playSolitaire);
         if (playSolitaire)
         {
-            SceneManager.LoadScene("MinigameSolitaire");
+            SceneManager.LoadScene("Solitaire");
         }
 
         bool sneakingOut;
@@ -54,6 +55,13 @@ public class YarnInteractable : MonoBehaviour
         if (sneakingOut)
         {
             SceneManager.LoadScene("Sneaking");
+        }
+
+        bool playCooking;
+        variableStorage.TryGetValue("$playCooking", out playCooking);
+        if (playCooking)
+        {
+            SceneManager.LoadScene("Cooking");
         }
     }
 
@@ -69,7 +77,7 @@ public class YarnInteractable : MonoBehaviour
         if (isCurrentConversation)
         {
             isCurrentConversation = false;
-            Debug.Log($"Started conversation with {name}.");
+            Debug.Log($"Ended conversation with {name}.");
             playerMovement.SetMovement(true);
         }
     }

@@ -50,7 +50,7 @@ public class Interactables : MonoBehaviour
     {
         obj.SetActive(true);
         dayManager.dayCounterText.gameObject.SetActive(false);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         obj.SetActive(false);
         dayManager.dayCounterText.gameObject.SetActive(true);
     }

@@ -1,0 +1,13 @@
+﻿title: Lily
+---
+<<if $day == 1>>
+    <<wait 0.1>>
+    <<jump Lily_Day1>>
+<<endif>>
+===
+
+title: Lily_Day1
+tags:
+---
+Lily: I hope there aren't any spiders in my tent...
+===
