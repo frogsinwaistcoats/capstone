@@ -11,6 +11,10 @@
 title: Angler_Day1
 ---
 Angler: Hey Ernest. There's a lot of fish in here! You should come by the lake later.
+<<if $talkedToAngler == false>>
+    <<set $talkedToAngler = true>>
+    <<set $peopleMet = $peopleMet + 1>>
+<<endif>>
 ===
 
 title: Angler_Day2

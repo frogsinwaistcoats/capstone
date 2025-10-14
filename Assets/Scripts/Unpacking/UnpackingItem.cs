@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class UnpackingItem : MonoBehaviour
 {
     public bool isBeingHeld;
+    public bool isPlaced;
     public GameObject outline;
     public LayerMask targetLayer;
     public Sprite placedSprite;
@@ -34,14 +35,14 @@ public class UnpackingItem : MonoBehaviour
     
     private void OnMouseDown()
     {
-        // can also use: isBeingHeld = !isBeingHeld;
-
         RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector3(0f, 0f, 10f), Mathf.Infinity, targetLayer);
         if (hit.collider != null)
         {
             Debug.Log(gameObject.name + " is over " + hit.collider.gameObject.name);
 
             isBeingHeld = false;
+            isPlaced = true;
+            UnpackingManager.instance.CheckForFinished();
             transform.position = hit.collider.transform.position;
 
             if(placedSprite != null)

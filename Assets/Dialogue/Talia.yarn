@@ -11,6 +11,10 @@
 title: Talia_Day1
 ---
 Talia: Hey Ernest! I'm glad I brought my deck of cards. We should definitely play later.
+<<if $talkedToTalia == false>>
+    <<set $talkedToTalia = true>>
+    <<set $peopleMet = $peopleMet + 1>>
+<<endif>>
 ===
 
 title: Talia_Day2

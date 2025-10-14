@@ -13,11 +13,19 @@
 title: Ruby_Day1
 ---
 Ruby: Hey Ernest! I just finished unpacking my bag, you should do the same before exploring the camp!
+<<if $talkedToRuby == false>>
+    <<set $talkedToRuby = true>>
+    <<set $peopleMet = $peopleMet + 1>>
+<<endif>>
 ===
 
 title: Ruby_Day1_afterUnpacking
 ---
 Ruby: Have you checked out the camp? You should go explore!
+<<if $talkedToRuby == false>>
+    <<set $talkedToRuby = true>>
+    <<set $peopleMet = $peopleMet + 1>>
+<<endif>>
 ===
 
 title: Ruby_Day2

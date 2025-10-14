@@ -13,10 +13,14 @@ Mr Wilson: We'll be leaving on Friday, so I hope you can make the most of the na
 Mr Wilson: You are encouraged to explore, however, for your own safety the forest has been made out of bounds. You are not to enter. 
 Mr Wilson: On a lighter note, we'll hold a campfire each night to sing and tell stories before you are all to return to your tents for the night. 
 Mr Wilson: Now go to your assigned tents to unpack your bags.
-
+<<set $hasDoneIntro = true>>
 ===
 
 title: MrWilson_Day1
 ---
 Mr Wilson: Have fun and be safe, kids. 
+<<if $talkedToWilson == false>>
+    <<set $talkedToWilson = true>>
+    <<set $peopleMet = $peopleMet + 1>>
+<<endif>>
 ===

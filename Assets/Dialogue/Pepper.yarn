@@ -11,6 +11,10 @@
 title: Pepper_Day1
 ---
 Pepper: This is way better than sitting in class.
+<<if $talkedToPepper == false>>
+    <<set $talkedToPepper = true>>
+    <<set $peopleMet = $peopleMet + 1>>
+<<endif>>
 ===
 
 title: Pepper_Day2

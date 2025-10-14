@@ -12,6 +12,10 @@
 title: WhaeaNyrie_Day1
 ---
 Whaea Nyrie: Where do you think you're going?
+<<if $talkedToNyrie == false>>
+    <<set $talkedToNyrie = true>>
+    <<set $peopleMet = $peopleMet + 1>>
+<<endif>>
 ===
 
 title: WhaeaNyrie_OutOfBounds

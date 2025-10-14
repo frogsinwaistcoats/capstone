@@ -1,12 +1,21 @@
 using System.Collections;
 using UnityEngine;
+using Yarn;
+using Yarn.Unity;
 
 public class UnpackingManager : MonoBehaviour
 {
+    public static UnpackingManager instance;
+
     public GameObject[] items;
     public int nextItemIndex = 0;
     public Sprite openBag;
     public Sprite closeBag;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void OnMouseDown()
     {
@@ -14,7 +23,7 @@ public class UnpackingManager : MonoBehaviour
 
         if(nextItemIndex > items.Length - 1)
         {
-            Debug.Log("no more items");
+            Finished();
         }
         else
         {
@@ -24,10 +33,41 @@ public class UnpackingManager : MonoBehaviour
         }
     }
 
+    public void CheckForFinished()
+    {
+        Debug.Log("Checking for finished unpacking");
+
+        int itemsPlaced = 0;
+        foreach (GameObject item in items)
+        {
+            if (item.GetComponent<UnpackingItem>().isPlaced)
+            {
+                itemsPlaced++;
+            }
+        }
+
+        if (itemsPlaced == items.Length)
+        {
+            Finished();
+        }
+    }
+
+    private void Finished()
+    {
+        GameManager.instance.hasUnpacked = true;
+        GameManager.instance.LoadCampScene();
+    }
+
+
     IEnumerator OpenBag()
     {
         GetComponent<SpriteRenderer>().sprite = openBag;
         yield return new WaitForSeconds(0.5f);
         GetComponent<SpriteRenderer>().sprite = closeBag;
+    }
+
+    public void LoadCampScene()
+    {
+        GameManager.instance.LoadCampScene();
     }
 }

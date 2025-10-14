@@ -2,7 +2,21 @@
 ---
 <<declare $day = 1>>
 <<declare $playSolitaire = false>>
+<<declare $hasUnpacked = false>>
+<<declare $hasDoneIntro = false>>
+
+<<declare $talkedToNyrie = false>>
+<<declare $talkedToTalia = false>>
+<<declare $talkedToRuby = false>>
+<<declare $talkedToPepper = false>>
+<<declare $talkedToPoppy = false>>
+<<declare $talkedToMillie = false>>
+<<declare $talkedToWilson = false>>
+<<declare $talkedToLily = false>>
+<<declare $talkedToAngler = false>>
+
+<<declare $peopleMet = 0>>
 
 <<declare $campfireStoryRead = false>>
-<<declare $hasUnpacked = false>>
+
 ===

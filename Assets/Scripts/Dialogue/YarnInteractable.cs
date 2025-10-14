@@ -67,6 +67,8 @@ public class YarnInteractable : MonoBehaviour
         {
             SceneManager.LoadScene("Cooking");
         }
+
+
     }
 
     private void StartConversation()

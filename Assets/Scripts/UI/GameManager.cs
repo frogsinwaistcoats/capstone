@@ -1,7 +1,10 @@
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Yarn;
+using Yarn.Unity;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +12,26 @@ public class GameManager : MonoBehaviour
 
     private Vector3 lastPlayerPos;
     private Scene previousScene;
+    public bool hasUnpacked;
+    public bool hasDoneIntro;
+
+    private bool talkedToNyrie;
+    private bool talkedToTalia;
+    private bool talkedToRuby;
+    private bool talkedToPepper;
+    private bool talkedToPoppy;
+    private bool talkedToMillie;
+    private bool talkedToWilson;
+    private bool talkedToLily;
+    private bool talkedToAngler;
+
+    public float peopleMet;
+    public bool metEveryone;
+
+    private DialogueRunner dialogueRunner;
+
+    private InMemoryVariableStorage variableStorage;
+
 
     private void Awake()
     {
@@ -23,12 +46,67 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Start()
+    {
+        dialogueRunner = FindFirstObjectByType<DialogueRunner>();
+    }
+
+    private void Update()
+    {
+        //set yarn variable
+        if (dialogueRunner != null)
+        {
+            dialogueRunner.VariableStorage.SetValue("$hasUnpacked", hasUnpacked);
+
+            if (!hasDoneIntro)
+                dialogueRunner.VariableStorage.TryGetValue("$hasDoneIntro", out hasDoneIntro);
+
+            if (!metEveryone)
+                dialogueRunner.VariableStorage.TryGetValue("$peopleMet", out peopleMet);
+                if (peopleMet >= 9)
+                {
+                    metEveryone = true;
+                }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        StartCoroutine(InitialiseSceneObjects());
+    }
+
+    private IEnumerator InitialiseSceneObjects()
+    {
+        yield return null;
+
+        dialogueRunner = FindFirstObjectByType<DialogueRunner>();
+    }
+
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void LoadCampScene()
+    {
+        Debug.Log("Loading Camp Scene");
+        previousScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene("CampScene");
+        if (previousScene.name == "Solitaire")
+        {
+            PlayerMovement.instance.transform.position = lastPlayerPos;
+        }
+
+        
     }
 
     public void LoadSolitaire()
@@ -38,13 +116,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Solitaire");
     }
 
-    public void LoadCampScene()
+    public void LoadUnpacking()
     {
-        SceneManager.LoadScene("CampScene");
-        if (previousScene.name == "Solitaire")
-        {
-            PlayerMovement.instance.transform.position = lastPlayerPos;
-        }
+        previousScene = SceneManager.GetActiveScene();
+        lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
+        SceneManager.LoadScene("Unpacking");
     }
+
+
 
 }

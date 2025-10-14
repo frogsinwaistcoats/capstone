@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour//, IDataPersistence
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        if (DayManager.instance.dayCount == 1)
+        if (GameManager.instance.hasDoneIntro == false)
         {
             canMove = false;
         }

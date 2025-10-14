@@ -1,9 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using TMPro;
 
-public class Interactables : MonoBehaviour
+public class TentInteractable : MonoBehaviour
 {
     private bool playerFound = false;
     [SerializeField] private GameObject prompt;
@@ -25,19 +24,34 @@ public class Interactables : MonoBehaviour
         {
             prompt.SetActive(false);
 
-            if (gameObject.CompareTag("Tent"))
+            if (gameObject.CompareTag("Tent") && !GameManager.instance.hasUnpacked)
+            {
+                GameManager.instance.LoadUnpacking();
+
+            }
+            else if (gameObject.CompareTag("Tent") && GameManager.instance.hasUnpacked)
             {
                 dayManager.StartNewDay();
                 StartCoroutine(DayNightCutscene(cutscenePrefab));
-               
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        playerFound = true;
-        prompt.SetActive(true);
+        if (!GameManager.instance.hasUnpacked)
+        {
+            playerFound = true;
+            prompt.SetActive(true);
+            prompt.GetComponent<TextMeshPro>().text = "Unpack? (E)";
+        }
+        else if (GameManager.instance.hasUnpacked)
+        {
+            playerFound = true;
+            prompt.SetActive(true);
+            prompt.GetComponent<TextMeshPro>().text = "Sleep? (E)";
+        }
+
     }
 
     public void OnTriggerExit(Collider other)

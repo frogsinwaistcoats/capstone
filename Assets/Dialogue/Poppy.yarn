@@ -11,6 +11,10 @@
 title: Poppy_Day1
 ---
 Poppy: The sun is so bright!
+<<if $talkedToPoppy == false>>
+    <<set $talkedToPoppy = true>>
+    <<set $peopleMet = $peopleMet + 1>>
+<<endif>>
 ===
 
 title: Poppy_Day2

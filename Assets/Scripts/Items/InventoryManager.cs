@@ -87,6 +87,7 @@ public class InventoryManager : MonoBehaviour
 
         settingsMenu.SetActive(false);
         questsMenu.SetActive(false);
+        FindAnyObjectByType<AudioManager>().Play("OpenBook");
     }
 
     public void OpenSettings()
@@ -95,6 +96,7 @@ public class InventoryManager : MonoBehaviour
 
         questsMenu.SetActive(false);
         itemsMenu.SetActive(false);
+        FindAnyObjectByType<AudioManager>().Play("OpenBook");
     }
 
     public void OpenQuests()
@@ -103,6 +105,7 @@ public class InventoryManager : MonoBehaviour
 
         settingsMenu.SetActive(false);
         itemsMenu.SetActive(false);
+        FindAnyObjectByType<AudioManager>().Play("OpenBook");
     }
 
 
@@ -152,7 +155,7 @@ public class InventoryManager : MonoBehaviour
 
     public void ReturnToMain()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame()

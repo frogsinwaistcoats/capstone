@@ -9,4 +9,8 @@
 title: Millie_Day1
 ---
 Millie: I wonder if I could find a frog...
+<<if $talkedToMillie == false>>
+    <<set $talkedToMillie = true>>
+    <<set $peopleMet = $peopleMet + 1>>
+<<endif>>
 ===
