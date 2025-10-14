@@ -22,6 +22,7 @@ public class TentInteractable : MonoBehaviour
     {
         if (playerFound && Input.GetKeyDown(KeyCode.E))
         {
+            FindAnyObjectByType<AudioManager>().Play("TentZip");
             prompt.SetActive(false);
 
             if (gameObject.CompareTag("Tent") && !GameManager.instance.hasUnpacked)
