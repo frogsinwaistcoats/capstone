@@ -1,9 +1,13 @@
 ﻿title: Variables
 ---
 <<declare $day = 1>>
+
 <<declare $playSolitaire = false>>
+<<declare $playRhythm = false>>
+
 <<declare $hasUnpacked = false>>
 <<declare $hasDoneIntro = false>>
+<<declare $campfireStoryRead = false>>
 
 <<declare $talkedToNyrie = false>>
 <<declare $talkedToTalia = false>>
@@ -17,6 +21,6 @@
 
 <<declare $peopleMet = 0>>
 
-<<declare $campfireStoryRead = false>>
+
 
 ===

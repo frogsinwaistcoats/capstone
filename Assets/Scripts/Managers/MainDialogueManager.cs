@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Yarn;
 using Yarn.Unity;
 
 public class MainDialogueManager : MonoBehaviour
@@ -10,21 +11,13 @@ public class MainDialogueManager : MonoBehaviour
     public PlayerMovement playerMovement;
     DayManager dayManager;
 
+    private InMemoryVariableStorage variableStorage;
+
     private bool isCurrentConversation = false;
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        DontDestroyOnLoad(gameObject);
+        instance = this;
     }
 
     void Start()
@@ -32,13 +25,24 @@ public class MainDialogueManager : MonoBehaviour
         FindAnyObjectByType<DialogueRunner>().onDialogueComplete.AddListener(EndConversation);
         dayManager = FindAnyObjectByType<DayManager>();
 
-        if (dayManager.dayCount == 1)
+        if (dayManager.dayCount == 1 && !GameManager.instance.hasDoneIntro)
             StartConversation("MrWilson_Intro");
+    }
+
+    private void Update()
+    {
+        variableStorage = GameObject.FindAnyObjectByType<InMemoryVariableStorage>();
+        bool playRhythm;
+        variableStorage.TryGetValue("$playRhythm", out playRhythm);
+        if (playRhythm)
+        {
+            GameManager.instance.LoadRhythm();
+        }
     }
 
     private void StartConversation(string dialogueNode)
     {
-        playerMovement.SetMovement(false);
+        FindAnyObjectByType<PlayerMovement>().SetMovement(false);
         Debug.Log($"Started conversation with {name}.");
         isCurrentConversation = true;
         FindAnyObjectByType<DialogueRunner>().StartDialogue(dialogueNode);
@@ -51,6 +55,16 @@ public class MainDialogueManager : MonoBehaviour
             isCurrentConversation = false;
             Debug.Log($"Ended conversation with {name}.");
             playerMovement.SetMovement(true);
+
+            CampfireInteractable.instance.canInteract = true;
         }
     }
+
+    public void StartCampfireDialogue()
+    {
+        SkyboxChanger.instance.SetNightSkybox();
+        StartConversation("Campfire_Story");
+    }
 }
+
+

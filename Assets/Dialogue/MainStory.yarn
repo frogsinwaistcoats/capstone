@@ -2,6 +2,7 @@
 tags:
 ---
 <<wait 0.1>>
+<<if $campfireStoryRead == false>>
 Ruby: Do you wanna know the real reason we're not allowed in the forest?
 Pepper: Why?
 Ruby: Those mountains you see on the horizon, they're said to be home to a big, ferocious wolf!
@@ -12,4 +13,7 @@ Angler: How can you tell the wolf and the man are the same and not separate?
 Ruby: Well, would you want a scary wolf AND a strange man lurking around those trees? 
 Mr Wilson: … I can assure you kids that is not true. Shapeshifters are just a myth. However, I can say that was very well done. 
 Mr Wilson: I think now is a good time to start a campfire song! Ernest, let's test out your musical skills. 
+<<endif>>
+<<set $campfireStoryRead = true>>
+<<set $playRhythm = true>>
 ===

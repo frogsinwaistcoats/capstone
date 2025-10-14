@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public float peopleMet;
     public bool metEveryone;
+    public bool campfireStoryRead;
 
     private DialogueRunner dialogueRunner;
 
@@ -71,6 +72,8 @@ public class GameManager : MonoBehaviour
                 {
                     metEveryone = true;
                 }
+
+            dialogueRunner.VariableStorage.TryGetValue("$campfireStoryRead", out campfireStoryRead);
         }
     }
 
@@ -123,6 +126,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Unpacking");
     }
 
-
+    public void LoadRhythm()
+    {
+        previousScene = SceneManager.GetActiveScene();
+        lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
+        SceneManager.LoadScene("Rhythm");
+    }
 
 }
