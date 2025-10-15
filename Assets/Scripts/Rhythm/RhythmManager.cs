@@ -1,5 +1,7 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class RhythmManager : MonoBehaviour
 {
@@ -19,26 +21,17 @@ public class RhythmManager : MonoBehaviour
     public int multiplierTracker;
     public int[] multiplierThresholds;
 
+    public GameObject startButton;
+    public GameObject endScreen;
+
     void Start()
     {
+        AudioManager.instance.Stop("BackgroundMusic");
+
         instance = this;
 
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
-    }
-
-    void Update()
-    {
-        if (!startPlaying)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                startPlaying = true;
-                beatScroller.hasStarted = true;
-
-                music.Play();
-            }
-        }
     }
 
     public void NoteHit()
@@ -70,4 +63,38 @@ public class RhythmManager : MonoBehaviour
         multiplierTracker = 0;
         multiText.text = "Multiplier: x" + currentMultiplier;
     }
+
+    public void StartPlaying()
+    {
+        if (!startPlaying)
+        {
+            startButton.SetActive(false);
+            startPlaying = true;
+            beatScroller.hasStarted = true;
+
+            music.Play();
+            StartCoroutine(WaitForAudioToFinish());
+        }
+    }
+
+    public void Return()
+    {
+        GameManager.instance.LoadCampScene();
+        
+    }
+
+    public void Finished()
+    {
+        endScreen.SetActive(true);
+        //AudioManager.instance.Play("BackgroundMusic");
+        //GameManager.instance.LoadCampScene();
+    }
+
+    IEnumerator WaitForAudioToFinish()
+    {
+        yield return new WaitUntil(() => !music.isPlaying);
+        Finished();
+    }
 }
+
+

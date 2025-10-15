@@ -7,6 +7,6 @@ public class IntroCutsceneLoader : MonoBehaviour
 {
     void OnEnable()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1, LoadSceneMode.Single);
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 }

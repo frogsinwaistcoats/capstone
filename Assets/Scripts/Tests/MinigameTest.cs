@@ -21,6 +21,16 @@ public class MinigameTest : MonoBehaviour
         SceneManager.LoadScene("Rhythm");
     }
 
+    public void Cooking()
+    {
+        SceneManager.LoadScene("Cooking");
+    }
+
+    public void Leaf()
+    {
+        SceneManager.LoadScene("Leaf");
+    }
+
     public void HomePage()
     {
         SceneManager.LoadScene("TestMinigames");

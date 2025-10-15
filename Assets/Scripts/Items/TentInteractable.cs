@@ -32,8 +32,8 @@ public class TentInteractable : MonoBehaviour
             }
             else if (gameObject.CompareTag("Tent") && GameManager.instance.hasUnpacked)
             {
-                dayManager.StartNewDay();
-                StartCoroutine(DayNightCutscene(cutscenePrefab));
+                //dayManager.StartNewDay();
+                //StartCoroutine(DayNightCutscene(cutscenePrefab));
             }
         }
     }
@@ -48,9 +48,9 @@ public class TentInteractable : MonoBehaviour
         }
         else if (GameManager.instance.hasUnpacked)
         {
-            playerFound = true;
-            prompt.SetActive(true);
-            prompt.GetComponent<TextMeshPro>().text = "Sleep? (E)";
+            //playerFound = true;
+            //prompt.SetActive(true);
+            //prompt.GetComponent<TextMeshPro>().text = "Sleep? (E)";
         }
 
     }

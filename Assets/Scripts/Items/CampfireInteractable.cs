@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ public class CampfireInteractable : MonoBehaviour
 
     CampManager gameManager;
     DayManager dayManager;
+
+    public GameObject dayNightPrefab;
 
     private void Start()
     {
@@ -41,6 +44,7 @@ public class CampfireInteractable : MonoBehaviour
                     {
                         MainDialogueManager.instance.StartCampfireDialogue();
                         canInteract = false;
+
                     }
                     else
                     {
@@ -65,5 +69,18 @@ public class CampfireInteractable : MonoBehaviour
         playerFound = false;
         prompt.SetActive(false);
         notReadyPrompt.SetActive(false);
+    }
+
+    IEnumerator DayNightCutscene(GameObject obj)
+    {
+        obj.SetActive(true);
+        dayManager.dayCounterText.gameObject.SetActive(false);
+        
+        yield return new WaitForSeconds(1.5f);
+        
+        obj.SetActive(false);
+        dayManager.dayCounterText.gameObject.SetActive(true);
+        
+        
     }
 }
