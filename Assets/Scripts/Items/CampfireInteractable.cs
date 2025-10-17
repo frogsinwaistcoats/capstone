@@ -15,7 +15,7 @@ public class CampfireInteractable : MonoBehaviour
     CampManager gameManager;
     DayManager dayManager;
 
-    public GameObject dayNightPrefab;
+    public NightTransition nightTransition;
 
     private void Start()
     {
@@ -42,9 +42,11 @@ public class CampfireInteractable : MonoBehaviour
                 {
                     if (GameManager.instance.hasUnpacked && GameManager.instance.metEveryone && !GameManager.instance.campfireStoryRead)
                     {
-                        MainDialogueManager.instance.StartCampfireDialogue();
                         canInteract = false;
-
+                        GameManager.instance.SetToNight();
+                        nightTransition.gameObject.SetActive(true);
+                        nightTransition.PlayTransition();
+                        MainDialogueManager.instance.StartCampfireDialogue();
                     }
                     else
                     {
@@ -69,18 +71,5 @@ public class CampfireInteractable : MonoBehaviour
         playerFound = false;
         prompt.SetActive(false);
         notReadyPrompt.SetActive(false);
-    }
-
-    IEnumerator DayNightCutscene(GameObject obj)
-    {
-        obj.SetActive(true);
-        dayManager.dayCounterText.gameObject.SetActive(false);
-        
-        yield return new WaitForSeconds(1.5f);
-        
-        obj.SetActive(false);
-        dayManager.dayCounterText.gameObject.SetActive(true);
-        
-        
     }
 }

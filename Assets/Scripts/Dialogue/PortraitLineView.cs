@@ -10,7 +10,7 @@ public class PortraitLineView : LineView
     [SerializeField] private Image rightPortrait;
     [SerializeField] private Image optionLeftPortrait;
     [SerializeField] private Image optionRightPortrait;
-    [SerializeField] private float inactiveScale = 0.9f;
+    //[SerializeField] private float inactiveScale = 0.9f;
 
     [SerializeField] private Transform originalPosition;
     [SerializeField] private Transform originalOptionPosition;
@@ -85,6 +85,7 @@ public class PortraitLineView : LineView
 
     private void setPortraitActive(Image img, bool isActive)
     {
+        /*
         if (isActive)
         {
             img.color = Color.white;
@@ -103,6 +104,7 @@ public class PortraitLineView : LineView
             else
                 img.transform.position = new Vector3(img.transform.position.x, originalOptionPosition.position.y - 30f, img.transform.position.z);
         }
+        */
     }
 
     public void DimLeftPortrait()

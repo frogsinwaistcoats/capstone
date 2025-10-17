@@ -6,7 +6,8 @@ public class TentInteractable : MonoBehaviour
 {
     private bool playerFound = false;
     [SerializeField] private GameObject prompt;
-    public GameObject cutscenePrefab;
+    public GameObject dayNightAnim;
+    public GameObject notReadyPrompt;
 
     CampManager gameManager;
     DayManager dayManager;
@@ -22,19 +23,26 @@ public class TentInteractable : MonoBehaviour
     {
         if (playerFound && Input.GetKeyDown(KeyCode.E))
         {
-            FindAnyObjectByType<AudioManager>().Play("TentZip");
             prompt.SetActive(false);
 
-            if (gameObject.CompareTag("Tent") && !GameManager.instance.hasUnpacked)
+            if (DayManager.instance.dayCount == 1)
             {
-                GameManager.instance.LoadUnpacking();
+                if (gameObject.CompareTag("Tent") && !GameManager.instance.hasUnpacked)
+                {
+                    FindAnyObjectByType<AudioManager>().Play("TentZip");
+                    GameManager.instance.LoadUnpacking();
 
+                }
+                else if (gameObject.CompareTag("Tent") && GameManager.instance.hasUnpacked && GameManager.instance.isDaytime)
+                {
+                    notReadyPrompt.SetActive(true);
+                    notReadyPrompt.GetComponent<TextMeshPro>().text = "Its too early to sleep";
+
+                    //dayManager.StartNewDay();
+                    //StartCoroutine(DayNightCutscene(dayNightAnim));
+                }
             }
-            else if (gameObject.CompareTag("Tent") && GameManager.instance.hasUnpacked)
-            {
-                //dayManager.StartNewDay();
-                //StartCoroutine(DayNightCutscene(cutscenePrefab));
-            }
+            
         }
     }
 
@@ -48,9 +56,9 @@ public class TentInteractable : MonoBehaviour
         }
         else if (GameManager.instance.hasUnpacked)
         {
-            //playerFound = true;
-            //prompt.SetActive(true);
-            //prompt.GetComponent<TextMeshPro>().text = "Sleep? (E)";
+            playerFound = true;
+            prompt.SetActive(true);
+            prompt.GetComponent<TextMeshPro>().text = "Sleep? (E)";
         }
 
     }
@@ -59,15 +67,7 @@ public class TentInteractable : MonoBehaviour
     {
         playerFound = false;
         prompt.SetActive(false);
-    }
-
-    IEnumerator DayNightCutscene(GameObject obj)
-    {
-        obj.SetActive(true);
-        dayManager.dayCounterText.gameObject.SetActive(false);
-        yield return new WaitForSeconds(2);
-        obj.SetActive(false);
-        dayManager.dayCounterText.gameObject.SetActive(true);
+        notReadyPrompt.SetActive(false);
     }
 
 }

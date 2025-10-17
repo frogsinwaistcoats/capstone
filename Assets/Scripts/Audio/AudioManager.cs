@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Play("BackgroundMusic");
+        Play("DaytimeBGMusic");
     }
 
     public void Play (string name)
@@ -59,6 +59,25 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Stop();
+    }
 
+    public void PlayDayAudio()
+    {
+        Play("DaytimeBGMusic");
+    }
+
+    public void StopDayAudio()
+    {
+        Stop("DaytimeBGMusic");
+    }
+
+    public void PlayNightAudio()
+    {
+        Play("NighttimeBGMusic");
+    }
+
+    public void StopNightAudio()
+    {
+        Stop("NighttimeBGMusic");
     }
 }

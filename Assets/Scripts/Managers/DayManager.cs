@@ -63,14 +63,23 @@ public class DayManager : MonoBehaviour//, IDataPersistence
     {
         if (dayCounterText != null)
         {
-            dayCounterText.text = "Day " + dayCount.ToString();
+            if (dayCount == 1)
+                dayCounterText.text = "Monday";
+            else if (dayCount == 2)
+                dayCounterText.text = "Tuesday";
+            else if (dayCount == 3)
+                dayCounterText.text = "Wednesday";
+            else if (dayCount == 4)
+                dayCounterText.text = "Thursday";
+            else if (dayCount == 5)
+                dayCounterText.text = "Friday";
         }
     
     }
 
     private void OnDestroy()
     {
-        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

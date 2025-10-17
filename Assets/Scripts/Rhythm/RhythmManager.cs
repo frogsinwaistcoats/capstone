@@ -26,12 +26,21 @@ public class RhythmManager : MonoBehaviour
 
     void Start()
     {
-        AudioManager.instance.Stop("BackgroundMusic");
+        AudioManager.instance.StopNightAudio();
+        AudioManager.instance.StopDayAudio();
 
         instance = this;
 
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Finished();
+        }
     }
 
     public void NoteHit()
@@ -77,23 +86,20 @@ public class RhythmManager : MonoBehaviour
         }
     }
 
-    public void Return()
+    public void EndOfSong()
     {
-        GameManager.instance.LoadCampScene();
-        
+        endScreen.SetActive(true);
     }
 
     public void Finished()
     {
-        endScreen.SetActive(true);
-        //AudioManager.instance.Play("BackgroundMusic");
-        //GameManager.instance.LoadCampScene();
+        GameManager.instance.LoadCampScene();
     }
 
     IEnumerator WaitForAudioToFinish()
     {
         yield return new WaitUntil(() => !music.isPlaying);
-        Finished();
+        EndOfSong();
     }
 }
 

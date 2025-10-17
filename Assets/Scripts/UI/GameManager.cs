@@ -3,6 +3,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Yarn;
 using Yarn.Unity;
 
@@ -11,7 +12,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     private Vector3 lastPlayerPos;
-    private Scene previousScene;
+    [SerializeField] private string previousScene;
     public bool hasUnpacked;
     public bool hasDoneIntro;
 
@@ -28,6 +29,16 @@ public class GameManager : MonoBehaviour
     public float peopleMet;
     public bool metEveryone;
     public bool campfireStoryRead;
+
+    [Header("Day/Night Settings")]
+    public bool isDaytime = true;
+    public Material daySkybox;
+    public Material nightSkybox;
+
+    public Image dayIcon;
+    public Sprite sunIcon;
+    public Sprite moonIcon;
+
 
     private DialogueRunner dialogueRunner;
 
@@ -54,6 +65,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         dialogueRunner = FindFirstObjectByType<DialogueRunner>();
+        dayIcon = GameObject.Find("---- UI ----/OtherCanvas/DayNightIndicator").GetComponent<Image>();
     }
 
     private void Update()
@@ -92,6 +104,8 @@ public class GameManager : MonoBehaviour
         yield return null;
 
         dialogueRunner = FindFirstObjectByType<DialogueRunner>();
+        dayIcon = GameObject.Find("---- UI ----/OtherCanvas/DayNightIndicator")?.GetComponent<Image>();
+        
     }
 
     public void QuitGame()
@@ -102,35 +116,80 @@ public class GameManager : MonoBehaviour
     public void LoadCampScene()
     {
         Debug.Log("Loading Camp Scene");
-        previousScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene("CampScene");
-        if (previousScene.name == "Solitaire")
+        previousScene = SceneManager.GetActiveScene().name;
+
+        StartCoroutine(LoadSceneAndRun());
+    }
+
+    private IEnumerator LoadSceneAndRun()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("CampScene");
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        if (previousScene == "Solitaire")
         {
             PlayerMovement.instance.transform.position = lastPlayerPos;
         }
-
-        
+        else if (previousScene == "Rhythm")
+        {
+            SetToNight();
+            MainDialogueManager.instance.ErnestThoughts();
+        }
     }
 
     public void LoadSolitaire()
     {
-        previousScene = SceneManager.GetActiveScene();
+        previousScene = SceneManager.GetActiveScene().name;
         lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
         SceneManager.LoadScene("Solitaire");
     }
 
     public void LoadUnpacking()
     {
-        previousScene = SceneManager.GetActiveScene();
+        previousScene = SceneManager.GetActiveScene().name;
         lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
         SceneManager.LoadScene("Unpacking");
     }
 
     public void LoadRhythm()
     {
-        previousScene = SceneManager.GetActiveScene();
+        previousScene = SceneManager.GetActiveScene().name;
         lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
         SceneManager.LoadScene("Rhythm");
     }
 
+    public void SetToDay()
+    {
+        // set to day
+        Debug.Log("Setting to day");
+        isDaytime = true;
+
+        RenderSettings.skybox = daySkybox;
+        DynamicGI.UpdateEnvironment();
+
+        dayIcon = GameObject.Find("---- UI ----/OtherCanvas/DayNightIndicator")?.GetComponent<Image>();
+        dayIcon.sprite = sunIcon;
+
+        AudioManager.instance.StopNightAudio();
+        AudioManager.instance.PlayDayAudio();
+    }
+
+    public void SetToNight()
+    {
+        // set to night
+        Debug.Log("Setting to night");
+        isDaytime = false;
+
+        RenderSettings.skybox = nightSkybox;
+        DynamicGI.UpdateEnvironment();
+
+        dayIcon = GameObject.Find("---- UI ----/OtherCanvas/DayNightIndicator")?.GetComponent<Image>();
+        dayIcon.sprite = moonIcon;
+
+        AudioManager.instance.StopDayAudio();
+        AudioManager.instance.PlayNightAudio();
+    }
 }

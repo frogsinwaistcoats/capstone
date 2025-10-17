@@ -62,8 +62,13 @@ public class MainDialogueManager : MonoBehaviour
 
     public void StartCampfireDialogue()
     {
-        SkyboxChanger.instance.SetNightSkybox();
+        GameManager.instance.SetToNight();
         StartConversation("Campfire_Story");
+    }
+
+    public void ErnestThoughts()
+    {
+        StartConversation("ErnestThoughts");
     }
 }
 

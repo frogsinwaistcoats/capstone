@@ -69,6 +69,7 @@ public class PlayerMovement : MonoBehaviour//, IDataPersistence
     public void SetMovement(bool value)
     {
         canMove = value;
+        animator.SetBool("isMoving", value);
     }
 
     public void ResetPos()

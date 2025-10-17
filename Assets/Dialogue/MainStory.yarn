@@ -1,5 +1,4 @@
 ﻿title: Campfire_Story
-tags:
 ---
 <<wait 0.1>>
 <<if $campfireStoryRead == false>>
