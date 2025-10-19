@@ -20,9 +20,6 @@ public class UnpackingItem : MonoBehaviour
         {
             outline.SetActive(false);
         }
-
-
-        
     }
 
     private void MoveWithMouse()

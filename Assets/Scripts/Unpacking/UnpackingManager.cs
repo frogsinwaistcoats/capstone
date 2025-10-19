@@ -54,7 +54,7 @@ public class UnpackingManager : MonoBehaviour
 
     private void Finished()
     {
-        GameManager.instance.hasUnpacked = true;
+        LoadYarnVariables.instance.SetYarnVariable("$hasUnpacked", true);
         GameManager.instance.LoadCampScene();
     }
 

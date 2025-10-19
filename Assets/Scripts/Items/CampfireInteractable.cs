@@ -40,12 +40,15 @@ public class CampfireInteractable : MonoBehaviour
 
                 if (dayManager.dayCount == 1)
                 {
-                    if (GameManager.instance.hasUnpacked && GameManager.instance.metEveryone && !GameManager.instance.campfireStoryRead)
+                    if ((LoadYarnVariables.instance.GetBool("$hasUnpacked")) && (LoadYarnVariables.instance.GetInt("$peopleMet") >=9) && (!LoadYarnVariables.instance.GetBool("$campfireStoryRead")))
                     {
                         canInteract = false;
+                        
                         GameManager.instance.SetToNight();
+                        
                         nightTransition.gameObject.SetActive(true);
                         nightTransition.PlayTransition();
+                        
                         MainDialogueManager.instance.StartCampfireDialogue();
                     }
                     else

@@ -63,12 +63,12 @@ public class QuestsList : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.metEveryone)
+        if (LoadYarnVariables.instance.GetInt("$peopleMet") >= 9)
         {
             StrikeThroughQuest("Meet everyone");
         }
 
-        if (GameManager.instance.hasUnpacked)
+        if (LoadYarnVariables.instance.GetBool("$hasUnpacked"))
         {
             StrikeThroughQuest("Unpack your bag");
         }

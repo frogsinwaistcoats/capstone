@@ -13,22 +13,6 @@ public class GameManager : MonoBehaviour
 
     private Vector3 lastPlayerPos;
     [SerializeField] private string previousScene;
-    public bool hasUnpacked;
-    public bool hasDoneIntro;
-
-    private bool talkedToNyrie;
-    private bool talkedToTalia;
-    private bool talkedToRuby;
-    private bool talkedToPepper;
-    private bool talkedToPoppy;
-    private bool talkedToMillie;
-    private bool talkedToWilson;
-    private bool talkedToLily;
-    private bool talkedToAngler;
-
-    public float peopleMet;
-    public bool metEveryone;
-    public bool campfireStoryRead;
 
     [Header("Day/Night Settings")]
     public bool isDaytime = true;
@@ -39,54 +23,26 @@ public class GameManager : MonoBehaviour
     public Sprite sunIcon;
     public Sprite moonIcon;
 
-
     private DialogueRunner dialogueRunner;
-
-    private InMemoryVariableStorage variableStorage;
-
 
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
-            return;
         }
-
-        DontDestroyOnLoad(gameObject);
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Start()
     {
         dialogueRunner = FindFirstObjectByType<DialogueRunner>();
-        dayIcon = GameObject.Find("---- UI ----/OtherCanvas/DayNightIndicator").GetComponent<Image>();
-    }
-
-    private void Update()
-    {
-        //set yarn variable
-        if (dialogueRunner != null)
-        {
-            dialogueRunner.VariableStorage.SetValue("$hasUnpacked", hasUnpacked);
-
-            if (!hasDoneIntro)
-                dialogueRunner.VariableStorage.TryGetValue("$hasDoneIntro", out hasDoneIntro);
-
-            if (!metEveryone)
-                dialogueRunner.VariableStorage.TryGetValue("$peopleMet", out peopleMet);
-                if (peopleMet >= 9)
-                {
-                    metEveryone = true;
-                }
-
-            dialogueRunner.VariableStorage.TryGetValue("$campfireStoryRead", out campfireStoryRead);
-        }
+        dayIcon = GameObject.Find("---- UI ----/OtherCanvas/DayNightIndicator")?.GetComponent<Image>();
     }
 
     private void OnDestroy()
@@ -105,8 +61,9 @@ public class GameManager : MonoBehaviour
 
         dialogueRunner = FindFirstObjectByType<DialogueRunner>();
         dayIcon = GameObject.Find("---- UI ----/OtherCanvas/DayNightIndicator")?.GetComponent<Image>();
-        
     }
+
+    // ------- Scene Loading -------
 
     public void QuitGame()
     {
@@ -117,7 +74,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Loading Camp Scene");
         previousScene = SceneManager.GetActiveScene().name;
-
         StartCoroutine(LoadSceneAndRun());
     }
 
@@ -125,18 +81,23 @@ public class GameManager : MonoBehaviour
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("CampScene");
         while (!asyncLoad.isDone)
-        {
             yield return null;
-        }
 
         if (previousScene == "Solitaire")
         {
             PlayerMovement.instance.transform.position = lastPlayerPos;
+            PlayerMovement.instance.canMove = true;
         }
         else if (previousScene == "Rhythm")
         {
             SetToNight();
+            LoadYarnVariables.instance.SetYarnVariable("$campfireStoryRead", true);
             MainDialogueManager.instance.ErnestThoughts();
+        }
+        if (previousScene == "Unpacking")
+        {
+            PlayerMovement.instance.transform.position = lastPlayerPos;
+            PlayerMovement.instance.canMove = true;
         }
     }
 
@@ -158,12 +119,16 @@ public class GameManager : MonoBehaviour
     {
         previousScene = SceneManager.GetActiveScene().name;
         lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
+        
+        //LoadYarnVariables.instance.SetYarnVariable("$campfireStoryRead", true);
+
         SceneManager.LoadScene("Rhythm");
     }
 
+    // ------- Day/Night -------
+
     public void SetToDay()
     {
-        // set to day
         Debug.Log("Setting to day");
         isDaytime = true;
 
@@ -171,7 +136,8 @@ public class GameManager : MonoBehaviour
         DynamicGI.UpdateEnvironment();
 
         dayIcon = GameObject.Find("---- UI ----/OtherCanvas/DayNightIndicator")?.GetComponent<Image>();
-        dayIcon.sprite = sunIcon;
+        if (dayIcon != null)
+            dayIcon.sprite = sunIcon;
 
         AudioManager.instance.StopNightAudio();
         AudioManager.instance.PlayDayAudio();
@@ -187,9 +153,30 @@ public class GameManager : MonoBehaviour
         DynamicGI.UpdateEnvironment();
 
         dayIcon = GameObject.Find("---- UI ----/OtherCanvas/DayNightIndicator")?.GetComponent<Image>();
-        dayIcon.sprite = moonIcon;
+        if (dayIcon != null)
+            dayIcon.sprite = moonIcon;
 
         AudioManager.instance.StopDayAudio();
         AudioManager.instance.PlayNightAudio();
+    }
+
+    // ------- Sleep Conditions -------
+
+    public bool CanSleep()
+    {
+        int dayCount = DayManager.instance.dayCount;
+
+        if (dayCount == 1)
+        {
+            bool hasUnpacked = LoadYarnVariables.instance.GetBool("$hasUnpacked");
+            bool campfireStoryRead = LoadYarnVariables.instance.GetBool("$campfireStoryRead");
+            int peopleMet = LoadYarnVariables.instance.GetInt("$peopleMet");
+            bool metEveryone = peopleMet >= 9;
+
+            return hasUnpacked && metEveryone && campfireStoryRead;
+        }
+
+        // add other days here
+        return false;
     }
 }

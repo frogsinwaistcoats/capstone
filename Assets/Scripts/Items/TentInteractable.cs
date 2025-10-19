@@ -4,16 +4,22 @@ using TMPro;
 
 public class TentInteractable : MonoBehaviour
 {
+    public static TentInteractable instance;
+
     private bool playerFound = false;
     [SerializeField] private GameObject prompt;
-    public GameObject dayNightAnim;
     public GameObject notReadyPrompt;
+
+    public DayTransition dayTransition;
+    public bool canInteract = true;
 
     CampManager gameManager;
     DayManager dayManager;
 
     private void Start()
     {
+        instance = this;
+
         gameManager = FindAnyObjectByType<CampManager>();
         dayManager = FindAnyObjectByType<DayManager>();
     }
@@ -23,38 +29,87 @@ public class TentInteractable : MonoBehaviour
     {
         if (playerFound && Input.GetKeyDown(KeyCode.E))
         {
-            prompt.SetActive(false);
-
-            if (DayManager.instance.dayCount == 1)
+            if (!canInteract)
             {
-                if (gameObject.CompareTag("Tent") && !GameManager.instance.hasUnpacked)
-                {
-                    FindAnyObjectByType<AudioManager>().Play("TentZip");
-                    GameManager.instance.LoadUnpacking();
-
-                }
-                else if (gameObject.CompareTag("Tent") && GameManager.instance.hasUnpacked && GameManager.instance.isDaytime)
-                {
-                    notReadyPrompt.SetActive(true);
-                    notReadyPrompt.GetComponent<TextMeshPro>().text = "Its too early to sleep";
-
-                    //dayManager.StartNewDay();
-                    //StartCoroutine(DayNightCutscene(dayNightAnim));
-                }
+                return;
             }
-            
+            else if (canInteract)
+            {
+                prompt.SetActive(false);
+
+                if (DayManager.instance.dayCount == 1)
+                {
+                    if (gameObject.CompareTag("Tent") && !LoadYarnVariables.instance.GetBool("$hasUnpacked"))
+                    {
+                        FindAnyObjectByType<AudioManager>().Play("TentZip");
+                        GameManager.instance.LoadUnpacking();
+
+                    }
+                    else if (gameObject.CompareTag("Tent") && !GameManager.instance.CanSleep())
+                    {
+                        notReadyPrompt.SetActive(true);
+                        notReadyPrompt.GetComponent<TextMeshPro>().text = "Its too early to sleep";
+                    }
+                    else if (gameObject.CompareTag("Tent") && GameManager.instance.CanSleep())
+                    {
+                        canInteract = false;
+                        prompt.SetActive(false);
+
+                        FindAnyObjectByType<AudioManager>().Play("TentZip");
+
+                        dayTransition.gameObject.SetActive(true);
+                        dayTransition.PlayTransition();
+
+                        dayManager.StartNewDay(2);
+                        GameManager.instance.SetToDay();
+                        MainDialogueManager.instance.StartDayTwoDialogue();
+                    }
+                }
+                else if (DayManager.instance.dayCount >= 2)
+                {
+                    if (gameObject.CompareTag("Tent") && !GameManager.instance.CanSleep())
+                    {
+                        notReadyPrompt.SetActive(true);
+                        notReadyPrompt.GetComponent<TextMeshPro>().text = "Its too early to sleep";
+                    }
+                    else if (gameObject.CompareTag("Tent") && GameManager.instance.CanSleep())
+                    {
+                        canInteract = false;
+                        prompt.SetActive(false);
+
+                        FindAnyObjectByType<AudioManager>().Play("TentZip");
+
+                        dayTransition.gameObject.SetActive(true);
+                        dayTransition.PlayTransition();
+
+                        dayManager.StartNewDay(3);
+                        GameManager.instance.SetToDay();
+                        //MainDialogueManager.instance.StartDayTwoDialogue();
+                    }
+                }
+
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!GameManager.instance.hasUnpacked)
+        if (DayManager.instance.dayCount == 1)
         {
-            playerFound = true;
-            prompt.SetActive(true);
-            prompt.GetComponent<TextMeshPro>().text = "Unpack? (E)";
+            if (!LoadYarnVariables.instance.GetBool("$hasUnpacked"))
+            {
+                playerFound = true;
+                prompt.SetActive(true);
+                prompt.GetComponent<TextMeshPro>().text = "Unpack? (E)";
+            }
+            else if (LoadYarnVariables.instance.GetBool("$hasUnpacked"))
+            {
+                playerFound = true;
+                prompt.SetActive(true);
+                prompt.GetComponent<TextMeshPro>().text = "Sleep? (E)";
+            }
         }
-        else if (GameManager.instance.hasUnpacked)
+        else
         {
             playerFound = true;
             prompt.SetActive(true);

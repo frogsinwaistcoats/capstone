@@ -38,7 +38,7 @@ public class YarnInteractable : MonoBehaviour
         if (playerFound && Input.GetKeyDown(KeyCode.E))
         {
             prompt.SetActive(false);
-            playerMovement.SetMovement(false);
+            playerMovement.canMove = false;
             playerMovement.animator.SetBool("isMoving", false);
             if (interactable && !dialogueRunner.IsDialogueRunning)
             {

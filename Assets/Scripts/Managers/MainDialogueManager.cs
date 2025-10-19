@@ -25,12 +25,13 @@ public class MainDialogueManager : MonoBehaviour
         FindAnyObjectByType<DialogueRunner>().onDialogueComplete.AddListener(EndConversation);
         dayManager = FindAnyObjectByType<DayManager>();
 
-        if (dayManager.dayCount == 1 && !GameManager.instance.hasDoneIntro)
+        if (dayManager.dayCount == 1 && !LoadYarnVariables.instance.GetBool("$hasDoneIntro"))
             StartConversation("MrWilson_Intro");
     }
 
     private void Update()
     {
+        /*
         variableStorage = GameObject.FindAnyObjectByType<InMemoryVariableStorage>();
         bool playRhythm;
         variableStorage.TryGetValue("$playRhythm", out playRhythm);
@@ -38,6 +39,7 @@ public class MainDialogueManager : MonoBehaviour
         {
             GameManager.instance.LoadRhythm();
         }
+        */
     }
 
     private void StartConversation(string dialogueNode)
@@ -57,6 +59,7 @@ public class MainDialogueManager : MonoBehaviour
             playerMovement.SetMovement(true);
 
             CampfireInteractable.instance.canInteract = true;
+            TentInteractable.instance.canInteract = true;
         }
     }
 
@@ -69,6 +72,11 @@ public class MainDialogueManager : MonoBehaviour
     public void ErnestThoughts()
     {
         StartConversation("ErnestThoughts");
+    }
+
+    public void StartDayTwoDialogue()
+    {
+        StartConversation("Ruby_Day2");
     }
 }
 

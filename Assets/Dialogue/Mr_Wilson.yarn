@@ -14,6 +14,7 @@ Mr Wilson: You are encouraged to explore, however, for your own safety the fores
 Mr Wilson: On a lighter note, we'll hold a campfire each night to sing and tell stories before you are all to return to your tents for the night. 
 Mr Wilson: Now go to your assigned tents to unpack your bags.
 <<set $hasDoneIntro = true>>
+<<set $day = 1>>
 ===
 
 title: MrWilson_Day1

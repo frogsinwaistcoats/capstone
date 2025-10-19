@@ -47,15 +47,15 @@ public class DayManager : MonoBehaviour//, IDataPersistence
         UpdateDayText();
     }
 
-    public void StartNewDay()
+    public void StartNewDay(int newDayCount)
     {
-        dayCount++;
+        dayCount = newDayCount;
         UpdateDayText();
 
         //set yarn variable
-        if (dialogueRunner != null)
+        if (LoadYarnVariables.instance != null)
         {
-            dialogueRunner.VariableStorage.SetValue("$day", dayCount);
+            LoadYarnVariables.instance.SetYarnVariable("$day", dayCount);
         }
     }
 

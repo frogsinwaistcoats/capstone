@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour//, IDataPersistence
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        if (GameManager.instance.hasDoneIntro == false)
+        if (LoadYarnVariables.instance.GetBool("$hasDoneIntro"))
         {
             canMove = false;
         }

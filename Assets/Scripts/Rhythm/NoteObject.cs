@@ -45,10 +45,6 @@ public class NoteObject : MonoBehaviour
             {
                 RhythmManager.instance.NoteMissed();
             }
-            
-            
-            
-            
         }
     }
 }
