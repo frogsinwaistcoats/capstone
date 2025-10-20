@@ -1,6 +1,7 @@
 ﻿title: Variables
 ---
 <<declare $day = 1>>
+<<declare $isDaytime = true>>
 
 <<declare $playSolitaire = false>>
 <<declare $playRhythm = false>>
@@ -21,6 +22,6 @@
 
 <<declare $peopleMet = 0>>
 
-
+<<declare $caughtByTeacher = false>>
 
 ===

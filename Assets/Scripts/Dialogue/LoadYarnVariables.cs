@@ -11,6 +11,7 @@ public class LoadYarnVariables : MonoBehaviour
     private DialogueRunner dialogueRunner;
 
     int day;
+    bool isDaytime;
     bool playSolitaire;
     bool playRhythm;
 
@@ -28,6 +29,8 @@ public class LoadYarnVariables : MonoBehaviour
     bool hasUnpacked;
     bool hasDoneIntro;
     bool campfireStoryRead;
+
+    bool caughtByTeacher;
 
 
     private void Awake()
@@ -94,6 +97,7 @@ public class LoadYarnVariables : MonoBehaviour
 
         // day count and minigame plays
         vs.SetValue("$day", (float)day);
+        vs.SetValue("$isDaytime", isDaytime);
         vs.SetValue("$playSolitaire", playSolitaire);
         vs.SetValue("$playRhythm", playRhythm);
 
@@ -115,6 +119,7 @@ public class LoadYarnVariables : MonoBehaviour
         vs.SetValue("$campfireStoryRead", campfireStoryRead);
 
         // day 2 progress
+        vs.SetValue("$caughtByTeacher", caughtByTeacher);
     }
 
     // Yarn to C#
@@ -151,10 +156,13 @@ public class LoadYarnVariables : MonoBehaviour
 
         vs.TryGetValue("$peopleMet", out float peopleMetFloat);
         peopleMet = Mathf.RoundToInt(peopleMetFloat);
+        vs.TryGetValue("$isDaytime", out isDaytime);
 
         vs.TryGetValue("$hasUnpacked", out hasUnpacked);
         vs.TryGetValue("$hasDoneIntro", out hasDoneIntro);
         vs.TryGetValue("$campfireStoryRead", out campfireStoryRead);
+
+        vs.TryGetValue("$caughtByTeacher", out caughtByTeacher);
     }
 
     // called from other scripts to set variables
@@ -163,6 +171,7 @@ public class LoadYarnVariables : MonoBehaviour
         switch (variableName)
         {
             case "$day": day = (int)value; break;
+            case "$isDaytime": isDaytime = (bool)value; break;
             case "$playSolitaire": playSolitaire = (bool)value; break;
             case "$playRhythm": playRhythm = (bool)value; break;
 
@@ -180,6 +189,8 @@ public class LoadYarnVariables : MonoBehaviour
             case "$hasUnpacked": hasUnpacked = (bool)value; break;
             case "$hasDoneIntro": hasDoneIntro = (bool)value; break;
             case "$campfireStoryRead": campfireStoryRead = (bool)value; break;
+
+            case "$caughtByTeacher": caughtByTeacher = (bool)value; break;
 
             default:
                 Debug.LogWarning("Variable name not recognized: " + variableName);
@@ -209,6 +220,7 @@ public class LoadYarnVariables : MonoBehaviour
     {
         switch (variableName)
         {
+            case "$isDaytime": return isDaytime;
             case "$playSolitaire": return playSolitaire;
             case "$playRhythm": return playRhythm;
 
@@ -225,6 +237,8 @@ public class LoadYarnVariables : MonoBehaviour
             case "$hasUnpacked": return hasUnpacked;
             case "$hasDoneIntro": return hasDoneIntro;
             case "$campfireStoryRead": return campfireStoryRead;
+
+            case "$caughtByTeacher": return caughtByTeacher;
 
             default:
                 Debug.LogWarning("Variable name not recognized: " + variableName);

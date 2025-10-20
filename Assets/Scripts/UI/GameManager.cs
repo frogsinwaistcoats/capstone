@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     private DialogueRunner dialogueRunner;
 
+    public bool hasPlayedSolitaire = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -103,6 +105,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadSolitaire()
     {
+        LoadYarnVariables.instance.SetYarnVariable("$playSolitaire", false);
         previousScene = SceneManager.GetActiveScene().name;
         lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
         SceneManager.LoadScene("Solitaire");
@@ -131,6 +134,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Setting to day");
         isDaytime = true;
+        LoadYarnVariables.instance.SetYarnVariable("$isDaytime", true);
 
         RenderSettings.skybox = daySkybox;
         DynamicGI.UpdateEnvironment();
@@ -148,6 +152,7 @@ public class GameManager : MonoBehaviour
         // set to night
         Debug.Log("Setting to night");
         isDaytime = false;
+        LoadYarnVariables.instance.SetYarnVariable("$isDaytime", false);
 
         RenderSettings.skybox = nightSkybox;
         DynamicGI.UpdateEnvironment();

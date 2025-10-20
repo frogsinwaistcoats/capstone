@@ -25,7 +25,8 @@ Ernest: I'm just exploring.
 Whaea Nyrie: You are not allowed into the forest, remember?
 Ernest: ...
 Whaea Nyrie: If I catch you doing that again you'll be in serious trouble
-
-if day 2, and night time
-Ernest: I need to get out of the teacher's sight.
+<<set $caughtByTeacher = true>>
+<<if $day >= 2 && !$isDaytime>>
+    <<jump Ernest_SneakingPrompt>>
+<<endif>>
 ===

@@ -40,15 +40,15 @@ public class CampfireInteractable : MonoBehaviour
 
                 if (dayManager.dayCount == 1)
                 {
-                    if ((LoadYarnVariables.instance.GetBool("$hasUnpacked")) && (LoadYarnVariables.instance.GetInt("$peopleMet") >=9) && (!LoadYarnVariables.instance.GetBool("$campfireStoryRead")))
+                    if ((LoadYarnVariables.instance.GetBool("$hasUnpacked")) && (LoadYarnVariables.instance.GetInt("$peopleMet") >= 9) && (!LoadYarnVariables.instance.GetBool("$campfireStoryRead")))
                     {
                         canInteract = false;
-                        
+
                         GameManager.instance.SetToNight();
-                        
+
                         nightTransition.gameObject.SetActive(true);
                         nightTransition.PlayTransition();
-                        
+
                         MainDialogueManager.instance.StartCampfireDialogue();
                     }
                     else
@@ -56,7 +56,13 @@ public class CampfireInteractable : MonoBehaviour
                         notReadyPrompt.SetActive(true);
                     }
                 }
+                else if (dayManager.dayCount == 2)
+                {
+                    //add day 2 variables here
+
+                }
             }
+
         }
         
     }

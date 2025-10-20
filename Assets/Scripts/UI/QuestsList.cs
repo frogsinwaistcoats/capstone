@@ -58,21 +58,48 @@ public class QuestsList : MonoBehaviour
                 questTextByName[quest.questName] = questTMP;
             }
         }
+        else if (dayManager.dayCount == 2)
+        {
+            foreach (Quest quest in questsDay2)
+            {
+                GameObject questObj = Instantiate(questsTextPrefab, transform);
+                TextMeshProUGUI questTMP = questObj.GetComponent<TextMeshProUGUI>();
+                questTMP.text = "-> " + quest.questDescription;
+
+                questTextByName[quest.questName] = questTMP;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (LoadYarnVariables.instance.GetInt("$peopleMet") >= 9)
+        if (dayManager.dayCount == 1)
         {
-            StrikeThroughQuest("Meet everyone");
+            if (LoadYarnVariables.instance.GetInt("$peopleMet") >= 9)
+            {
+                StrikeThroughQuest("Meet everyone");
+            }
+
+            if (LoadYarnVariables.instance.GetBool("$hasUnpacked"))
+            {
+                StrikeThroughQuest("Unpack your bag");
+            }
+
+            if (LoadYarnVariables.instance.GetBool("$campfireStoryRead"))
+            {
+                StrikeThroughQuest("Campfire_Day1");
+            }
+        }
+        else if (dayManager.dayCount == 2)
+        {
+            if (GameManager.instance.hasPlayedSolitaire)
+            {
+                StrikeThroughQuest("Play a game of Solitaire");
+            }
         }
 
-        if (LoadYarnVariables.instance.GetBool("$hasUnpacked"))
-        {
-            StrikeThroughQuest("Unpack your bag");
-        }
-
+        
     }
 
     private void StrikeThroughQuest(string questName)

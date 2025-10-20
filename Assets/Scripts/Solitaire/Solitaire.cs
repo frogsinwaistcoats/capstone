@@ -38,6 +38,7 @@ public class Solitaire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.instance.hasPlayedSolitaire = true;
         //list of all cards in bottoms
         bottoms = new List<string>[] { bottom0, bottom1, bottom2, bottom3, bottom4, bottom5, bottom6 };
         PlayCards();

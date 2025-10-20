@@ -16274,9 +16274,13 @@ MonoBehaviour:
     questDescription: Unpack your bags
   - questName: Meet everyone
     questDescription: Talk to everyone at camp
-  - questName: Campfire
+  - questName: Campfire_Day1
     questDescription: Go to the campfire for a story
-  questsDay2: []
+  questsDay2:
+  - questName: Play a game of Solitaire
+    questDescription: Play a game of solitaire
+  - questName: Campfire_Day2
+    questDescription: Go to the campfire
   questsDay3: []
   questsDay4: []
   questsDay5: []
