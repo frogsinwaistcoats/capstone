@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadSolitaire()
     {
+        hasPlayedSolitaire = true;
         LoadYarnVariables.instance.SetYarnVariable("$playSolitaire", false);
         previousScene = SceneManager.GetActiveScene().name;
         lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
@@ -126,6 +127,13 @@ public class GameManager : MonoBehaviour
         //LoadYarnVariables.instance.SetYarnVariable("$campfireStoryRead", true);
 
         SceneManager.LoadScene("Rhythm");
+    }
+
+    public void LoadSneaking()
+    {
+        previousScene = SceneManager.GetActiveScene().name;
+        lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
+        SceneManager.LoadScene("Sneaking");
     }
 
     // ------- Day/Night -------

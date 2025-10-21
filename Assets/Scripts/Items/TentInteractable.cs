@@ -65,7 +65,7 @@ public class TentInteractable : MonoBehaviour
                         MainDialogueManager.instance.StartDayTwoDialogue();
                     }
                 }
-                else if (DayManager.instance.dayCount >= 2)
+                else if (DayManager.instance.dayCount == 2)
                 {
                     if (gameObject.CompareTag("Tent") && !GameManager.instance.CanSleep())
                     {

@@ -57,6 +57,12 @@ public class DayManager : MonoBehaviour//, IDataPersistence
         {
             LoadYarnVariables.instance.SetYarnVariable("$day", dayCount);
         }
+
+        var questList = FindFirstObjectByType<QuestsList>();
+        if (questList != null)
+        {
+            StartCoroutine(questList.StartQuestsNextFrame());
+        }
     }
 
     public void UpdateDayText()

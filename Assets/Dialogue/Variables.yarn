@@ -23,5 +23,6 @@
 <<declare $peopleMet = 0>>
 
 <<declare $caughtByTeacher = false>>
+<<declare $triggerSneakOut = false>>
 
 ===

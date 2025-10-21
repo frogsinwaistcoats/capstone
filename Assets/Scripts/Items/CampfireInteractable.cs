@@ -58,7 +58,15 @@ public class CampfireInteractable : MonoBehaviour
                 }
                 else if (dayManager.dayCount == 2)
                 {
-                    //add day 2 variables here
+                    if (GameManager.instance.hasPlayedSolitaire)
+                    {
+                        canInteract = false;
+                        GameManager.instance.SetToNight();
+                        nightTransition.gameObject.SetActive(true);
+                        nightTransition.PlayTransition();
+
+                        MainDialogueManager.instance.SneakingOutDialogue();
+                    }
 
                 }
             }
@@ -69,6 +77,10 @@ public class CampfireInteractable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (GameManager.instance.isDaytime == false)
+        {
+            return;
+        }
         playerFound = true;
         prompt.SetActive(true);
         prompt.GetComponent<TextMeshPro>().text = "Campfire story? (E)";

@@ -1,9 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class QuestsList : MonoBehaviour
 {
+
     [Header("Quests - Day 1")]
     [SerializeField] private List<Quest> questsDay1;
 
@@ -24,6 +26,8 @@ public class QuestsList : MonoBehaviour
 
     [Header("Quests - Day 7")]
     [SerializeField] private List<Quest> questsDay7;
+
+    private List<GameObject> activeQuestTexts = new List<GameObject>();
 
     public GameObject questsTextPrefab;
     DayManager dayManager;
@@ -47,26 +51,41 @@ public class QuestsList : MonoBehaviour
             dayManager = FindFirstObjectByType<DayManager>();
         }
 
+        StartCoroutine(StartQuestsNextFrame());
+    }
+
+    public IEnumerator StartQuestsNextFrame()
+    {
+        yield return null; 
+        StartNewQuests();
+    }
+
+    public void StartNewQuests()
+    {
+
+        Debug.Log("Active quest texts before clear: " + activeQuestTexts.Count);
+        if (activeQuestTexts.Count > 0)
+        {
+            foreach (GameObject questObj in activeQuestTexts)
+            {
+                Destroy(questObj);
+            }
+            activeQuestTexts.Clear();
+            questTextByName.Clear();
+        }
+
         if (dayManager.dayCount == 1)
         {
             foreach (Quest quest in questsDay1)
             {
-                GameObject questObj = Instantiate(questsTextPrefab, transform);
-                TextMeshProUGUI questTMP = questObj.GetComponent<TextMeshProUGUI>();
-                questTMP.text = "-> " + quest.questDescription;
-
-                questTextByName[quest.questName] = questTMP;
+                AddQuestToList(quest);
             }
         }
         else if (dayManager.dayCount == 2)
         {
             foreach (Quest quest in questsDay2)
             {
-                GameObject questObj = Instantiate(questsTextPrefab, transform);
-                TextMeshProUGUI questTMP = questObj.GetComponent<TextMeshProUGUI>();
-                questTMP.text = "-> " + quest.questDescription;
-
-                questTextByName[quest.questName] = questTMP;
+                AddQuestToList(quest);
             }
         }
     }
@@ -97,9 +116,24 @@ public class QuestsList : MonoBehaviour
             {
                 StrikeThroughQuest("Play a game of Solitaire");
             }
+            if (LoadYarnVariables.instance.GetBool("$triggerSneakOut"))
+            {
+                AddQuestToList(new Quest { questName = "Sneak out", questDescription = "Sneak out of camp at night" });
+                ForestBorder.instance.EnableTriggerCollider();
+            }
         }
 
         
+    }
+
+    private void AddQuestToList(Quest quest)
+    {
+        GameObject questObj = Instantiate(questsTextPrefab, transform);
+        activeQuestTexts.Add(questObj);
+        TextMeshProUGUI questTMP = questObj.GetComponent<TextMeshProUGUI>();
+        questTMP.text = "-> " + quest.questDescription;
+
+        questTextByName[quest.questName] = questTMP;
     }
 
     private void StrikeThroughQuest(string questName)

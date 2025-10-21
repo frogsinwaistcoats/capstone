@@ -78,6 +78,11 @@ public class MainDialogueManager : MonoBehaviour
     {
         StartConversation("Ruby_Day2");
     }
+
+    public void SneakingOutDialogue()
+    {
+        StartConversation("Ernest_SneakingOut");
+    }
 }
 
 
