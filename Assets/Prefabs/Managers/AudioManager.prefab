@@ -45,15 +45,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
+  - name: DaytimeBGMusic
+    clip: {fileID: 8300000, guid: f5475447e0b332f4fbd56e9b4bcc6a6c, type: 3}
+    volume: 0.085
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: NighttimeBGMusic
+    clip: {fileID: 8300000, guid: 0dcdab0beb7868a41a6dc5b5a12109ec, type: 3}
+    volume: 0.085
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
   - name: OpenBook
     clip: {fileID: 8300000, guid: 1e06a7a6fcfd1484b8f59913b6c189b5, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: BackgroundMusic
-    clip: {fileID: 8300000, guid: 7c0e56999409c344eaef9d56fd0a1453, type: 3}
-    volume: 0.55
+  - name: TentZip
+    clip: {fileID: 8300000, guid: bb0e4277cad9c5e46a8dc8cdeabcc255, type: 3}
+    volume: 0.5
     pitch: 1
-    loop: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ItemPlaced
+    clip: {fileID: 8300000, guid: 216e193b3353e5e4490d17e91e5096ef, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
     source: {fileID: 0}

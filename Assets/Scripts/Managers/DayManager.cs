@@ -59,9 +59,10 @@ public class DayManager : MonoBehaviour//, IDataPersistence
         }
 
         var questList = FindFirstObjectByType<QuestsList>();
+        StartCoroutine(questList.StartQuestsNextFrame());
         if (questList != null)
         {
-            StartCoroutine(questList.StartQuestsNextFrame());
+            
         }
     }
 

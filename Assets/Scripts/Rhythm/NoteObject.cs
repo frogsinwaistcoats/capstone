@@ -5,7 +5,6 @@ public class NoteObject : MonoBehaviour
     public bool canBePressed;
 
     public KeyCode keyToPress;
-    public KeyCode keyToPress2;
     public bool noteHit;
     
     void Start()
@@ -15,7 +14,7 @@ public class NoteObject : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(keyToPress) || Input.GetKeyDown(keyToPress2))
+        if (Input.GetKeyDown(keyToPress))
         {
             if (canBePressed)
             {

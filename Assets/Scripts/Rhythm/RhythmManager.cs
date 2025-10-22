@@ -11,32 +11,67 @@ public class RhythmManager : MonoBehaviour
     public AudioSource music;
     public bool startPlaying;
 
-    public int currentScore;
+    public int currentScore = 0;
     public int scorePerNote = 1;
+    public int missCount = 0;
 
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI multiText;
+    public TextMeshProUGUI streakText;
+    public TextMeshProUGUI missedText;
 
-    public int currentMultiplier;
-    public int multiplierTracker;
-    public int[] multiplierThresholds;
+    public int currentStreak = 0;
+    public int highestStreak = 0;
 
-    public GameObject startButton;
-    public GameObject endScreen;
+    public GameObject instructionScreen;
+    public GameObject startPrompt;
+    public GameObject winScreen;
+
+    public bool canPlay;
+
+    bool dPressed = false;
+    bool fPressed = false;
+    bool jPressed = false;
+    bool kPressed = false; 
 
     void Start()
     {
-        AudioManager.instance.StopNightAudio();
-        AudioManager.instance.StopDayAudio();
+        //AudioManager audioManager = FindFirstObjectByType<AudioManager>();
+        //audioManager.StopNightAudio();
+        //audioManager.StopDayAudio();
+        canPlay = false;
 
         instance = this;
 
         scoreText.text = "Score: 0";
-        currentMultiplier = 1;
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.D))
+            dPressed = true;
+        if (Input.GetKeyUp(KeyCode.D))
+            dPressed = false;
+
+        if (Input.GetKeyDown(KeyCode.F))
+            fPressed = true;
+        if (Input.GetKeyUp(KeyCode.F))
+            fPressed = false;
+
+        if (Input.GetKeyDown(KeyCode.J))
+            jPressed = true;
+        if (Input.GetKeyUp(KeyCode.J))
+            jPressed = false;
+
+        if (Input.GetKeyDown(KeyCode.K))
+            kPressed = true;
+        if (Input.GetKeyUp(KeyCode.K))
+            kPressed = false;
+
+        if (dPressed && fPressed && jPressed && kPressed)
+        {
+            StartPlaying();
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Finished();
@@ -47,48 +82,49 @@ public class RhythmManager : MonoBehaviour
     {
         Debug.Log("Hit on time");
 
-        if (currentMultiplier - 1 < multiplierThresholds.Length)
-        {
-            multiplierTracker++;
-
-            if (multiplierThresholds[currentMultiplier - 1] <= multiplierTracker)
-            {
-                multiplierTracker = 0;
-                currentMultiplier++;
-            }
-        }
-
-        multiText.text = "Multiplier: x" + currentMultiplier;
-
-        currentScore += scorePerNote * currentMultiplier;
-        scoreText.text = "Score: " + currentScore;
+        currentScore += scorePerNote;
+        currentStreak += scorePerNote;
+        scoreText.text = "Hits: " + currentScore;
+        streakText.text = "Streak: " + currentStreak;
     }
 
     public void NoteMissed()
     {
         Debug.Log("Missed note");
 
-        currentMultiplier = 1;
-        multiplierTracker = 0;
-        multiText.text = "Multiplier: x" + currentMultiplier;
+        missCount++;
+        missedText.text = "Miss: " + missCount;
+        currentStreak = 0;
+        streakText.text = "Streak: " + currentStreak;
+    }
+
+    public void CloseInstructions()
+    {
+        instructionScreen.SetActive(false);
+        canPlay = true;
+        startPrompt.SetActive(true);
     }
 
     public void StartPlaying()
     {
-        if (!startPlaying)
+        if (canPlay)
         {
-            startButton.SetActive(false);
-            startPlaying = true;
-            beatScroller.hasStarted = true;
+            startPrompt.SetActive(false);
 
-            music.Play();
-            StartCoroutine(WaitForAudioToFinish());
+            if (!startPlaying)
+            {
+                startPlaying = true;
+                beatScroller.hasStarted = true;
+
+                music.Play();
+                StartCoroutine(WaitForAudioToFinish());
+            }
         }
     }
 
     public void EndOfSong()
     {
-        endScreen.SetActive(true);
+        winScreen.SetActive(true);
     }
 
     public void Finished()

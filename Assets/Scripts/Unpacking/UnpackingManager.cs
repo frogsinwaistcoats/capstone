@@ -12,6 +12,11 @@ public class UnpackingManager : MonoBehaviour
     public Sprite openBag;
     public Sprite closeBag;
 
+    public GameObject instructionScreen;
+    public GameObject winScreen;
+
+    public bool canStart;
+
     private void Awake()
     {
         instance = this;
@@ -19,17 +24,20 @@ public class UnpackingManager : MonoBehaviour
 
     private void OnMouseDown()
     {
-        StartCoroutine(OpenBag());
+        if (canStart)
+        {
+            StartCoroutine(OpenBag());
 
-        if(nextItemIndex > items.Length - 1)
-        {
-            Finished();
-        }
-        else
-        {
-            items[nextItemIndex].gameObject.SetActive(true);
-            items[nextItemIndex].GetComponent<UnpackingItem>().isBeingHeld = true;
-            nextItemIndex++;
+            if (nextItemIndex > items.Length - 1)
+            {
+                Finished();
+            }
+            else
+            {
+                items[nextItemIndex].gameObject.SetActive(true);
+                items[nextItemIndex].GetComponent<UnpackingItem>().isBeingHeld = true;
+                nextItemIndex++;
+            }
         }
     }
 
@@ -48,11 +56,16 @@ public class UnpackingManager : MonoBehaviour
 
         if (itemsPlaced == items.Length)
         {
-            Finished();
+            OpenWinScreen();
         }
     }
 
-    private void Finished()
+    public void OpenWinScreen()
+    {
+        winScreen.SetActive(true);
+    }
+
+    public void Finished()
     {
         LoadYarnVariables.instance.SetYarnVariable("$hasUnpacked", true);
         GameManager.instance.LoadCampScene();
@@ -69,5 +82,11 @@ public class UnpackingManager : MonoBehaviour
     public void LoadCampScene()
     {
         GameManager.instance.LoadCampScene();
+    }
+
+    public void StartUnpacking()
+    {
+        instructionScreen.SetActive(false);
+        canStart = true;
     }
 }
