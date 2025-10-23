@@ -120,7 +120,7 @@ public class QuestsList : MonoBehaviour
             if (LoadYarnVariables.instance.GetBool("$triggerSneakOut"))
             {
                 AddQuestToList(new Quest { questName = "Sneak out", questDescription = "Sneak out of camp at night" });
-                ForestBorder.instance.EnableTriggerCollider();
+                CampBorder.instance.EnableTriggerCollider();
             }
         }
 

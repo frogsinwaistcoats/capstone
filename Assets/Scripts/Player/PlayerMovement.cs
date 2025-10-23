@@ -9,7 +9,9 @@ public class PlayerMovement : MonoBehaviour//, IDataPersistence
     public float vertical;
     private Rigidbody rb;
     public bool canMove;
-    public Transform startingPos;
+    public Transform startPlayerPos;
+    public Transform campPlayerPos;
+    public Transform forestPlayerPos;
     public SpriteRenderer sr;
 
     public Animator animator;
@@ -74,11 +76,21 @@ public class PlayerMovement : MonoBehaviour//, IDataPersistence
 
     public void ResetPos()
     {
-        this.transform.position = startingPos.position;
+        transform.position = startPlayerPos.position; 
     }
 
     public Vector3 ReturnCurrentTransform()
     {
         return transform.position;
+    }
+
+    public void GoToCampPos()
+    {
+        transform.position = campPlayerPos.position;
+    }
+
+    public void GoToForestPos()
+    {
+        transform.position = forestPlayerPos.position;
     }
 }

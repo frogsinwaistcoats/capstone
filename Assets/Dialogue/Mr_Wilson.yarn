@@ -25,3 +25,10 @@ Mr Wilson: Have fun and be safe, kids.
     <<set $peopleMet = $peopleMet + 1>>
 <<endif>>
 ===
+
+title: MrWilson_Day3Prep
+---
+Mr Wilson: Good morning Ernest, I hope you slept well.
+Mr Wilson: You're on lunch duty today. Head down to the lake to see what fish you can catch. 
+Mr Wilson: There's ingredients prepared up here to make sandwiches when youre back. 
+===

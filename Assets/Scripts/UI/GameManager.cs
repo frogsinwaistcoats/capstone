@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
     private Vector3 lastPlayerPos;
     [SerializeField] private string previousScene;
 
-    public Vector3 forestPlayerPos;
-
     [Header("Day/Night Settings")]
     public bool isDaytime = true;
     public Material daySkybox;
@@ -69,6 +67,17 @@ public class GameManager : MonoBehaviour
 
     // ------- Scene Loading -------
 
+    private void Update()
+    {
+        if (DayManager.instance.dayCount == 2)
+        {
+            if (LoadYarnVariables.instance.GetBool("$campfireStoryRead"))
+            {
+                LoadYarnVariables.instance.SetYarnVariable("$campfireStoryRead", false);
+            }
+        }
+    }
+
     public void QuitGame()
     {
         Application.Quit();
@@ -97,8 +106,18 @@ public class GameManager : MonoBehaviour
         else if (previousScene == "Rhythm")
         {
             SetToNight();
-            LoadYarnVariables.instance.SetYarnVariable("$campfireStoryRead", true);
-            MainDialogueManager.instance.ErnestDayOne();
+            if (DayManager.instance.dayCount == 1)
+            {
+                LoadYarnVariables.instance.SetYarnVariable("$campfireStoryRead", true);
+                MainDialogueManager.instance.ErnestDayOne();
+            }
+            else if (DayManager.instance.dayCount == 2)
+            {
+                FindFirstObjectByType<NightTransition>().gameObject.SetActive(true);
+                FindFirstObjectByType<NightTransition>().PlayTransition();
+                MainDialogueManager.instance.SneakingOutDialogue();
+            }
+           
         }
         else if (previousScene == "Unpacking")
         {
@@ -133,6 +152,8 @@ public class GameManager : MonoBehaviour
         //LoadYarnVariables.instance.SetYarnVariable("$campfireStoryRead", true);
 
         SceneManager.LoadScene("Rhythm");
+
+        
     }
 
     public void LoadSneaking()
@@ -146,13 +167,18 @@ public class GameManager : MonoBehaviour
     {
         LoadCampScene(() =>
         {
-            PlayerMovement.instance.transform.position = forestPlayerPos;
+            PlayerMovement.instance.GoToForestPos();
 
             if (DayManager.instance.dayCount == 2)
             {
                 MainDialogueManager.instance.FirstMeetingDialogue();
             }
         });
+    }
+
+    public void ReturnToCampFromForest()
+    {
+        PlayerMovement.instance.GoToCampPos();
     }
 
     // ------- Day/Night -------
@@ -207,8 +233,13 @@ public class GameManager : MonoBehaviour
 
             return hasUnpacked && metEveryone && campfireStoryRead;
         }
+        else if (dayCount == 2)
+        {
+            isDaytime = false;
+            bool hasMetAlex = LoadYarnVariables.instance.GetBool("$firstMeetingDone");
+        }
 
-        // add other days here
-        return false;
+            // add other days here
+            return false;
     }
 }

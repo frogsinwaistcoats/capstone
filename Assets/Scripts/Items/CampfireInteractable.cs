@@ -55,11 +55,11 @@ public class CampfireInteractable : MonoBehaviour
                     if (GameManager.instance.hasPlayedSolitaire)
                     {
                         canInteract = false;
-                        GameManager.instance.SetToNight();
-                        nightTransition.gameObject.SetActive(true);
-                        nightTransition.PlayTransition();
-
-                        MainDialogueManager.instance.SneakingOutDialogue();
+                        GameManager.instance.LoadRhythm();
+                    }
+                    else
+                    {
+                        notReadyPrompt.SetActive(true);
                     }
                 }
             }
@@ -76,8 +76,8 @@ public class CampfireInteractable : MonoBehaviour
         }
         playerFound = true;
         prompt.SetActive(true);
-        prompt.GetComponent<TextMeshPro>().text = "Campfire story? (E)";
 
+        prompt.GetComponent<TextMeshPro>().text = "Campfire Song? (E)";
     }
 
     public void OnTriggerExit(Collider other)

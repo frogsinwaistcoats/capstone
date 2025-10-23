@@ -25,5 +25,6 @@
 
 <<declare $caughtByTeacher = false>>
 <<declare $triggerSneakOut = false>>
+<<declare $firstMeetingDone = false>>
 
 ===

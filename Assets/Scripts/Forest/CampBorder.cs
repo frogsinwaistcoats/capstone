@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ForestBorder : MonoBehaviour
+public class CampBorder : MonoBehaviour
 {
-    public static ForestBorder instance;
+    public static CampBorder instance;
 
     private void Awake()
     {

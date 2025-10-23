@@ -1,4 +1,4 @@
-﻿title: Alex
+title: Alex
 ---
 <<wait 0.1>>
 <<if $day == 1>>
@@ -13,7 +13,7 @@ Alex: yo.
 
 title: FirstMeeting
 ---
-???:
+???: ...
 Ernest: Oh, I wasn't expecting to see anyone else out here!
 Ernest: Who are you?  
 ???: ...
@@ -37,6 +37,6 @@ Ernest: Wait, before you go, why don't we meet here again tomorrow?
 Alex: Why? 
 Ernest: You have to tell me all about what it's like living in the forest!
 Ernest: And I'll bring you a sandwich. 
-Alex: ok
-
+Alex: Ok
+<<set $firstMeetingDone = true>>
 ===

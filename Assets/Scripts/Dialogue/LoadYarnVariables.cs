@@ -32,6 +32,7 @@ public class LoadYarnVariables : MonoBehaviour
 
     bool caughtByTeacher;
     bool triggerSneakOut;
+    bool firstMeetingDone;
 
 
     private void Awake()
@@ -122,6 +123,7 @@ public class LoadYarnVariables : MonoBehaviour
         // day 2 progress
         vs.SetValue("$caughtByTeacher", caughtByTeacher);
         vs.SetValue("$triggerSneakOut", triggerSneakOut);
+        vs.SetValue("$firstMeetingDone", firstMeetingDone);
     }
 
     // Yarn to C#
@@ -166,6 +168,7 @@ public class LoadYarnVariables : MonoBehaviour
 
         vs.TryGetValue("$caughtByTeacher", out caughtByTeacher);
         vs.TryGetValue("$triggerSneakOut", out triggerSneakOut);
+        vs.TryGetValue("$firstMeetingDone", out firstMeetingDone);
     }
 
     // called from other scripts to set variables
@@ -195,6 +198,7 @@ public class LoadYarnVariables : MonoBehaviour
 
             case "$caughtByTeacher": caughtByTeacher = (bool)value; break;
             case "$triggerSneakOut": triggerSneakOut = (bool)value; break;
+            case "$firstMeetingDone": firstMeetingDone = (bool)value; break;
 
             default:
                 Debug.LogWarning("Variable name not recognized: " + variableName);
@@ -244,6 +248,7 @@ public class LoadYarnVariables : MonoBehaviour
 
             case "$caughtByTeacher": return caughtByTeacher;
             case "$triggerSneakOut": return triggerSneakOut;
+            case "$firstMeetingDone": return firstMeetingDone;
 
             default:
                 Debug.LogWarning("Variable name not recognized: " + variableName);
