@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
 using System.Collections.Generic;
+using System.Linq;
 
 public class PortraitLineView : LineView
 {
@@ -29,6 +30,8 @@ public class PortraitLineView : LineView
         public bool isRightSide;
     }
 
+    private DialogueRunner dialogueRunner;
+
     protected void Start()
     {
         if (leftPortrait == null) Debug.LogError("Left portrait not assigned!");
@@ -42,6 +45,9 @@ public class PortraitLineView : LineView
                 portraitLookup.Add(p.characterName, p.sprite);
             }
         }
+
+
+        
     }
 
     public override void RunLine(LocalizedLine dialogueLine, System.Action onFinished)
@@ -50,16 +56,28 @@ public class PortraitLineView : LineView
 
         string speakerName = dialogueLine.CharacterName;
 
-        UpdatePortraits(speakerName);
+        bool isSolo = dialogueLine.Metadata?.Contains("solo") ?? false;
+
+        UpdatePortraits(speakerName, isSolo);
     }
 
-    private void UpdatePortraits(string speakerName)
+    private void UpdatePortraits(string speakerName, bool isSolo)
     {
+
         CharacterPortrait speakerPortrait = portraits.Find(p => p.characterName == speakerName);
 
         if (speakerPortrait == null)
         {
             Debug.LogWarning($"No portrait found for character: {speakerName}");
+            return;
+        }
+
+        if (isSolo)
+        {
+            setPortraitActive(leftPortrait, false);
+            setPortraitActive(optionLeftPortrait, false);
+            setPortraitActive(rightPortrait, true);
+            setPortraitActive(optionRightPortrait, true);
             return;
         }
 
@@ -121,5 +139,30 @@ public class PortraitLineView : LineView
         optionLeftPortrait.color = Color.white;
         rightPortrait.color = new Color(0.6f, 0.6f, 0.6f, 1f);
         optionRightPortrait.color = new Color(0.6f, 0.6f, 0.6f, 1f);
+    }
+
+    [YarnCommand("show")]
+    public void ShowPortrait(string characterName)
+    {
+        CharacterPortrait portrait = portraits.Find(p => p.characterName == characterName);
+
+        if (portrait == null)
+        {
+            Debug.LogWarning($"no portrait found for '{characterName}'");
+            return;
+        }
+
+        if (portrait.isRightSide)
+        {
+            rightPortrait.sprite = portrait.sprite;
+            setPortraitActive(rightPortrait, true);
+            setPortraitActive(optionRightPortrait, true);
+        }
+        else
+        {
+            leftPortrait.sprite = portrait.sprite;
+            setPortraitActive(leftPortrait, true);
+            setPortraitActive(optionLeftPortrait, true);
+        }
     }
 }

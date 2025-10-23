@@ -5,6 +5,7 @@ using System.Linq;
 
 public class Solitaire : MonoBehaviour
 {
+    public GameObject startScreen;
     // attached to solitaire game object (like game manager)
 
     public Sprite[] cardFaces;
@@ -41,13 +42,12 @@ public class Solitaire : MonoBehaviour
         GameManager.instance.hasPlayedSolitaire = true;
         //list of all cards in bottoms
         bottoms = new List<string>[] { bottom0, bottom1, bottom2, bottom3, bottom4, bottom5, bottom6 };
-        PlayCards();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayButton()
     {
-        
+        startScreen.SetActive(false);
+        PlayCards();
     }
 
     public void PlayCards()

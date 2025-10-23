@@ -53,8 +53,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         this.quantity += quantity;
         if (this.quantity >= maxNumOfItems)
         {
-            quantityText.text = quantity.ToString();
-            quantityText.enabled = true;
+            //quantityText.text = quantity.ToString();
+            //quantityText.enabled = true;
             isFull = true;
 
             //return leftovers
@@ -64,8 +64,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         }
 
         //update quantity text
-        quantityText.text = this.quantity.ToString();
-        quantityText.enabled = true;
+        //quantityText.text = this.quantity.ToString();
+        //quantityText.enabled = true;
 
         return 0;
     }

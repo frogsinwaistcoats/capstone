@@ -4,6 +4,7 @@ using UnityEngine;
 public class LeafSlot : MonoBehaviour
 {
     public bool isFilled = true;
+    public bool isDone = false;
 
     LeafHolder leafHolder;
 
@@ -31,6 +32,4 @@ public class LeafSlot : MonoBehaviour
             leafHolder.RemoveLeaf();
         }
     }
-
-    
 }

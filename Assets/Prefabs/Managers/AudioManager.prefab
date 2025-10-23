@@ -71,6 +71,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ItemPlaced
     clip: {fileID: 8300000, guid: 216e193b3353e5e4490d17e91e5096ef, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: QuestComplete
+    clip: {fileID: 8300000, guid: 8de743484a025404fb6d9d16e3bfb598, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0

@@ -23,10 +23,7 @@ title: WhaeaNyrie_OutOfBounds
 Whaea Nyrie: Where do you think you're going?
 Ernest: I'm just exploring. 
 Whaea Nyrie: You are not allowed into the forest, remember?
-Ernest: ...
-Whaea Nyrie: If I catch you doing that again you'll be in serious trouble
+Ernest: I know.. sorry
+Whaea Nyrie: If I catch you doing that again you'll be in serious trouble. 
 <<set $caughtByTeacher = true>>
-<<if $day >= 2 && !$isDaytime>>
-    <<jump Ernest_SneakingPrompt>>
-<<endif>>
 ===

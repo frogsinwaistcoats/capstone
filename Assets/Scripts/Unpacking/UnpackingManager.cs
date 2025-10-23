@@ -16,6 +16,7 @@ public class UnpackingManager : MonoBehaviour
     public GameObject winScreen;
 
     public bool canStart;
+    public bool finished;
 
     private void Awake()
     {
@@ -24,7 +25,7 @@ public class UnpackingManager : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (canStart)
+        if (canStart && !finished)
         {
             StartCoroutine(OpenBag());
 
@@ -56,12 +57,14 @@ public class UnpackingManager : MonoBehaviour
 
         if (itemsPlaced == items.Length)
         {
-            OpenWinScreen();
+            finished = true;
+            StartCoroutine(OpenWinScreen());
         }
     }
 
-    public void OpenWinScreen()
+    public IEnumerator OpenWinScreen()
     {
+        yield return new WaitForSeconds(0.5f);
         winScreen.SetActive(true);
     }
 

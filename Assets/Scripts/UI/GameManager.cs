@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     private Vector3 lastPlayerPos;
     [SerializeField] private string previousScene;
 
+    public Vector3 forestPlayerPos;
+
     [Header("Day/Night Settings")]
     public bool isDaytime = true;
     public Material daySkybox;
@@ -72,18 +74,20 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void LoadCampScene()
+    public void LoadCampScene(System.Action onLoaded = null)
     {
         Debug.Log("Loading Camp Scene");
         previousScene = SceneManager.GetActiveScene().name;
-        StartCoroutine(LoadSceneAndRun());
+        StartCoroutine(LoadSceneAndRun(onLoaded));
     }
 
-    private IEnumerator LoadSceneAndRun()
+    private IEnumerator LoadSceneAndRun(System.Action onLoaded)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("CampScene");
         while (!asyncLoad.isDone)
             yield return null;
+
+        onLoaded?.Invoke();
 
         if (previousScene == "Solitaire")
         {
@@ -94,9 +98,9 @@ public class GameManager : MonoBehaviour
         {
             SetToNight();
             LoadYarnVariables.instance.SetYarnVariable("$campfireStoryRead", true);
-            MainDialogueManager.instance.ErnestThoughts();
+            MainDialogueManager.instance.ErnestDayOne();
         }
-        if (previousScene == "Unpacking")
+        else if (previousScene == "Unpacking")
         {
             PlayerMovement.instance.transform.position = lastPlayerPos;
             PlayerMovement.instance.canMove = true;
@@ -105,7 +109,9 @@ public class GameManager : MonoBehaviour
 
     public void LoadSolitaire()
     {
-        hasPlayedSolitaire = true;
+        Debug.Log("playing solitaire");
+        if (!hasPlayedSolitaire)
+            hasPlayedSolitaire = true;
         LoadYarnVariables.instance.SetYarnVariable("$playSolitaire", false);
         previousScene = SceneManager.GetActiveScene().name;
         lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
@@ -134,6 +140,19 @@ public class GameManager : MonoBehaviour
         previousScene = SceneManager.GetActiveScene().name;
         lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
         SceneManager.LoadScene("Sneaking");
+    }
+
+    public void GoToForestScene()
+    {
+        LoadCampScene(() =>
+        {
+            PlayerMovement.instance.transform.position = forestPlayerPos;
+
+            if (DayManager.instance.dayCount == 2)
+            {
+                MainDialogueManager.instance.FirstMeetingDialogue();
+            }
+        });
     }
 
     // ------- Day/Night -------

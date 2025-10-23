@@ -9,7 +9,6 @@ public class MainDialogueManager : MonoBehaviour
     public static MainDialogueManager instance;
 
     public PlayerMovement playerMovement;
-    DayManager dayManager;
 
     private InMemoryVariableStorage variableStorage;
 
@@ -23,23 +22,9 @@ public class MainDialogueManager : MonoBehaviour
     void Start()
     {
         FindAnyObjectByType<DialogueRunner>().onDialogueComplete.AddListener(EndConversation);
-        dayManager = FindAnyObjectByType<DayManager>();
 
-        if (dayManager.dayCount == 1 && !LoadYarnVariables.instance.GetBool("$hasDoneIntro"))
+        if (DayManager.instance.dayCount == 1 && !LoadYarnVariables.instance.GetBool("$hasDoneIntro"))
             StartConversation("MrWilson_Intro");
-    }
-
-    private void Update()
-    {
-        /*
-        variableStorage = GameObject.FindAnyObjectByType<InMemoryVariableStorage>();
-        bool playRhythm;
-        variableStorage.TryGetValue("$playRhythm", out playRhythm);
-        if (playRhythm)
-        {
-            GameManager.instance.LoadRhythm();
-        }
-        */
     }
 
     private void StartConversation(string dialogueNode)
@@ -56,7 +41,7 @@ public class MainDialogueManager : MonoBehaviour
         {
             isCurrentConversation = false;
             Debug.Log($"Ended conversation with {name}.");
-            playerMovement.SetMovement(true);
+            FindAnyObjectByType<PlayerMovement>().SetMovement(true);
 
             CampfireInteractable.instance.canInteract = true;
             TentInteractable.instance.canInteract = true;
@@ -69,7 +54,7 @@ public class MainDialogueManager : MonoBehaviour
         StartConversation("Campfire_Story");
     }
 
-    public void ErnestThoughts()
+    public void ErnestDayOne()
     {
         StartConversation("ErnestThoughts");
     }
@@ -82,6 +67,11 @@ public class MainDialogueManager : MonoBehaviour
     public void SneakingOutDialogue()
     {
         StartConversation("Ernest_SneakingOut");
+    }
+
+    public void FirstMeetingDialogue()
+    {
+        StartConversation("FirstMeeting");
     }
 }
 

@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +21,7 @@ public class Item : MonoBehaviour
 
     public GameObject photograph;
     public Image photoFlower;
+    public TextMeshProUGUI photoText;
 
     public InventoryManager inventoryManager;
     private bool playerFound = false;
@@ -67,11 +69,14 @@ public class Item : MonoBehaviour
 
     public IEnumerator ShowPhoto()
     {
+        PlayerMovement.instance.canMove = false;
         Debug.Log("Show photo");
         photograph.SetActive(true);
         photoFlower.sprite = itemDescriptionSprite;
-        yield return new WaitForSeconds(2);
+        photoText.text = itemName;
+        yield return new WaitForSeconds(1.5f);
         photograph.SetActive(false);
+        PlayerMovement.instance.canMove = true;
     }
 
 

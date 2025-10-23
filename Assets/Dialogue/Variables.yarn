@@ -1,5 +1,6 @@
 ﻿title: Variables
 ---
+
 <<declare $day = 1>>
 <<declare $isDaytime = true>>
 

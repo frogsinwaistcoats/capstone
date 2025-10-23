@@ -5,31 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class SolitaireUIButtons : MonoBehaviour
 {
-    
-    public GameObject highScorePanel;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject instructionScreen;
+    public GameObject winScreen;
 
     public void PlayAgain()
     {
-        highScorePanel.SetActive(false);
+        winScreen.SetActive(false);
         ResetScene();
     }
 
-    
+    public void ShowInstructions()
+    {
+        instructionScreen.SetActive(true);
+    }
+
+    public void HideInstructions()
+    {
+        instructionScreen.SetActive(false);
+    }
+
     public void ResetScene()
     {
-
         // find all the cards and remove them
         SolitaireUpdateSprite[] cards = FindObjectsByType<SolitaireUpdateSprite>(FindObjectsSortMode.None);
         foreach (SolitaireUpdateSprite card in cards)

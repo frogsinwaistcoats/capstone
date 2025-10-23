@@ -13,15 +13,9 @@ public class TentInteractable : MonoBehaviour
     public DayTransition dayTransition;
     public bool canInteract = true;
 
-    CampManager gameManager;
-    DayManager dayManager;
-
     private void Start()
     {
         instance = this;
-
-        gameManager = FindAnyObjectByType<CampManager>();
-        dayManager = FindAnyObjectByType<DayManager>();
     }
 
 
@@ -60,7 +54,7 @@ public class TentInteractable : MonoBehaviour
                         dayTransition.gameObject.SetActive(true);
                         dayTransition.PlayTransition();
 
-                        dayManager.StartNewDay(2);
+                        DayManager.instance.StartNewDay(2);
                         GameManager.instance.SetToDay();
                         MainDialogueManager.instance.StartDayTwoDialogue();
                     }
@@ -82,7 +76,7 @@ public class TentInteractable : MonoBehaviour
                         dayTransition.gameObject.SetActive(true);
                         dayTransition.PlayTransition();
 
-                        dayManager.StartNewDay(3);
+                        DayManager.instance.StartNewDay(3);
                         GameManager.instance.SetToDay();
                         //MainDialogueManager.instance.StartDayTwoDialogue();
                     }

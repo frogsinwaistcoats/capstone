@@ -12,17 +12,11 @@ public class CampfireInteractable : MonoBehaviour
 
     public bool canInteract = true;
 
-    CampManager gameManager;
-    DayManager dayManager;
-
     public NightTransition nightTransition;
 
     private void Start()
     {
         instance = this;
-
-        gameManager = FindAnyObjectByType<CampManager>();
-        dayManager = FindAnyObjectByType<DayManager>();
     }
 
 
@@ -38,7 +32,7 @@ public class CampfireInteractable : MonoBehaviour
             {
                 prompt.SetActive(false);
 
-                if (dayManager.dayCount == 1)
+                if (DayManager.instance.dayCount == 1)
                 {
                     if ((LoadYarnVariables.instance.GetBool("$hasUnpacked")) && (LoadYarnVariables.instance.GetInt("$peopleMet") >= 9) && (!LoadYarnVariables.instance.GetBool("$campfireStoryRead")))
                     {
@@ -56,7 +50,7 @@ public class CampfireInteractable : MonoBehaviour
                         notReadyPrompt.SetActive(true);
                     }
                 }
-                else if (dayManager.dayCount == 2)
+                else if (DayManager.instance.dayCount == 2)
                 {
                     if (GameManager.instance.hasPlayedSolitaire)
                     {
@@ -67,7 +61,6 @@ public class CampfireInteractable : MonoBehaviour
 
                         MainDialogueManager.instance.SneakingOutDialogue();
                     }
-
                 }
             }
 

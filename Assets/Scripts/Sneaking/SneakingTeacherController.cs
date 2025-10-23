@@ -46,6 +46,7 @@ public class SneakingTeacherController : MonoBehaviour
             path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.FindNearestNode(player.transform.position));
             if (path.Count == 2)
             {
+                player.canMove = false;
                 Debug.Log("found player");
                 manager.Fail();
             }
@@ -72,6 +73,7 @@ public class SneakingTeacherController : MonoBehaviour
                 currentNode = targetNode;
                 if (path.Count - 1 == 2)
                 {
+                    player.canMove = false;
                     manager.Fail();
                 }
                 path.Clear();

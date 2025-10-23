@@ -4,31 +4,27 @@ tags:
 <<wait 0.1>>
 <<if $day == 1>>
     <<jump Ernest_Day1>>
-<<elseif $day == 2>>
-    <<jump Ernest_Day2>>
 <<endif>>
 ===
 
 title: Ernest_Day1
+tags: #solo
 ---
 Ernest: I wonder if that story was really true…
 ===
 
-title: Ernest_Day2
+title: Ernest_SneakingOut
+tags: #solo
 ---
 Ernest: I wonder if that myth was really true… 
 Ernest: Whether it's true or not, I need to see what's in that forest before we leave. 
-Ernest: Maybe if I find a way to sneak out… nobody will see me. 
-===
-
-title: Ernest_SneakingOut
----
 Ernest: I need to find a way to sneak out. The teachers will see me if I walk right up to them. 
 Ernest: I need to find somewhere that's out of their sight.
 <<set $triggerSneakOut = true>>
 ===
 
 title: Ernest_SneakingPrompt
+tags: #solo
 ---
 Ernest: I need to get out of the teacher's sight.
 ===

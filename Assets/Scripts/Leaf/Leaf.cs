@@ -52,6 +52,7 @@ public class Leaf : MonoBehaviour
             outline.SetActive(false);
             leafSlot.isFilled = false;
             startPos = transform.position;
+            LeafHolder.instance.placedLeaves.Add(this.gameObject);
         }
         else
         {

@@ -30,6 +30,7 @@ public class QuestsList : MonoBehaviour
     private List<GameObject> activeQuestTexts = new List<GameObject>();
 
     public GameObject questsTextPrefab;
+    public GameObject questsVisualHolder;
     DayManager dayManager;
 
     private Dictionary<string, TextMeshProUGUI> questTextByName = new Dictionary<string, TextMeshProUGUI>();
@@ -74,14 +75,14 @@ public class QuestsList : MonoBehaviour
             questTextByName.Clear();
         }
 
-        if (dayManager.dayCount == 1)
+        if (DayManager.instance.dayCount == 1)
         {
             foreach (Quest quest in questsDay1)
             {
                 AddQuestToList(quest);
             }
         }
-        else if (dayManager.dayCount == 2)
+        else if (DayManager.instance.dayCount == 2)
         {
             foreach (Quest quest in questsDay2)
             {
@@ -114,7 +115,7 @@ public class QuestsList : MonoBehaviour
         {
             if (GameManager.instance.hasPlayedSolitaire)
             {
-                StrikeThroughQuest("Play a game of Solitaire");
+                StrikeThroughQuest("Play Solitaire");
             }
             if (LoadYarnVariables.instance.GetBool("$triggerSneakOut"))
             {
@@ -128,7 +129,7 @@ public class QuestsList : MonoBehaviour
 
     private void AddQuestToList(Quest quest)
     {
-        GameObject questObj = Instantiate(questsTextPrefab, transform);
+        GameObject questObj = Instantiate(questsTextPrefab, questsVisualHolder.transform);
         activeQuestTexts.Add(questObj);
         TextMeshProUGUI questTMP = questObj.GetComponent<TextMeshProUGUI>();
         questTMP.text = "-> " + quest.questDescription;
@@ -142,6 +143,7 @@ public class QuestsList : MonoBehaviour
         {
             if (!questTMP.text.Contains("<s>"))
             {
+                AudioManager.instance.Play("QuestComplete");
                 questTMP.text = "<s>" + questTMP.text + "</s>";
                 questTMP.color = new Color(questTMP.color.r, questTMP.color.g, questTMP.color.b, 0.5f);
             }

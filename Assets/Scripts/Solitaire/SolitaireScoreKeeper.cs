@@ -5,13 +5,8 @@ using UnityEngine;
 public class SolitaireScoreKeeper : MonoBehaviour
 {
     public SolitaireSelectable[] topStacks;
-    public GameObject highScorePanel;
+    public GameObject winScreen;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        highScorePanel.SetActive(false);
-    }
 
     // Update is called once per frame
     void Update()
@@ -41,7 +36,7 @@ public class SolitaireScoreKeeper : MonoBehaviour
 
     void Win()
     {
-        highScorePanel.SetActive(true);
+        winScreen.SetActive(true);
         print("You have won!");
     }
 }
