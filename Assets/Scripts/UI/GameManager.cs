@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Yarn;
 using Yarn.Unity;
+using static QuestsList;
 
 public class GameManager : MonoBehaviour
 {
@@ -121,7 +122,7 @@ public class GameManager : MonoBehaviour
             }
             else if (DayManager.instance.dayCount == 3)
             {
-                SetToNight(true);
+                SetToNight(true);                
                 MainDialogueManager.instance.DayThreeSneakingPrompt();
             }
            
@@ -202,6 +203,7 @@ public class GameManager : MonoBehaviour
     public void ReturnToCampFromForest()
     {
         PlayerMovement.instance.GoToCampPos();
+        SetToNight(false);
     }
 
     // ------- Day/Night -------
@@ -248,6 +250,8 @@ public class GameManager : MonoBehaviour
 
         AudioManager.instance.StopDayAudio();
         AudioManager.instance.PlayNightAudio();
+
+        
     }
 
     // ------- Sleep Conditions -------
@@ -267,8 +271,13 @@ public class GameManager : MonoBehaviour
         }
         else if (dayCount == 2)
         {
-            isDaytime = false;
+            
             bool hasMetAlex = LoadYarnVariables.instance.GetBool("$firstMeetingDone");
+            return hasMetAlex && !isDaytime;
+        }
+        else if (dayCount == 3)
+        {
+            return !isDaytime;
         }
 
             // add other days here

@@ -32,10 +32,12 @@ public class LoadYarnVariables : MonoBehaviour
     bool hasDoneIntro;
     bool campfireStoryRead;
 
+    bool campfireDay2;
     bool caughtByTeacher;
     bool triggerSneakOut;
     bool firstMeetingDone;
 
+    bool campfireDay3;
     bool hasFished;
     bool hasCooked;
 
@@ -131,10 +133,12 @@ public class LoadYarnVariables : MonoBehaviour
         vs.SetValue("$caughtByTeacher", caughtByTeacher);
         vs.SetValue("$triggerSneakOut", triggerSneakOut);
         vs.SetValue("$firstMeetingDone", firstMeetingDone);
+        vs.SetValue("$campfireDay2", campfireDay2);
 
         // day 3 progress
         vs.SetValue("$hasFished", hasFished);
         vs.SetValue("$hasCooked", hasCooked);
+        vs.SetValue("$campfireDay3", campfireDay3);
     }
 
     // Yarn to C#
@@ -202,9 +206,11 @@ public class LoadYarnVariables : MonoBehaviour
         vs.TryGetValue("$caughtByTeacher", out caughtByTeacher);
         vs.TryGetValue("$triggerSneakOut", out triggerSneakOut);
         vs.TryGetValue("$firstMeetingDone", out firstMeetingDone);
+        vs.TryGetValue("$campfireDay2", out campfireDay2);
 
         vs.TryGetValue("$hasFished", out hasFished);
         vs.TryGetValue("$hasCooked", out hasCooked);
+        vs.TryGetValue("$campfireDay3", out campfireDay3);
     }
 
     // called from other scripts to set variables
@@ -237,9 +243,11 @@ public class LoadYarnVariables : MonoBehaviour
             case "$caughtByTeacher": caughtByTeacher = (bool)value; break;
             case "$triggerSneakOut": triggerSneakOut = (bool)value; break;
             case "$firstMeetingDone": firstMeetingDone = (bool)value; break;
+            case "$campfireDay2": campfireDay2 = (bool)value; break;
 
             case "$hasFished": hasFished = (bool)value; break;
             case "$hasCooked": hasCooked = (bool)value; break;
+            case "$campfireDay3": campfireDay3 = (bool)value; break;
 
             default:
                 Debug.LogWarning("Variable name not recognized: " + variableName);
@@ -292,9 +300,11 @@ public class LoadYarnVariables : MonoBehaviour
             case "$caughtByTeacher": return caughtByTeacher;
             case "$triggerSneakOut": return triggerSneakOut;
             case "$firstMeetingDone": return firstMeetingDone;
+            case "$campfireDay2": return campfireDay2;
 
             case "$hasFished": return hasFished;
             case "$hasCooked": return hasCooked;
+            case "$campfireDay3": return campfireDay3;
 
             default:
                 Debug.LogWarning("Variable name not recognized: " + variableName);

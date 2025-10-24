@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using static QuestsList;
 
 public class CampfireInteractable : MonoBehaviour
 {
@@ -11,16 +12,6 @@ public class CampfireInteractable : MonoBehaviour
     [SerializeField] private GameObject notReadyPrompt;
 
     public bool canInteract = true;
-
-    public bool dayOneInteract = false;
-    public bool dayTwoInteract = false;
-    public bool dayThreeInteract = false;
-
-    public bool hasInteractedOne = false;
-    public bool hasInteractedTwo = false;
-    public bool hasInteractedThree = false;
-
-
 
     private void Start()
     {
@@ -44,9 +35,7 @@ public class CampfireInteractable : MonoBehaviour
                 {
                     if ((LoadYarnVariables.instance.GetBool("$hasUnpacked")) && (LoadYarnVariables.instance.GetInt("$peopleMet") >= 9) && (!LoadYarnVariables.instance.GetBool("$campfireStoryRead")))
                     {
-                        hasInteractedOne = true;
                         canInteract = false;
-                        dayOneInteract = true;
                         GameManager.instance.SetToNight(true);
                         
                         MainDialogueManager.instance.StartCampfireDialogue();
@@ -58,10 +47,9 @@ public class CampfireInteractable : MonoBehaviour
                 }
                 else if (DayManager.instance.dayCount == 2)
                 {
-                    if (GameManager.instance.hasPlayedSolitaire && !dayTwoInteract)
+                    if (GameManager.instance.hasPlayedSolitaire)
                     {
-                        hasInteractedTwo = true;
-                        dayTwoInteract = true;
+                        LoadYarnVariables.instance.SetYarnVariable("$campfireDay2", true);
                         canInteract = false;
                         GameManager.instance.LoadRhythm();
                     }
@@ -72,15 +60,11 @@ public class CampfireInteractable : MonoBehaviour
                 }
                 else if (DayManager.instance.dayCount == 3)
                 {
-                    if (LoadYarnVariables.instance.GetBool("hasFished") && LoadYarnVariables.instance.GetBool("hasCooked") && !dayThreeInteract)
+                    if (LoadYarnVariables.instance.GetBool("hasFished") && LoadYarnVariables.instance.GetBool("hasCooked"))
                     {
-                        hasInteractedThree = true;
-                        dayThreeInteract = true;
+                        LoadYarnVariables.instance.SetYarnVariable("$campfireDay2", true);
                         canInteract = false;
-
                         GameManager.instance.LoadRhythm();
-
-                        // go see alex MainDialogueManager.instance.
                     }
                 }
             }
@@ -91,10 +75,7 @@ public class CampfireInteractable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (GameManager.instance.isDaytime == false)
-        {
-            return;
-        }
+        
         playerFound = true;
         prompt.SetActive(true);
 

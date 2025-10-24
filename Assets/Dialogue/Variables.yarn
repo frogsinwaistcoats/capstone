@@ -28,8 +28,10 @@
 <<declare $caughtByTeacher = false>>
 <<declare $triggerSneakOut = false>>
 <<declare $firstMeetingDone = false>>
+<<declare $campfireDay2 = false>>
 
 <<declare $hasFished = false>>
 <<declare $hasCooked = false>>
+<<declare $campfireDay3 = false>>
 
 ===

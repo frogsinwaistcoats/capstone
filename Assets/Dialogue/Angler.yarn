@@ -34,9 +34,9 @@ Angler: Hello Ernest, I heard you were on lunch duty. Lucky for you, I saw some 
 Angler: Have you ever used a fishing rod before?
     -> Ernest: Yes
     -> Ernest: No
-Angler: You should see if you can catch any.
-<<set $playFishing = true>>
+Angler: You should see if you can catch any.   
 <<if $hasFished == false>>
     <<set $hasFished = true>>
 <<endif>>
+<<set $playFishing = true>>
 ===

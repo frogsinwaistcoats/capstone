@@ -8,6 +8,7 @@ public class Fish : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    public Vector3 startPos;
     public Transform finalTargetPos;
 
     public float duration;
@@ -20,16 +21,29 @@ public class Fish : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
+    private void Start()
+    {
+        startPos = transform.position;
+    }
+
     private void Update()
     {
         if(movesLeft <= 0)
         {
-            StartCoroutine(FishingManager.instance.EndGame());
+            movesLeft = 6;
+            StartCoroutine(FishingManager.instance.WinGame());
         }
         if (movesLeft >= 7)
         {
+            movesLeft = 6;
+            
             StartCoroutine(FishingManager.instance.FailGame());
         }
+    }
+
+    public void ResetBobber()
+    {
+        transform.position = startPos;
     }
 
     public void MoveForward()

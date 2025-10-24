@@ -21,6 +21,7 @@ Ernest: Whether it's true or not, I need to see what's in that forest before we 
 Ernest: I need to find a way to sneak out. The teachers will see me if I walk right up to them. 
 Ernest: I need to find somewhere that's out of their sight.
 <<set $triggerSneakOut = true>>
+<<set $campfireDay2 = true>>
 ===
 
 title: Ernest_SneakingPrompt
@@ -33,6 +34,7 @@ title: Ernest_Day3Sneaking
 tags: #solo
 ---
 Ernest: I need to go see Alex again.
+<<set $campfireDay3 = true>>
 ===
 
 

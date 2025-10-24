@@ -2574,12 +2574,6 @@ MonoBehaviour:
   prompt: {fileID: 1441338205}
   notReadyPrompt: {fileID: 2016293861}
   canInteract: 1
-  dayOneInteract: 0
-  dayTwoInteract: 0
-  dayThreeInteract: 0
-  hasInteractedOne: 0
-  hasInteractedTwo: 0
-  hasInteractedThree: 0
 --- !u!1001 &120509736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26905,7 +26899,7 @@ Transform:
   m_GameObject: {fileID: 1277767164}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1183.597, y: -593.54, z: -8.514}
+  m_LocalPosition: {x: -1183.597, y: -593.699, z: -8.514}
   m_LocalScale: {x: 0.2804032, y: 0.2804032, z: 0.2804032}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -36847,8 +36841,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -192, y: -94}
-  m_SizeDelta: {x: 246.1, y: 50}
+  m_AnchoredPosition: {x: -167.3, y: -94}
+  m_SizeDelta: {x: 203.8, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1795482023
 MonoBehaviour:
@@ -36870,7 +36864,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Monday
+  m_text: Wednesday
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b91b5997d4b68d04eb429b92d6e33050, type: 2}
   m_sharedMaterial: {fileID: -4696128626226266249, guid: b91b5997d4b68d04eb429b92d6e33050, type: 2}
@@ -36897,14 +36891,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -43635,6 +43629,8 @@ MonoBehaviour:
   questsDay7: []
   questsTextPrefab: {fileID: 2622580678982694682, guid: c3e4c3b2393ea86408b9fee1fe52e532, type: 3}
   questsVisualHolder: {fileID: 1089656462}
+  addedSneakOutQuestDay2: 0
+  addedSneakOutQuestDay3: 0
 --- !u!1001 &2132594520
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -26,12 +26,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rhythm.unity
     guid: e232cb136824e844a84f91b52f36a590
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Cooking.unity
     guid: 7e8c8ce3505b64b42a35de83c10f2ecf
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Leaf.unity
     guid: 966da3da80829cc4090c28d16c949181
+  - enabled: 1
+    path: Assets/Scenes/Fishing.unity
+    guid: 65cffba02e1eedf48b93340b5266767b
+  - enabled: 1
+    path: Assets/Scenes/Spotlight.unity
+    guid: a77380ad51b55ba4d931b3323fc2b3b7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class CookingFood : MonoBehaviour
 {
-    
     public GameObject tile;
     public Transform[] raycastTransforms;
     //public Collider2D objCollider;
@@ -136,6 +135,7 @@ public class CookingFood : MonoBehaviour
         else
         {
             isOnBoard = true;
+            FindFirstObjectByType<CookingManager>().CheckForWin();
         }
     }
 

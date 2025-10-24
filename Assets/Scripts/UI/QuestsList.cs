@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class QuestsList : MonoBehaviour
 {
+    public static QuestsList instance;
 
     [Header("Quests - Day 1")]
     [SerializeField] private List<Quest> questsDay1;
@@ -33,6 +34,9 @@ public class QuestsList : MonoBehaviour
     public GameObject questsVisualHolder;
     DayManager dayManager;
 
+    [SerializeField] private bool addedSneakOutQuestDay2 = false;
+    [SerializeField] private bool addedSneakOutQuestDay3 = false;
+
     private Dictionary<string, TextMeshProUGUI> questTextByName = new Dictionary<string, TextMeshProUGUI>();
 
     [System.Serializable]
@@ -43,6 +47,10 @@ public class QuestsList : MonoBehaviour
         public string questDescription;
     }
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -121,12 +129,25 @@ public class QuestsList : MonoBehaviour
             {
                 
             }
-            if (CampfireInteractable.instance.hasInteractedTwo)
+            if (LoadYarnVariables.instance.GetBool("$campfireDay2"))
             {
                 StrikeThroughQuest("Campfire_Day2");
-                AddQuestToList(new Quest { questName = "Sneak out", questDescription = "Sneak out of camp at night" });
+
+                if (!addedSneakOutQuestDay2)
+                {
+                    Quest sneak = (new Quest
+                    {
+                        questName = "Sneak out",
+                        questDescription = "Sneak out of camp at night"
+                    });
+                    questsDay2.Add(sneak);
+                    AddQuestToList(sneak);
+                    addedSneakOutQuestDay2 = true;
+                    
+                }
                 CampBorder.instance.EnableTriggerCollider();
             }
+
         }
         else if (dayManager.dayCount == 3)
         {
@@ -134,14 +155,24 @@ public class QuestsList : MonoBehaviour
             {
                 StrikeThroughQuest("Fishing");
             }
-            if (LoadYarnVariables.instance.GetBool("hasCooked"))
+            if (LoadYarnVariables.instance.GetBool("$hasCooked"))
             {
                 StrikeThroughQuest("Cooking");
             }
-            if (CampfireInteractable.instance.hasInteractedThree)
+            if (LoadYarnVariables.instance.GetBool("$campfireDay3"))
             {
                 StrikeThroughQuest("Campfire_Day3");
-                AddQuestToList(new Quest { questName = "Sneak out", questDescription = "Sneak out of camp at night" });
+                if (!addedSneakOutQuestDay3)
+                {
+                    Quest sneak = (new Quest
+                    {
+                        questName = "Sneak out",
+                        questDescription = "Sneak out of camp at night"
+                    });
+                    questsDay3.Add(sneak);
+                    AddQuestToList(sneak);
+                    addedSneakOutQuestDay3 = true;
+                }
                 CampBorder.instance.EnableTriggerCollider();
             }
         }
@@ -159,7 +190,7 @@ public class QuestsList : MonoBehaviour
         questTextByName[quest.questName] = questTMP;
     }
 
-    private void StrikeThroughQuest(string questName)
+    public void StrikeThroughQuest(string questName)
     {
         if (questTextByName.TryGetValue(questName, out TextMeshProUGUI questTMP))
         {
