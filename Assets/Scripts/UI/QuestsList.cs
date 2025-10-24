@@ -119,6 +119,28 @@ public class QuestsList : MonoBehaviour
             }
             if (LoadYarnVariables.instance.GetBool("$triggerSneakOut"))
             {
+                
+            }
+            if (CampfireInteractable.instance.hasInteractedTwo)
+            {
+                StrikeThroughQuest("Campfire_Day2");
+                AddQuestToList(new Quest { questName = "Sneak out", questDescription = "Sneak out of camp at night" });
+                CampBorder.instance.EnableTriggerCollider();
+            }
+        }
+        else if (dayManager.dayCount == 3)
+        {
+            if (LoadYarnVariables.instance.GetBool("$hasFished"))
+            {
+                StrikeThroughQuest("Fishing");
+            }
+            if (LoadYarnVariables.instance.GetBool("hasCooked"))
+            {
+                StrikeThroughQuest("Cooking");
+            }
+            if (CampfireInteractable.instance.hasInteractedThree)
+            {
+                StrikeThroughQuest("Campfire_Day3");
                 AddQuestToList(new Quest { questName = "Sneak out", questDescription = "Sneak out of camp at night" });
                 CampBorder.instance.EnableTriggerCollider();
             }
@@ -127,7 +149,7 @@ public class QuestsList : MonoBehaviour
         
     }
 
-    private void AddQuestToList(Quest quest)
+    public void AddQuestToList(Quest quest)
     {
         GameObject questObj = Instantiate(questsTextPrefab, questsVisualHolder.transform);
         activeQuestTexts.Add(questObj);

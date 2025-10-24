@@ -21,3 +21,18 @@ title: Pepper_Day2
 ---
 Pepper: I saw a wolf on the peaks!... just kidding. 
 ===
+
+title: Pepper_Day3
+---
+<<if $hasFished == false>>
+    Pepper: You need to catch a fish before you can cook!
+<<elseif $hasFished == true>>
+    Pepper: I'm sooo hungry! I hope you caught lots of fish, but there's plenty of other ingredients for you to use if you didn't. 
+        -> Ernest: I'm ready to cook!
+            <<set $playCooking = true>>
+            <<if $hasCooked == false>>
+                <<set $hasCooked = true>>
+            <<endif>>
+        -> Ernest: I'm not ready yet.
+<<endif>>
+===

@@ -50,7 +50,7 @@ public class MainDialogueManager : MonoBehaviour
 
     public void StartCampfireDialogue()
     {
-        GameManager.instance.SetToNight();
+        //GameManager.instance.SetToNight(true);
         StartConversation("Campfire_Story");
     }
 
@@ -72,6 +72,16 @@ public class MainDialogueManager : MonoBehaviour
     public void FirstMeetingDialogue()
     {
         StartConversation("FirstMeeting");
+    }
+
+    public void StartDayThreeDialogue()
+    {
+        StartConversation("MrWilson_Day3Prep");
+    }
+
+    public void DayThreeSneakingPrompt()
+    {
+        StartConversation("Ernest_Day3Sneaking");
     }
 }
 

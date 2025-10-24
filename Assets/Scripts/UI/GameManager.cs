@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     public bool hasPlayedSolitaire = false;
 
+    public NightTransition nightTransitionPrefab;
+
     private void Awake()
     {
         if (instance == null)
@@ -105,17 +107,22 @@ public class GameManager : MonoBehaviour
         }
         else if (previousScene == "Rhythm")
         {
-            SetToNight();
+            
             if (DayManager.instance.dayCount == 1)
             {
+                SetToNight(false);
                 LoadYarnVariables.instance.SetYarnVariable("$campfireStoryRead", true);
                 MainDialogueManager.instance.ErnestDayOne();
             }
             else if (DayManager.instance.dayCount == 2)
             {
-                FindFirstObjectByType<NightTransition>().gameObject.SetActive(true);
-                FindFirstObjectByType<NightTransition>().PlayTransition();
+                SetToNight(true);
                 MainDialogueManager.instance.SneakingOutDialogue();
+            }
+            else if (DayManager.instance.dayCount == 3)
+            {
+                SetToNight(true);
+                MainDialogueManager.instance.DayThreeSneakingPrompt();
             }
            
         }
@@ -163,6 +170,22 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Sneaking");
     }
 
+    public void LoadFishing()
+    {
+        previousScene = SceneManager.GetActiveScene().name;
+        lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
+
+        SceneManager.LoadScene("Fishing");
+    }
+
+    public void LoadCooking()
+    {
+        previousScene = SceneManager.GetActiveScene().name;
+        lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
+
+        SceneManager.LoadScene("Cooking");
+    }
+
     public void GoToForestScene()
     {
         LoadCampScene(() =>
@@ -198,14 +221,23 @@ public class GameManager : MonoBehaviour
 
         AudioManager.instance.StopNightAudio();
         AudioManager.instance.PlayDayAudio();
+        CampBorder.instance.EnableSolidCollider();
     }
 
-    public void SetToNight()
+    public void SetToNight(bool playTransition)
     {
         // set to night
         Debug.Log("Setting to night");
         isDaytime = false;
         LoadYarnVariables.instance.SetYarnVariable("$isDaytime", false);
+
+
+        if (playTransition == true)
+        {
+            GameObject canvas = GameObject.Find("---- UI ----/TransitionCanvas");
+            NightTransition nightTransition = Instantiate(nightTransitionPrefab, canvas.transform);
+            nightTransitionPrefab.PlayTransition();
+        }
 
         RenderSettings.skybox = nightSkybox;
         DynamicGI.UpdateEnvironment();

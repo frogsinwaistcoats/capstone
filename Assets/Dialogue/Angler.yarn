@@ -5,6 +5,8 @@
     <<jump Angler_Day1>>
 <<elseif $day == 2>>
     <<jump Angler_Day2>>
+<<elseif $day == 3>>
+    <<jump Angler_Day3>>
 <<endif>>
 ===
 
@@ -24,4 +26,17 @@ Angler: What if there really is a wolf out there? And it comes to eat us all in 
     -> Ernest: That's impossible, wolves don't eat people 
     -> Ernest: It was just a myth
 Angler: I guess you're right. I'm worried over nothing. 
+===
+
+title: Angler_Day3
+---
+Angler: Hello Ernest, I heard you were on lunch duty. Lucky for you, I saw some fish swimming in the water earlier.  
+Angler: Have you ever used a fishing rod before?
+    -> Ernest: Yes
+    -> Ernest: No
+Angler: You should see if you can catch any.
+<<set $playFishing = true>>
+<<if $hasFished == false>>
+    <<set $hasFished = true>>
+<<endif>>
 ===

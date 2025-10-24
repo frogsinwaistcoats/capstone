@@ -35,9 +35,6 @@ public class RhythmManager : MonoBehaviour
 
     void Start()
     {
-        //AudioManager audioManager = FindFirstObjectByType<AudioManager>();
-        //audioManager.StopNightAudio();
-        //audioManager.StopDayAudio();
         canPlay = false;
 
         instance = this;
@@ -113,6 +110,7 @@ public class RhythmManager : MonoBehaviour
 
             if (!startPlaying)
             {
+                AudioManager.instance.StopAll();
                 startPlaying = true;
                 beatScroller.hasStarted = true;
 

@@ -14,6 +14,8 @@ public class LoadYarnVariables : MonoBehaviour
     bool isDaytime;
     bool playSolitaire;
     bool playRhythm;
+    bool playFishing;
+    bool playCooking;
 
     bool talkedToNyrie;
     bool talkedToTalia;
@@ -33,6 +35,9 @@ public class LoadYarnVariables : MonoBehaviour
     bool caughtByTeacher;
     bool triggerSneakOut;
     bool firstMeetingDone;
+
+    bool hasFished;
+    bool hasCooked;
 
 
     private void Awake()
@@ -102,6 +107,8 @@ public class LoadYarnVariables : MonoBehaviour
         vs.SetValue("$isDaytime", isDaytime);
         vs.SetValue("$playSolitaire", playSolitaire);
         vs.SetValue("$playRhythm", playRhythm);
+        vs.SetValue("$playFishing", playFishing);
+        vs.SetValue("$playCooking", playCooking);
 
         // people talked to on day 1
         vs.SetValue("$talkedToNyrie", talkedToNyrie);
@@ -124,6 +131,10 @@ public class LoadYarnVariables : MonoBehaviour
         vs.SetValue("$caughtByTeacher", caughtByTeacher);
         vs.SetValue("$triggerSneakOut", triggerSneakOut);
         vs.SetValue("$firstMeetingDone", firstMeetingDone);
+
+        // day 3 progress
+        vs.SetValue("$hasFished", hasFished);
+        vs.SetValue("$hasCooked", hasCooked);
     }
 
     // Yarn to C#
@@ -145,6 +156,28 @@ public class LoadYarnVariables : MonoBehaviour
             if (GameManager.instance != null)
             {
                 GameManager.instance.LoadRhythm();
+            }
+        }
+        vs.TryGetValue("$playFishing", out playFishing);
+        if (playFishing)
+        {
+            playFishing = false;
+            SetYarnVariable("$playFishing", false);
+
+            if (GameManager.instance != null)
+            {
+                GameManager.instance.LoadFishing();
+            }
+        }
+        vs.TryGetValue("$playCooking", out playCooking);
+        if (playCooking)
+        {
+            playCooking = false;
+            SetYarnVariable("$playCooking", false);
+
+            if (GameManager.instance != null)
+            {
+                GameManager.instance.LoadCooking();
             }
         }
 
@@ -169,6 +202,9 @@ public class LoadYarnVariables : MonoBehaviour
         vs.TryGetValue("$caughtByTeacher", out caughtByTeacher);
         vs.TryGetValue("$triggerSneakOut", out triggerSneakOut);
         vs.TryGetValue("$firstMeetingDone", out firstMeetingDone);
+
+        vs.TryGetValue("$hasFished", out hasFished);
+        vs.TryGetValue("$hasCooked", out hasCooked);
     }
 
     // called from other scripts to set variables
@@ -180,6 +216,8 @@ public class LoadYarnVariables : MonoBehaviour
             case "$isDaytime": isDaytime = (bool)value; break;
             case "$playSolitaire": playSolitaire = (bool)value; break;
             case "$playRhythm": playRhythm = (bool)value; break;
+            case "$playFishing": playFishing = (bool)value; break;
+            case "$playCooking": playCooking = (bool)value; break;
 
             case "$talkedToNyrie": talkedToNyrie = (bool)value; break;
             case "$talkedToTalia": talkedToTalia = (bool)value; break;
@@ -199,6 +237,9 @@ public class LoadYarnVariables : MonoBehaviour
             case "$caughtByTeacher": caughtByTeacher = (bool)value; break;
             case "$triggerSneakOut": triggerSneakOut = (bool)value; break;
             case "$firstMeetingDone": firstMeetingDone = (bool)value; break;
+
+            case "$hasFished": hasFished = (bool)value; break;
+            case "$hasCooked": hasCooked = (bool)value; break;
 
             default:
                 Debug.LogWarning("Variable name not recognized: " + variableName);
@@ -231,6 +272,8 @@ public class LoadYarnVariables : MonoBehaviour
             case "$isDaytime": return isDaytime;
             case "$playSolitaire": return playSolitaire;
             case "$playRhythm": return playRhythm;
+            case "$playFishing": return playFishing;
+            case "$playCooking": return playCooking;
 
             case "$talkedToNyrie": return talkedToNyrie;
             case "$talkedToTalia": return talkedToTalia;
@@ -249,6 +292,9 @@ public class LoadYarnVariables : MonoBehaviour
             case "$caughtByTeacher": return caughtByTeacher;
             case "$triggerSneakOut": return triggerSneakOut;
             case "$firstMeetingDone": return firstMeetingDone;
+
+            case "$hasFished": return hasFished;
+            case "$hasCooked": return hasCooked;
 
             default:
                 Debug.LogWarning("Variable name not recognized: " + variableName);

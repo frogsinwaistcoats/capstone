@@ -6,6 +6,8 @@
 
 <<declare $playSolitaire = false>>
 <<declare $playRhythm = false>>
+<<declare $playFishing = false>>
+<<declare $playCooking = false>>
 
 <<declare $hasUnpacked = false>>
 <<declare $hasDoneIntro = false>>
@@ -26,5 +28,8 @@
 <<declare $caughtByTeacher = false>>
 <<declare $triggerSneakOut = false>>
 <<declare $firstMeetingDone = false>>
+
+<<declare $hasFished = false>>
+<<declare $hasCooked = false>>
 
 ===
