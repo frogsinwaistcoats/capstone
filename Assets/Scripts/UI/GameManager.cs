@@ -132,6 +132,18 @@ public class GameManager : MonoBehaviour
             PlayerMovement.instance.transform.position = lastPlayerPos;
             PlayerMovement.instance.canMove = true;
         }
+        else if (previousScene == "Fishing")
+        {
+            PlayerMovement.instance.transform.position = lastPlayerPos;
+            PlayerMovement.instance.canMove = true;
+            LoadYarnVariables.instance.SetYarnVariable("$hasFished", true);
+        }
+        else if (previousScene == "Cooking")
+        {
+            PlayerMovement.instance.transform.position = lastPlayerPos;
+            PlayerMovement.instance.canMove = true;
+            LoadYarnVariables.instance.SetYarnVariable("$hasCooked", true);
+        }
     }
 
     public void LoadSolitaire()
@@ -187,6 +199,25 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Cooking");
     }
 
+    public void LoadLeaf()
+    {
+        previousScene = SceneManager.GetActiveScene().name;
+        lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
+
+        LoadYarnVariables.instance.SetYarnVariable("$hasDoneLeaf", true);
+
+        SceneManager.LoadScene("Leaf");
+
+    }
+
+    public void LoadSpotlight()
+    {
+        previousScene = SceneManager.GetActiveScene().name;
+        lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
+
+        SceneManager.LoadScene("Spotlight");
+    }
+
     public void GoToForestScene()
     {
         LoadCampScene(() =>
@@ -195,7 +226,22 @@ public class GameManager : MonoBehaviour
 
             if (DayManager.instance.dayCount == 2)
             {
+                SetToNight(false);
                 MainDialogueManager.instance.FirstMeetingDialogue();
+            }
+            if (DayManager.instance.dayCount == 3)
+            {
+                SetToNight(false);
+                if (previousScene != "Leaf")
+                {
+                    MainDialogueManager.instance.SecondMeetingDialogue();
+                }
+                else if (previousScene == "Leaf")
+                {
+                    MainDialogueManager.instance.AfterLeafDialogue();
+                }
+
+
             }
         });
     }
@@ -203,7 +249,6 @@ public class GameManager : MonoBehaviour
     public void ReturnToCampFromForest()
     {
         PlayerMovement.instance.GoToCampPos();
-        SetToNight(false);
     }
 
     // ------- Day/Night -------
@@ -277,7 +322,12 @@ public class GameManager : MonoBehaviour
         }
         else if (dayCount == 3)
         {
-            return !isDaytime;
+            bool hasDoneLeaf = LoadYarnVariables.instance.GetBool("$hasDoneLeaf");
+            return hasDoneLeaf && !isDaytime;
+        }
+        else if (dayCount == 4)
+        {
+
         }
 
             // add other days here

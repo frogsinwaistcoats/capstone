@@ -8,6 +8,8 @@
 <<declare $playRhythm = false>>
 <<declare $playFishing = false>>
 <<declare $playCooking = false>>
+<<declare $playLeaf = false>>
+<<declare $playSpotlight = false>>
 
 <<declare $hasUnpacked = false>>
 <<declare $hasDoneIntro = false>>
@@ -33,5 +35,10 @@
 <<declare $hasFished = false>>
 <<declare $hasCooked = false>>
 <<declare $campfireDay3 = false>>
+<<declare $hasDoneLeaf = false>>
+
+<<declare $canUseCamera = false>>
+<<declare $hasGotFlowers = false>>
+<<declare $campfireDay4 = false>>
 
 ===

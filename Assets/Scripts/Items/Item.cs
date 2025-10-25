@@ -45,17 +45,23 @@ public class Item : MonoBehaviour
 
     private void Update()
     {
+
         if (playerFound && Input.GetKeyDown(KeyCode.E) && !collected)
         {
             CollectItem();
             prompt.SetActive(false);
             StartCoroutine(ShowPhoto());
         }
+        if (LoadYarnVariables.instance.GetBool("$canUseCamera"))
+        {
+           
+        }
     }
 
     public void CollectItem()
     {
         collected = true;
+        
         int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription, itemDescriptionSprite);
         if (leftOverItems <= 0)
         {
@@ -71,6 +77,13 @@ public class Item : MonoBehaviour
     {
         PlayerMovement.instance.canMove = false;
         Debug.Log("Show photo");
+
+        if (InventoryManager.instance.CheckForAllFlowers() == true)
+        {
+            LoadYarnVariables.instance.SetYarnVariable("$hasGotFlowers", true);
+            Debug.Log("all flowers collected");
+        }
+
         photograph.SetActive(true);
         photoFlower.sprite = itemDescriptionSprite;
         photoText.text = itemName;
@@ -82,12 +95,16 @@ public class Item : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (!collected)
         {
             playerFound = true;
             prompt.SetActive(true);
         }
-        
+        if (LoadYarnVariables.instance.GetBool("$canUseCamera"))
+        {
+            
+        }
     }
 
     public void OnTriggerExit(Collider other)

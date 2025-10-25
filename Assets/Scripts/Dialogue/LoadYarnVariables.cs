@@ -16,6 +16,8 @@ public class LoadYarnVariables : MonoBehaviour
     bool playRhythm;
     bool playFishing;
     bool playCooking;
+    bool playLeaf;
+    bool playSpotlight;
 
     bool talkedToNyrie;
     bool talkedToTalia;
@@ -40,6 +42,12 @@ public class LoadYarnVariables : MonoBehaviour
     bool campfireDay3;
     bool hasFished;
     bool hasCooked;
+    bool hasDoneLeaf;
+
+    bool campfireDay4;
+    bool canUseCamera;
+    bool hasGotFlowers;
+
 
 
     private void Awake()
@@ -111,6 +119,8 @@ public class LoadYarnVariables : MonoBehaviour
         vs.SetValue("$playRhythm", playRhythm);
         vs.SetValue("$playFishing", playFishing);
         vs.SetValue("$playCooking", playCooking);
+        vs.SetValue("$playLeaf", playLeaf);
+        vs.SetValue("$playSpotlight", playSpotlight);
 
         // people talked to on day 1
         vs.SetValue("$talkedToNyrie", talkedToNyrie);
@@ -139,6 +149,12 @@ public class LoadYarnVariables : MonoBehaviour
         vs.SetValue("$hasFished", hasFished);
         vs.SetValue("$hasCooked", hasCooked);
         vs.SetValue("$campfireDay3", campfireDay3);
+        vs.SetValue("$hasDoneLeaf", hasDoneLeaf);
+
+        //day 4 progree
+        vs.SetValue("$canUseCamera", canUseCamera);
+        vs.SetValue("$hasGotFlowers", canUseCamera);
+        vs.SetValue("$campfireDay4", campfireDay4);
     }
 
     // Yarn to C#
@@ -184,6 +200,30 @@ public class LoadYarnVariables : MonoBehaviour
                 GameManager.instance.LoadCooking();
             }
         }
+        vs.TryGetValue("$playLeaf", out playLeaf);
+        if (playLeaf)
+        {
+            playLeaf = false;
+            SetYarnVariable("$playLeaf", false);
+            SetYarnVariable("$hasDoneLeaf", true);
+
+            if (GameManager.instance != null)
+            {
+                GameManager.instance.LoadLeaf();
+            }
+        }
+        vs.TryGetValue("$playSpotlight", out playSpotlight);
+        if (playSpotlight)
+        {
+            playSpotlight = false;
+            SetYarnVariable("$playSpotlight", false);
+
+            if (GameManager.instance != null)
+            {
+                GameManager.instance.LoadSpotlight();
+            }
+        }
+
 
         vs.TryGetValue("$talkedToNyrie", out talkedToNyrie);
         vs.TryGetValue("$talkedToTalia", out talkedToTalia);
@@ -211,6 +251,11 @@ public class LoadYarnVariables : MonoBehaviour
         vs.TryGetValue("$hasFished", out hasFished);
         vs.TryGetValue("$hasCooked", out hasCooked);
         vs.TryGetValue("$campfireDay3", out campfireDay3);
+        vs.TryGetValue("$hasDoneLeaf", out hasDoneLeaf);
+
+        vs.TryGetValue("$canUseCamera", out canUseCamera);
+        vs.TryGetValue("$hasGotFlowers", out hasGotFlowers);
+        vs.TryGetValue("$campfireDay4", out campfireDay4);
     }
 
     // called from other scripts to set variables
@@ -224,6 +269,8 @@ public class LoadYarnVariables : MonoBehaviour
             case "$playRhythm": playRhythm = (bool)value; break;
             case "$playFishing": playFishing = (bool)value; break;
             case "$playCooking": playCooking = (bool)value; break;
+            case "$playLeaf": playLeaf = (bool)value; break;
+            case "$playSpotlight": playSpotlight = (bool)value; break;
 
             case "$talkedToNyrie": talkedToNyrie = (bool)value; break;
             case "$talkedToTalia": talkedToTalia = (bool)value; break;
@@ -248,6 +295,11 @@ public class LoadYarnVariables : MonoBehaviour
             case "$hasFished": hasFished = (bool)value; break;
             case "$hasCooked": hasCooked = (bool)value; break;
             case "$campfireDay3": campfireDay3 = (bool)value; break;
+            case "$hasDoneLeaf": hasDoneLeaf = (bool)value; break;
+
+            case "$canUseCamera": canUseCamera = (bool)value; break;
+            case "$hasGotFlowers": hasGotFlowers = (bool)value; break;
+            case "$campfireDay4": campfireDay4 = (bool)value; break;
 
             default:
                 Debug.LogWarning("Variable name not recognized: " + variableName);
@@ -282,6 +334,8 @@ public class LoadYarnVariables : MonoBehaviour
             case "$playRhythm": return playRhythm;
             case "$playFishing": return playFishing;
             case "$playCooking": return playCooking;
+            case "$playLeaf": return playLeaf;
+            case "$playSpotlight": return playSpotlight;
 
             case "$talkedToNyrie": return talkedToNyrie;
             case "$talkedToTalia": return talkedToTalia;
@@ -305,6 +359,11 @@ public class LoadYarnVariables : MonoBehaviour
             case "$hasFished": return hasFished;
             case "$hasCooked": return hasCooked;
             case "$campfireDay3": return campfireDay3;
+            case "$hasDoneLeaf": return hasDoneLeaf;
+
+            case "$canUseCamera": return canUseCamera;
+            case "$hasGotFlowers": return hasGotFlowers;
+            case "$campfireDay4": return campfireDay4;
 
             default:
                 Debug.LogWarning("Variable name not recognized: " + variableName);

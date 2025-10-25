@@ -33,14 +33,16 @@ public class LeafHolder : MonoBehaviour
 
     private void StartLeaf()
     {
-        // ADD LATER    make sure the first group is selected for the first playthrough, then second group for the next playthrough, etc.
+        // Re-seed the random generator each time play starts
+        Random.InitState(System.Environment.TickCount);
 
-        int selectedGroup = Random.Range(0, leafGroup.Length - 1);
+        int selectedGroup = Random.Range(0, leafGroup.Length);
+        Debug.Log("Selected leaf group: " + selectedGroup);
 
         leaves.AddRange(leafGroup[selectedGroup]
-            .GetComponentsInChildren<Transform>(true) // gets all transforms (parent + children)
-            .Where(t => t != leafGroup[selectedGroup].transform) // keep only children
-            .Select(t => t.gameObject) // get the game object for each child
+            .GetComponentsInChildren<Transform>(true)
+            .Where(t => t != leafGroup[selectedGroup].transform)
+            .Select(t => t.gameObject)
         );
 
         leafGroupOutlines[selectedGroup].SetActive(true);
@@ -61,6 +63,11 @@ public class LeafHolder : MonoBehaviour
                 StartCoroutine(WaitAndShowWinScreen());
             }
                 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            StartCoroutine(WaitAndShowWinScreen());
         }
         
     }
@@ -89,6 +96,15 @@ public class LeafHolder : MonoBehaviour
 
     public void Finish()
     {
-        GameManager.instance.LoadCampScene();
+        GameManager.instance.GoToForestScene();
+    }
+
+    public void PlayAgain()
+    {
+        winScreen.SetActive(false);
+        leaves.Clear();
+        placedLeaves.Clear();
+
+        StartLeaf();
     }
 }

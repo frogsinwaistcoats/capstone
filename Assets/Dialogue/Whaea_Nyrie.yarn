@@ -27,3 +27,21 @@ Ernest: I know.. sorry
 Whaea Nyrie: If I catch you doing that again you'll be in serious trouble. 
 <<set $caughtByTeacher = true>>
 ===
+
+title: TeacherConfrontation
+---
+Whaea Nyrie: Good morning Ernest. Did you sleep well?
+Ernest: Yes, I did.
+Whaea Nyrie: You weren't woken up at all?
+Ernest: No...
+Whaea Nyrie: I heard some rustling in the grass. Almost like someone was up walking around.
+    -> Ernest: It wasn't me.
+        Ernest: It could've been the man from the campfire story.
+        Whaea Nyrie: You know that was just a myth. You can't fool me.
+        Ernest: I really didn't hear anything.
+    -> Ernest: I didn't hear anything.
+        Ernest: I was sleeping the entire night. I didn't hear anything.
+Whaea Nyrie: It must've been my imagination. Alright, I'm keeping a close eye on you. If you go into that forest, just know I will catch you.
+Whaea Nyrie: Mr Wilson is waiting for you, you better not keep him waiting.
+===
+

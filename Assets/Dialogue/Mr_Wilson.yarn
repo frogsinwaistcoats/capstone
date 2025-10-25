@@ -3,6 +3,12 @@
 <<wait 0.1>>
 <<if $day == 1>>
     <<jump MrWilson_Day1>>
+<<elseif $day == 4>>
+    <<if $hasGotFlowers == false>>
+        <<jump MrWilson_Day4>>
+    <<elseif $hasGotFlowers == true>>
+        <<jump MrWilson_Flowers>>
+    <<endif>>
 <<endif>>
 ===
 
@@ -31,4 +37,21 @@ title: MrWilson_Day3Prep
 Mr Wilson: Good morning Ernest, I hope you slept well.
 Mr Wilson: You're on lunch duty today. Head down to the lake to see what fish you can catch. 
 Mr Wilson: There's ingredients prepared up here to make sandwiches when youre back. 
+===
+
+title: MrWilson_Day4
+---
+<<set $canUseCamera = true>>
+Mr Wilson: Good morning Ernest, I have a new task for you this morning. The other students have already gotten a head start since you slept in, but I'll explain it to you now. 
+Mr Wilson: There's a few native flowers to be found around the camp, I don't know if you've spotted them while wandering around. 
+Mr Wilson: If you find them all, you can use your camera to photograph each of them! 
+Mr Wilson: Make sure you bring them back to me afterwards, I'll be questioning everyone about the names when we return to class. It's important to know the names of the native plants in our country. 
+===
+
+title: MrWilson_Flowers
+---
+Mr Wilson: Back so soon! Did you find them all? 
+    -> Ernest: I think so
+    -> Ernest: Yes I did. 
+Mr Wilson: These look wonderful, good job! I'm sure you'll ace the test, just as usual.
 ===

@@ -60,9 +60,9 @@ public class CampfireInteractable : MonoBehaviour
                 }
                 else if (DayManager.instance.dayCount == 3)
                 {
-                    if (LoadYarnVariables.instance.GetBool("hasFished") && LoadYarnVariables.instance.GetBool("hasCooked"))
+                    if (LoadYarnVariables.instance.GetBool("$hasFished") && LoadYarnVariables.instance.GetBool("$hasCooked") && GameManager.instance.isDaytime)
                     {
-                        LoadYarnVariables.instance.SetYarnVariable("$campfireDay2", true);
+                        LoadYarnVariables.instance.SetYarnVariable("$campfireDay3", true);
                         canInteract = false;
                         GameManager.instance.LoadRhythm();
                     }

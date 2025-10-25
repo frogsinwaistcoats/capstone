@@ -21,6 +21,14 @@ public class SneakingManager : MonoBehaviour
         teacher = FindFirstObjectByType<SneakingTeacherController>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Succeed();
+        }
+    }
+
     public void StartGame()
     {
         instructionScreen.SetActive(false);
@@ -49,6 +57,7 @@ public class SneakingManager : MonoBehaviour
         player.movePoint.position = playerStartPos.transform.position;
         teacher.path.Clear();
         teacher.currentNode = teacher.startNode;
+        player.canMove = true;
     }
 
     public void GoToForest()

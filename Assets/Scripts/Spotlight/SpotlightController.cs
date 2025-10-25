@@ -3,16 +3,19 @@ using UnityEngine.UI;
 
 public class SpotlightController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Cursor.visible = false;
-    }
-
     // Update is called once per frame
     void Update()
     {
-        MoveWithMouse();
+        if (SpotlightAlex.instance.canStart)
+        {
+            MoveWithMouse();
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.visible = true;
+        }
+        
     }
 
     private void MoveWithMouse()

@@ -5,6 +5,8 @@
     <<jump Pepper_Day1>>
 <<elseif $day == 2>>
     <<jump Pepper_Day2>>
+<<elseif $day == 3>>
+    <<jump Pepper_Day3>>
 <<endif>>
 ===
 

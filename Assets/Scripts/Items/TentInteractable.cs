@@ -100,7 +100,7 @@ public class TentInteractable : MonoBehaviour
 
                         DayManager.instance.StartNewDay(4);
                         GameManager.instance.SetToDay();
-                        //MainDialogueManager.instance.StartDayThreeDialogue();
+                        MainDialogueManager.instance.TeacherConfrontation();
                     }
                 }
             }

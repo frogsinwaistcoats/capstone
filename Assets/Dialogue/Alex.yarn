@@ -40,3 +40,34 @@ Ernest: And I'll bring you a sandwich.
 Alex: Ok
 <<set $firstMeetingDone = true>>
 ===
+
+title: SecondMeeting
+---
+Alex: Ernest!!
+Ernest: Ah! You scared me! 
+Alex: Shh, keep it down. 
+Ernest: You're the one who snuck up on me!
+    -> Ernest: What are you doing here? 
+    -> Ernest: How'd you get behind me? 
+Alex: I have something I want to show you! Follow me. 
+Ernest: What's this? 
+Alex: I've been making these. There's some really nice looking leaves and sticks around here. If you collect them, you can make these cool patterns. You should try it for yourself! 
+<<set $playLeaf = true>>
+===
+
+title: AfterLeaf
+---
+Alex: Hey, those look pretty good!
+Alex: This is also a good way to make our presence known to the forest. 
+Ernest: It's like graffiti
+Alex: But way better. More natural. 
+Ernest: Were your nails always that long? They look really sharp. I'm sure they weren't like that yesterday.
+Alex: What do you expect me to cut my nails with? Does it look like I have any nail clippers around here? 
+Ernest: Oh… sorry. 
+Ernest: Where do you sleep each night? Surely you have somewhere to take shelter around here.
+Alex: It's over those mountains, it's too far away for you to see. 
+Alex: You can't stray too far from your camp.
+Ernest: You're right. I should probably be getting back anyways, it's late. 
+Ernest: I'll see you tomorrow though, right?
+Alex: Yes, I'll be here. 
+===

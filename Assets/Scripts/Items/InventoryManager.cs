@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -123,8 +124,24 @@ public class InventoryManager : MonoBehaviour
                 return leftOverItems;
             }
         }
-
         return quantity;
+    }
+
+    public bool CheckForAllFlowers()
+    {
+        int flowersCollected = 0;
+        foreach (ItemSlot slot in itemSlot)
+        {
+            if (slot.quantity > 0)
+            {
+                flowersCollected++;
+            }
+        }
+
+        if (flowersCollected >= 5)
+            return true;
+        else
+            return false;
     }
 
     public void DeselectAllSlots()

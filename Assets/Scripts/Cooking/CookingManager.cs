@@ -121,6 +121,7 @@ public class CookingManager : MonoBehaviour
     public IEnumerator Win()
     {
         yield return new WaitForSeconds(0.5f);
+        orders[selectedFoodGroup].SetActive(false);
         winScreen.SetActive(true);
     }
 
@@ -131,8 +132,6 @@ public class CookingManager : MonoBehaviour
         food.Clear();
         foodGroup[selectedFoodGroup].SetActive(false);
         board[selectedFoodGroup].SetActive(false);
-        orders[selectedFoodGroup].SetActive(false);
-
         instructionScreen.SetActive(true);
     }
 

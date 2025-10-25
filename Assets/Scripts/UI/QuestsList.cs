@@ -97,6 +97,27 @@ public class QuestsList : MonoBehaviour
                 AddQuestToList(quest);
             }
         }
+        else if (DayManager.instance.dayCount == 3)
+        {
+            foreach (Quest quest in questsDay3)
+            {
+                AddQuestToList(quest);
+            }
+        }
+        else if (DayManager.instance.dayCount == 4)
+        {
+            foreach (Quest quest in questsDay4)
+            {
+                AddQuestToList(quest);
+            }
+        }
+        else if (DayManager.instance.dayCount == 5)
+        {
+            foreach (Quest quest in questsDay5)
+            {
+                AddQuestToList(quest);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -167,7 +188,7 @@ public class QuestsList : MonoBehaviour
                     Quest sneak = (new Quest
                     {
                         questName = "Sneak out",
-                        questDescription = "Sneak out of camp at night"
+                        questDescription = "Sneak out to see Alex"
                     });
                     questsDay3.Add(sneak);
                     AddQuestToList(sneak);

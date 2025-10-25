@@ -83,6 +83,21 @@ public class MainDialogueManager : MonoBehaviour
     {
         StartConversation("Ernest_Day3Sneaking");
     }
+
+    public void SecondMeetingDialogue()
+    {
+        StartConversation("SecondMeeting");
+    }
+
+    public void AfterLeafDialogue()
+    {
+        StartConversation("AfterLeaf");
+    }
+
+    public void TeacherConfrontation()
+    {
+        StartConversation("TeacherConfrontation");
+    }
 }
 
 

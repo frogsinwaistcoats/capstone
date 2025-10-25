@@ -34,7 +34,13 @@ title: Ernest_Day3Sneaking
 tags: #solo
 ---
 Ernest: I need to go see Alex again.
-<<set $campfireDay3 = true>>
+===
+
+title: Ernest_BeforeSpotlight
+tags: #solo
+---
+Ernest: I think I heard some rustling in the trees. If I get my torchlight out I can investigate.
+<<set $playSpotlight = true>>
 ===
 
 

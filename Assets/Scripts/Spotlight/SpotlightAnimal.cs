@@ -1,49 +1,30 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
 
-public class SpotlightAlex : MonoBehaviour
+public class SpotlightAnimal : MonoBehaviour
 {
-    public static SpotlightAlex instance;
-
     public Transform[] hidingSpots;
-    
+
     [SerializeField] private Transform previousSpot;
     [SerializeField] private Transform selectedSpot;
-
-    public bool hasFound;
 
     public float fadeDuration;
     private SpriteRenderer spriteRenderer;
 
     public float waitTime;
+    public float moveOffset;
 
-    public bool canStart;
-
-    public GameObject instructionScreen;
-    public GameObject winScreen;
-
-    private void Awake()
-    {
-        instance = this;
-    }
-
-    public void StartButton()
-    {
-        instructionScreen.SetActive(false);
-        StartSpotlight();
-        canStart = true;
-    }
-
-    public void StartSpotlight()
+    public void StartSpotlightAnimals()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
         StartCoroutine(FadeMoveLoop());
     }
 
     private IEnumerator FadeMoveLoop()
     {
-        while (!hasFound)
+        yield return new WaitForSeconds(moveOffset);
+        while (!SpotlightAlex.instance.hasFound)
         {
             yield return StartCoroutine(FadeOut());
 
@@ -101,22 +82,5 @@ public class SpotlightAlex : MonoBehaviour
 
         spriteRenderer.color = new Color(color.r, color.g, color.b, 1f);
 
-    }
-
-    private void OnMouseDown()
-    {
-        if (canStart)
-        {
-            hasFound = true;
-            Debug.Log(gameObject.name + " was found");
-            winScreen.SetActive(true);
-            canStart = false;
-        }
-        
-    }
-
-    public void ReturnToCamp()
-    {
-        GameManager.instance.LoadCampScene();
     }
 }

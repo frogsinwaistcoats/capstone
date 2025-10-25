@@ -1322,7 +1322,7 @@ Transform:
   m_GameObject: {fileID: 71999608}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.21, y: 0.38, z: -7.359}
+  m_LocalPosition: {x: -17.24, y: -0.56, z: -18.431}
   m_LocalScale: {x: 0.32, y: 0.32, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8317,7 +8317,7 @@ Transform:
   m_GameObject: {fileID: 370276981}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.41, y: -0.44, z: -8.54}
+  m_LocalPosition: {x: 11.183, y: -1.2, z: -10.66}
   m_LocalScale: {x: 0.32, y: 0.32, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15623,14 +15623,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784749435}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.29, y: -0.08, z: -7.359}
+  m_LocalRotation: {x: -0, y: -0, z: -0.07576513, w: 0.9971257}
+  m_LocalPosition: {x: 10.692, y: -0.341, z: -2.889}
   m_LocalScale: {x: 0.32, y: 0.32, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1755396978}
   m_Father: {fileID: 207135153}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -8.69}
 --- !u!114 &784749437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30556,7 +30556,7 @@ Transform:
   m_GameObject: {fileID: 1429532476}
   serializedVersion: 2
   m_LocalRotation: {x: -0.00454329, y: 0.997798, z: -0.0039522164, w: -0.06605227}
-  m_LocalPosition: {x: -1.21, y: 0.76, z: -12.62}
+  m_LocalPosition: {x: -1.11, y: 0.76, z: -13.13}
   m_LocalScale: {x: 0.26028147, y: 0.2602815, z: 0.26028153}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30605,7 +30605,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 6.95, y: 3.9999998, z: 3.75}
-  m_Center: {x: 3.2, y: 0.00016236305, z: 0.000011444092}
+  m_Center: {x: 3.2, y: 0.00016236305, z: 1.02}
 --- !u!114 &1429532481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34576,7 +34576,7 @@ Transform:
   m_GameObject: {fileID: 1677160112}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.6, y: 0.43, z: -15.14}
+  m_LocalPosition: {x: -17.79, y: -0.12, z: -19.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -38501,7 +38501,7 @@ Transform:
   m_GameObject: {fileID: 1872131093}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -147.68, y: 3.84, z: -8.37}
+  m_LocalPosition: {x: -153.19, y: 2.19, z: -10.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39569,14 +39569,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940687492}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.34, y: -0.42, z: -7.359}
+  m_LocalRotation: {x: -0, y: -0, z: 0.12289944, w: 0.9924191}
+  m_LocalPosition: {x: -14.54, y: 0.42, z: -12.56}
   m_LocalScale: {x: 0.32, y: 0.32, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1864285823}
   m_Father: {fileID: 207135153}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 14.119}
 --- !u!114 &1940687494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43279,7 +43279,7 @@ SpriteRenderer:
   m_Size: {x: 12, y: 12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2113848252
@@ -43931,7 +43931,7 @@ Transform:
   m_GameObject: {fileID: 2131351211}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.78, y: -0, z: -7.44}
+  m_LocalPosition: {x: 0.79, y: 0.77, z: -9.58}
   m_LocalScale: {x: 0.32, y: 0.32, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -44103,7 +44103,9 @@ MonoBehaviour:
     questDescription: Make some burgers by the campfire
   - questName: Campfire_Day3
     questDescription: Go to the campfire
-  questsDay4: []
+  questsDay4:
+  - questName: Talk To Mr Wilson
+    questDescription: Go talk to Mr Wilson
   questsDay5: []
   questsDay6: []
   questsDay7: []
