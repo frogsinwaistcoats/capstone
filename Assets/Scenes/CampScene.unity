@@ -23939,7 +23939,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 84f6010ebfe723945b7c55b41b223a7a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 70c391096bca6494eac5d8458d95bef0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -44113,6 +44113,9 @@ MonoBehaviour:
   questsVisualHolder: {fileID: 1089656462}
   addedSneakOutQuestDay2: 0
   addedSneakOutQuestDay3: 0
+  addedCampfireQuestDay4: 0
+  addedCameraQuest: 0
+  addedReturnToWilsonQuest: 0
 --- !u!1001 &2132594520
 PrefabInstance:
   m_ObjectHideFlags: 0

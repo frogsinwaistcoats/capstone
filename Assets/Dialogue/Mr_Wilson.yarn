@@ -51,7 +51,16 @@ Mr Wilson: Make sure you bring them back to me afterwards, I'll be questioning e
 title: MrWilson_Flowers
 ---
 Mr Wilson: Back so soon! Did you find them all? 
-    -> Ernest: I think so
+    -> Ernest: I think so.
     -> Ernest: Yes I did. 
 Mr Wilson: These look wonderful, good job! I'm sure you'll ace the test, just as usual.
+<<set $talkAfterFlowers = true>>
+===
+
+title: MrWilson_Day5Intro
+---
+Teacher: I hope you all slept well on your last night in your tents. We will aim to be packed up by the afternoon, you are all on the bus by then or else you will be left behind…
+Teacher: …
+Teacher: Just kidding! We'll do a head count.
+<<jump Ernest_Day5Sneaking>>
 ===

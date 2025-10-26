@@ -36,6 +36,10 @@ public class QuestsList : MonoBehaviour
 
     [SerializeField] private bool addedSneakOutQuestDay2 = false;
     [SerializeField] private bool addedSneakOutQuestDay3 = false;
+    [SerializeField] private bool addedCampfireQuestDay4 = false;
+
+    [SerializeField] private bool addedCameraQuest = false;
+    [SerializeField] private bool addedReturnToWilsonQuest = false;
 
     private Dictionary<string, TextMeshProUGUI> questTextByName = new Dictionary<string, TextMeshProUGUI>();
 
@@ -195,6 +199,61 @@ public class QuestsList : MonoBehaviour
                     addedSneakOutQuestDay3 = true;
                 }
                 CampBorder.instance.EnableTriggerCollider();
+            }
+        }
+        else if (dayManager.dayCount == 4)
+        {
+            if (LoadYarnVariables.instance.GetBool("$canUseCamera"))
+            {
+                StrikeThroughQuest("Talk To Mr Wilson");
+
+                if (!addedCameraQuest)
+                {
+                    Quest flowers = (new Quest
+                    {
+                        questName = "Take photos of flowers",
+                        questDescription = "Take photos of five native plants around the camp"
+                    });
+                    questsDay4.Add(flowers);
+                    AddQuestToList(flowers);
+                    addedCameraQuest = true;
+                }
+                
+            }
+            if (LoadYarnVariables.instance.GetBool("$hasGotFlowers"))
+            {
+                StrikeThroughQuest("Take photos of flowers");
+                if (!addedReturnToWilsonQuest)
+                {
+                    Quest returnQuest = (new Quest
+                    {
+                        questName = "Return to Mr Wilson",
+                        questDescription = "Go back to Mr Wilson"
+                    });
+                    questsDay4.Add(returnQuest);
+                    AddQuestToList(returnQuest);
+                    addedReturnToWilsonQuest = true;
+                }
+            }
+            if (LoadYarnVariables.instance.GetBool("$talkAfterFlowers"))
+            {
+                StrikeThroughQuest("Return to Mr Wilson");
+                if (!addedCampfireQuestDay4)
+                {
+                    Quest campfire = (new Quest
+                    {
+                        questName = "Campfire_Day4",
+                        questDescription = "Go to the campfire"
+                    });
+                    questsDay3.Add(campfire);
+                    AddQuestToList(campfire);
+                    addedCampfireQuestDay4 = true;
+                }
+                CampBorder.instance.EnableTriggerCollider();
+            }
+            if (LoadYarnVariables.instance.GetBool("campfireDay4"))
+            {
+                StrikeThroughQuest("Campfire_Day4");
             }
         }
 

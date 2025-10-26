@@ -5,6 +5,12 @@
     <<jump Talia_Day1>>
 <<elseif $day == 2>>
     <<jump Talia_Day2>>
+<<elseif $day == 3>>
+    <<jump Talia_Day2>>
+<<elseif $day == 4>>
+    <<jump Talia_Day2>>
+<<elseif $day == 5>>
+    <<jump Talia_Day5>>
 <<endif>>
 ===
 
@@ -23,4 +29,14 @@ Talia: Hey Ernest! Would you like to play solitaire with me?
     -> Ernest: Yes
         <<set $playSolitaire = true>>
     -> Ernest: Maybe later
+===
+
+title: Talia_Day5
+---
+Talia: Hey Ernest, I'm all done packing up. Do you have time for one more solitaire game? 
+    -> Ernest: Yes 
+        <<set $playSolitaire = true>>
+    -> Ernest: No 
+        Ernest: Sorry Talia, I have a little bit more to do. 
+        Talia: That's ok! Maybe you can come back later!  
 ===

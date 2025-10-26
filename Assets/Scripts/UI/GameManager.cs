@@ -125,6 +125,11 @@ public class GameManager : MonoBehaviour
                 SetToNight(true);                
                 MainDialogueManager.instance.DayThreeSneakingPrompt();
             }
+            else if (DayManager.instance.dayCount == 4)
+            {
+                SetToNight(true);
+                MainDialogueManager.instance.BeforeSpotlightDialogue();
+            }
            
         }
         else if (previousScene == "Unpacking")
@@ -143,6 +148,11 @@ public class GameManager : MonoBehaviour
             PlayerMovement.instance.transform.position = lastPlayerPos;
             PlayerMovement.instance.canMove = true;
             LoadYarnVariables.instance.SetYarnVariable("$hasCooked", true);
+        }
+        else if (previousScene == "Spotlight")
+        {
+            SetToNight(false);
+            MainDialogueManager.instance.AfterSpotlightDialogue();
         }
     }
 
@@ -215,6 +225,8 @@ public class GameManager : MonoBehaviour
         previousScene = SceneManager.GetActiveScene().name;
         lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
 
+        LoadYarnVariables.instance.SetYarnVariable("$hasDoneSpotlight", true);
+
         SceneManager.LoadScene("Spotlight");
     }
 
@@ -240,8 +252,11 @@ public class GameManager : MonoBehaviour
                 {
                     MainDialogueManager.instance.AfterLeafDialogue();
                 }
-
-
+            }
+            if (DayManager.instance.dayCount == 4)
+            {
+                SetToNight(false);
+                MainDialogueManager.instance.ForestDay4Dialogue();
             }
         });
     }
@@ -327,7 +342,8 @@ public class GameManager : MonoBehaviour
         }
         else if (dayCount == 4)
         {
-
+            bool campfireDay4 = LoadYarnVariables.instance.GetBool("$hasDoneSpotlight");
+            return campfireDay4 && !isDaytime;
         }
 
             // add other days here

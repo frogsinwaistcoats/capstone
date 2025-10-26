@@ -7,6 +7,10 @@
     <<jump Pepper_Day2>>
 <<elseif $day == 3>>
     <<jump Pepper_Day3>>
+<<elseif $day == 4>>
+    <<jump Pepper_Day4>>
+<<elseif $day == 5>>
+    <<jump Pepper_Day5>>
 <<endif>>
 ===
 
@@ -37,4 +41,23 @@ title: Pepper_Day3
             <<endif>>
         -> Ernest: I'm not ready yet.
 <<endif>>
+===
+
+title: Pepper_Day4
+---
+Pepper: Are you here to make sandwiches?
+    -> Ernest: Yep!
+        <<set $playCooking = true>>
+    -> Ernest: No, sorry
+        Pepper: All good
+===
+
+title: Pepper_Day5
+---
+Pepper: You know what would be really cool, if we had sandwiches for the trip back. 
+    -> Ernest: Yeah, I'll make some 
+        Pepper: OMG Thank you so much! 
+        <<set $playCooking = true>>
+    -> Ernest: Sorry, I have some more things I need to do. 
+        Pepper: Ohh, maybe later then. 
 ===

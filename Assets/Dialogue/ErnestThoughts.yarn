@@ -43,4 +43,11 @@ Ernest: I think I heard some rustling in the trees. If I get my torchlight out I
 <<set $playSpotlight = true>>
 ===
 
+title: Ernest_Day5Sneaking
+tags: #solo
+---
+Ernest: Thoughts: I need to say bye to Alex before we leave. 
+Ernest: Everyone is distracted, I can probably sneak out when no one's looking.
+===
+
 

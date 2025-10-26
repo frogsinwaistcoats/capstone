@@ -31,7 +31,7 @@ public class CampfireInteractable : MonoBehaviour
             {
                 prompt.SetActive(false);
 
-                if (DayManager.instance.dayCount == 1)
+                if (DayManager.instance.dayCount == 1 && GameManager.instance.isDaytime)
                 {
                     if ((LoadYarnVariables.instance.GetBool("$hasUnpacked")) && (LoadYarnVariables.instance.GetInt("$peopleMet") >= 9) && (!LoadYarnVariables.instance.GetBool("$campfireStoryRead")))
                     {
@@ -45,7 +45,7 @@ public class CampfireInteractable : MonoBehaviour
                         notReadyPrompt.SetActive(true);
                     }
                 }
-                else if (DayManager.instance.dayCount == 2)
+                else if (DayManager.instance.dayCount == 2 && GameManager.instance.isDaytime)
                 {
                     if (GameManager.instance.hasPlayedSolitaire)
                     {
@@ -67,10 +67,20 @@ public class CampfireInteractable : MonoBehaviour
                         GameManager.instance.LoadRhythm();
                     }
                 }
-            }
+                else if (DayManager.instance.dayCount == 4)
+                {
+                    if (LoadYarnVariables.instance.GetBool("$talkAfterFlowers") && GameManager.instance.isDaytime)
+                    {
+                        LoadYarnVariables.instance.SetYarnVariable("$campfireDay4", true);
+                        canInteract = false;
+                        GameManager.instance.LoadRhythm();
+                    }
+                }
 
+
+
+            }
         }
-        
     }
 
     private void OnTriggerEnter(Collider other)

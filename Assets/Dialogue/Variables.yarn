@@ -40,5 +40,8 @@
 <<declare $canUseCamera = false>>
 <<declare $hasGotFlowers = false>>
 <<declare $campfireDay4 = false>>
+<<declare $talkAfterFlowers = false>>
+<<declare $hasDoneSpotlight = false>>
+<<declare $goToForestDay4 = false>>
 
 ===

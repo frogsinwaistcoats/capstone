@@ -103,6 +103,29 @@ public class TentInteractable : MonoBehaviour
                         MainDialogueManager.instance.TeacherConfrontation();
                     }
                 }
+                else if (DayManager.instance.dayCount == 4)
+                {
+                    if (gameObject.CompareTag("Tent") && !GameManager.instance.CanSleep())
+                    {
+                        notReadyPrompt.SetActive(true);
+                        notReadyPrompt.GetComponent<TextMeshPro>().text = "Its too early to sleep";
+                    }
+                    else if (gameObject.CompareTag("Tent") && GameManager.instance.CanSleep())
+                    {
+                        canInteract = false;
+                        prompt.SetActive(false);
+
+                        FindAnyObjectByType<AudioManager>().Play("TentZip");
+
+                        dayTransition.gameObject.SetActive(true);
+                        dayTransition.PlayTransition();
+
+                        DayManager.instance.StartNewDay(4);
+                        GameManager.instance.SetToDay();
+                        MainDialogueManager.instance.Day5Intro();
+                    }
+                }
+                
             }
         }
     }

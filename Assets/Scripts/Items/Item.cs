@@ -46,15 +46,15 @@ public class Item : MonoBehaviour
     private void Update()
     {
 
-        if (playerFound && Input.GetKeyDown(KeyCode.E) && !collected)
-        {
-            CollectItem();
-            prompt.SetActive(false);
-            StartCoroutine(ShowPhoto());
-        }
+        
         if (LoadYarnVariables.instance.GetBool("$canUseCamera"))
         {
-           
+            if (playerFound && Input.GetKeyDown(KeyCode.E) && !collected)
+            {
+                CollectItem();
+                prompt.SetActive(false);
+                StartCoroutine(ShowPhoto());
+            }
         }
     }
 
@@ -96,14 +96,14 @@ public class Item : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (!collected)
-        {
-            playerFound = true;
-            prompt.SetActive(true);
-        }
+        
         if (LoadYarnVariables.instance.GetBool("$canUseCamera"))
         {
-            
+            if (!collected)
+            {
+                playerFound = true;
+                prompt.SetActive(true);
+            }
         }
     }
 

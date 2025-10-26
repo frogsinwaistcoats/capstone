@@ -98,6 +98,26 @@ public class MainDialogueManager : MonoBehaviour
     {
         StartConversation("TeacherConfrontation");
     }
+
+    public void BeforeSpotlightDialogue()
+    {
+        StartConversation("Ernest_BeforeSpotlight");
+    }
+
+    public void AfterSpotlightDialogue()
+    {
+        StartConversation("AfterSpotlight");
+    }
+
+    public void ForestDay4Dialogue()
+    {
+        StartConversation("InForestDay4");
+    }
+
+    public void Day5Intro()
+    {
+        StartConversation("MrWilson_Day5Intro");
+    }
 }
 
 

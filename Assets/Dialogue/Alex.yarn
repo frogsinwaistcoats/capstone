@@ -71,3 +71,46 @@ Ernest: You're right. I should probably be getting back anyways, it's late.
 Ernest: I'll see you tomorrow though, right?
 Alex: Yes, I'll be here. 
 ===
+
+title: AfterSpotlight
+---
+Ernest: What are you doing here?? You'll be seen.
+Alex: It's fine, everyone is asleep, you were taking too long, I had to come see what was the hold up. 
+Ernest: Well I was just about to leave before you came over here. Let's go before anyone hears us.
+<<set $goToForestDay4 = true>>
+===
+
+title: InForestDay4
+---
+Ernest: (thinking) Hmm.. were Alex's eyes always glowing like that? 
+    -> Ask Alex about his eyes 
+        Ernest: Hey, were your eyes always that bright?
+        Alex: What do you mean? 
+        Ernest: Your eyes, they're almost glowing bright red!
+        Alex: I don't know what you're talking about. It's probably just the lighting. 
+        Alex: See?
+        Ernest: Maybe you're right, the moon is shining quite brightly tonight. 
+    -> Don't mnention it 
+        Ernest: (thinking) It's probably just the lighting. The moon is shining quite brightly tonight. 
+
+Ernest: I took some pictures today! There's a lot of nice flowers around the camp. 
+Alex: Huh, those look pretty good. Maybe you could become a photographer.
+Ernest: I've never thought about a job. I've kind of always just wanted to live in nature. 
+Alex: Photography would let you spend all your time in nature!
+Ernest: You're right! Then I could come see you in my travels! 
+Alex: Don't take any pictures of me, though.
+Ernest: Why not?
+Alex: I wouldn't be much of a secret if there's photographic evidence of me. 
+Ernest: Oh, good point. 
+Ernest: How am I going to remember you after I go back home? 
+Alex: I'll still be here, most likely. You can come visit me when you're older. 
+Ernest: But that's ages away! How will I know you'll still be here? 
+Alex: I don't really have anywhere else to go. 
+Ernest: Why don't you live with me? When we leave tomorrow you can come with us on the bus. I've always wanted siblings. I'm sure my parents would be happy to have you. 
+Alex: No, they would hate me. Everyone hates me. 
+Alex: It's already been made clear to me that I'm not welcome anywhere. I promised myself not to go out into public ever again. 
+Ernest: Did something happen? 
+Alex: No one treats me kindly. It's safer out here. 
+Ernest: ...
+Ernest: I'll make sure to visit you as soon as possible. 
+===
