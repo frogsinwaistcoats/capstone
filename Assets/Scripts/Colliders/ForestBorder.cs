@@ -14,7 +14,7 @@ public class ForestBorder : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.instance.ReturnToCampFromForest();
+            StartCoroutine(GameManager.instance.ReturnToCampFromForest());
         }
     }
 }

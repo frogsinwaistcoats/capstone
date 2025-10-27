@@ -84,10 +84,11 @@ public class Item : MonoBehaviour
             Debug.Log("all flowers collected");
         }
 
+        InventoryManager.instance.newPhotosToSee = true;
         photograph.SetActive(true);
         photoFlower.sprite = itemDescriptionSprite;
         photoText.text = itemName;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         photograph.SetActive(false);
         PlayerMovement.instance.canMove = true;
     }

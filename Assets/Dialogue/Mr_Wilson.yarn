@@ -13,6 +13,7 @@
 ===
 
 title: MrWilson_Intro
+tags: intro
 ---
 Mr Wilson: Good afternoon students! I want to give you all a warm welcome to where we'll be spending the rest of our week together. 
 Mr Wilson: We'll be leaving on Friday, so I hope you can make the most of the natural scenery while we're here. 
@@ -21,11 +22,12 @@ Mr Wilson: On a lighter note, we'll hold a campfire each night to sing and tell 
 Mr Wilson: Now go to your assigned tents to unpack your bags.
 <<set $hasDoneIntro = true>>
 <<set $day = 1>>
+<<jump Ernest_Intro>>
 ===
 
 title: MrWilson_Day1
 ---
-Mr Wilson: Have fun and be safe, kids. 
+Mr Wilson: Have fun and be safe, kids.
 <<if $talkedToWilson == false>>
     <<set $talkedToWilson = true>>
     <<set $peopleMet = $peopleMet + 1>>
@@ -46,6 +48,7 @@ Mr Wilson: Good morning Ernest, I have a new task for you this morning. The othe
 Mr Wilson: There's a few native flowers to be found around the camp, I don't know if you've spotted them while wandering around. 
 Mr Wilson: If you find them all, you can use your camera to photograph each of them! 
 Mr Wilson: Make sure you bring them back to me afterwards, I'll be questioning everyone about the names when we return to class. It's important to know the names of the native plants in our country. 
+<<jump Ernest_Flowers>>
 ===
 
 title: MrWilson_Flowers
@@ -59,8 +62,8 @@ Mr Wilson: These look wonderful, good job! I'm sure you'll ace the test, just as
 
 title: MrWilson_Day5Intro
 ---
-Teacher: I hope you all slept well on your last night in your tents. We will aim to be packed up by the afternoon, you are all on the bus by then or else you will be left behind…
-Teacher: …
-Teacher: Just kidding! We'll do a head count.
-<<jump Ernest_Day5Sneaking>>
+Mr Wilson: I hope you all slept well on your last night in your tents. We will aim to be packed up by the afternoon, you are all on the bus by then or else you will be left behind…
+Mr Wilson: …
+Mr Wilson: Just kidding! We'll do a head count.
+<<set $ernestThinking = true>>
 ===

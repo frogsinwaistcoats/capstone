@@ -118,6 +118,26 @@ public class MainDialogueManager : MonoBehaviour
     {
         StartConversation("MrWilson_Day5Intro");
     }
+
+    public void FinalAlexMeeting()
+    {
+        StartConversation("FinalMeeting");
+    }
+
+    public void ErnestThinking()
+    {
+        StartConversation("Ernest_Day5Sneaking");
+    }
+
+    public void FinalDialogue()
+    {
+        StartConversation("Ruby_Final");
+    }
+
+    public void FallDialogue()
+    {
+        StartConversation("FallDialogue");
+    }
 }
 
 

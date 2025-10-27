@@ -51,7 +51,8 @@ public class LoadYarnVariables : MonoBehaviour
     bool hasDoneSpotlight;
     bool goToForestDay4;
 
-
+    bool endScene;
+    bool ernestThinking;
 
     private void Awake()
     {
@@ -154,13 +155,17 @@ public class LoadYarnVariables : MonoBehaviour
         vs.SetValue("$campfireDay3", campfireDay3);
         vs.SetValue("$hasDoneLeaf", hasDoneLeaf);
 
-        //day 4 progree
+        //day 4 progress
         vs.SetValue("$canUseCamera", canUseCamera);
         vs.SetValue("$hasGotFlowers", canUseCamera);
         vs.SetValue("$campfireDay4", campfireDay4);
         vs.SetValue("$talkAfterFlowers", talkAfterFlowers);
         vs.SetValue("$hasDoneSpotlight", hasDoneSpotlight);
         vs.SetValue("$goToForestDay4", goToForestDay4);
+
+        //day 5 progress
+        vs.SetValue("$endScene", endScene);
+        vs.SetValue("$ernestThinking", ernestThinking);
     }
 
     // Yarn to C#
@@ -276,6 +281,28 @@ public class LoadYarnVariables : MonoBehaviour
                 GameManager.instance.GoToForestScene();
             }
         }
+        vs.TryGetValue("$endScene", out endScene);
+        if (endScene)
+        {
+            endScene = false;
+            SetYarnVariable("endScene", false);
+
+            if (GameManager.instance != null)
+            {
+                GameManager.instance.LoadEndScene();
+            }
+        }
+        vs.TryGetValue("$ernestThinking", out ernestThinking);
+        if (ernestThinking)
+        {
+            ernestThinking = false;
+            SetYarnVariable("ernestThinking", false);
+
+            if (MainDialogueManager.instance != null)
+            {
+                MainDialogueManager.instance.ErnestThinking();
+            }
+        }
     }
 
     // called from other scripts to set variables
@@ -323,6 +350,9 @@ public class LoadYarnVariables : MonoBehaviour
             case "$talkAfterFlowers": talkAfterFlowers = (bool)value; break;
             case "$hasDoneSpotlight": hasDoneSpotlight = (bool)value; break;
             case "$goToForestDay4": goToForestDay4 = (bool)value; break;
+
+            case "$endScene": endScene = (bool)value; break;
+            case "$ernestThinking": ernestThinking = (bool)value; break;
 
             default:
                 Debug.LogWarning("Variable name not recognized: " + variableName);
@@ -390,6 +420,9 @@ public class LoadYarnVariables : MonoBehaviour
             case "$talkAfterFlowers": return talkAfterFlowers;
             case "$hasDoneSpotlight": return hasDoneSpotlight;
             case "$goToForestDay4": return goToForestDay4;
+
+            case "$endScene": return endScene;
+            case "$ernestThinking": return ernestThinking;
 
             default:
                 Debug.LogWarning("Variable name not recognized: " + variableName);

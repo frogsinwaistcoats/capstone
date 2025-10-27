@@ -22,17 +22,12 @@ public class QuestsList : MonoBehaviour
     [Header("Quests - Day 5")]
     [SerializeField] private List<Quest> questsDay5;
 
-    [Header("Quests - Day 6")]
-    [SerializeField] private List<Quest> questsDay6;
-
-    [Header("Quests - Day 7")]
-    [SerializeField] private List<Quest> questsDay7;
-
     private List<GameObject> activeQuestTexts = new List<GameObject>();
 
     public GameObject questsTextPrefab;
     public GameObject questsVisualHolder;
     DayManager dayManager;
+
 
     [SerializeField] private bool addedSneakOutQuestDay2 = false;
     [SerializeField] private bool addedSneakOutQuestDay3 = false;
@@ -251,7 +246,7 @@ public class QuestsList : MonoBehaviour
                 }
                 CampBorder.instance.EnableTriggerCollider();
             }
-            if (LoadYarnVariables.instance.GetBool("campfireDay4"))
+            if (LoadYarnVariables.instance.GetBool("$campfireDay4"))
             {
                 StrikeThroughQuest("Campfire_Day4");
             }
@@ -262,6 +257,7 @@ public class QuestsList : MonoBehaviour
 
     public void AddQuestToList(Quest quest)
     {
+        InventoryManager.instance.newQuestsToSee = true;
         GameObject questObj = Instantiate(questsTextPrefab, questsVisualHolder.transform);
         activeQuestTexts.Add(questObj);
         TextMeshProUGUI questTMP = questObj.GetComponent<TextMeshProUGUI>();
@@ -272,11 +268,11 @@ public class QuestsList : MonoBehaviour
 
     public void StrikeThroughQuest(string questName)
     {
+        InventoryManager.instance.newQuestsToSee = true;
         if (questTextByName.TryGetValue(questName, out TextMeshProUGUI questTMP))
         {
             if (!questTMP.text.Contains("<s>"))
             {
-                AudioManager.instance.Play("QuestComplete");
                 questTMP.text = "<s>" + questTMP.text + "</s>";
                 questTMP.color = new Color(questTMP.color.r, questTMP.color.g, questTMP.color.b, 0.5f);
             }

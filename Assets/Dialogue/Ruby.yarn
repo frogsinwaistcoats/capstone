@@ -5,7 +5,7 @@
     <<jump Ruby_Day1>>
 <<elseif $day == 1 && $hasUnpacked == true>>
     <<jump Ruby_Day1_afterUnpacking>>
-<<elseif $day == 2>>
+<<elseif $day >= 2>>
     <<jump Ruby_Day2>>
 <<endif>>
 ===
@@ -31,4 +31,12 @@ Ruby: Have you checked out the camp? You should go explore!
 title: Ruby_Day2
 ---
 Ruby: Good morning Ernest! Have you seen Talia's game of cards yet? You should go check it out! 
+===
+
+title: Ruby_Final
+---
+Ruby: Are you ready to go home, Ernest?
+    -> Yes, I'm ready to sleep in my own bed again. 
+    -> I'll miss this place, but we have to leave soon, don't we? 
+<<set $endScene = true>>
 ===

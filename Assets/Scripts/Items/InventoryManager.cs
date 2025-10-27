@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,9 @@ public class InventoryManager : MonoBehaviour
 
     public ItemSO[] itemSOs;
 
+    public bool newQuestsToSee;
+    public bool newPhotosToSee;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +28,17 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (newQuestsToSee || newPhotosToSee)
+        {
+            if (SpriteShaker.instance != null)
+                SpriteShaker.instance.ShakeMe();
+        }
+        else
+        {
+            if (SpriteShaker.instance != null)
+                SpriteShaker.instance.StopShaking();
+        }
+
         // opens items menu
         if (Input.GetKeyDown(KeyCode.Tab) && menuActivated)
         {
@@ -39,6 +54,7 @@ public class InventoryManager : MonoBehaviour
             inventory.SetActive(true);
             menuActivated = true;
             OpenItems();
+            newPhotosToSee = false;
 
             FindAnyObjectByType<AudioManager>().Play("OpenBook");
         }
@@ -69,6 +85,7 @@ public class InventoryManager : MonoBehaviour
             inventory.SetActive(true);
             menuActivated = true;
             OpenQuests();
+            newQuestsToSee = false;
 
             FindAnyObjectByType<AudioManager>().Play("OpenBook");
         }

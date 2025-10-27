@@ -44,4 +44,7 @@
 <<declare $hasDoneSpotlight = false>>
 <<declare $goToForestDay4 = false>>
 
+<<declare $endScene = false>>
+<<declare $ernestThinking = false>>
+
 ===

@@ -258,12 +258,29 @@ public class GameManager : MonoBehaviour
                 SetToNight(false);
                 MainDialogueManager.instance.ForestDay4Dialogue();
             }
+            if (DayManager.instance.dayCount == 5)
+            {
+                MainDialogueManager.instance.FinalAlexMeeting();
+            }
         });
     }
 
-    public void ReturnToCampFromForest()
+    public IEnumerator ReturnToCampFromForest()
     {
         PlayerMovement.instance.GoToCampPos();
+        PlayerMovement.instance.SetMovement(false);
+        yield return new WaitForSeconds(1f);
+        PlayerMovement.instance.SetMovement(true);
+
+        if (DayManager.instance.dayCount == 5)
+        {
+            MainDialogueManager.instance.FinalDialogue();
+        }
+    }
+
+    public void LoadEndScene()
+    {
+        SceneManager.LoadSceneAsync("EndScene");
     }
 
     // ------- Day/Night -------
@@ -283,7 +300,15 @@ public class GameManager : MonoBehaviour
 
         AudioManager.instance.StopNightAudio();
         AudioManager.instance.PlayDayAudio();
-        CampBorder.instance.EnableSolidCollider();
+        
+        if (DayManager.instance.dayCount <= 4)
+        {
+            CampBorder.instance.EnableSolidCollider();
+        }
+        else if (DayManager.instance.dayCount == 5)
+        {
+            CampBorder.instance.EnableTriggerCollider();
+        }
     }
 
     public void SetToNight(bool playTransition)

@@ -18,11 +18,19 @@ public class PortraitLineView : LineView
 
     [Header("Character Sprites")]
     [SerializeField] private List<CharacterPortrait> portraits;
+    [SerializeField] private Sprite emptyPortrait;
+
+    [SerializeField] private RectTransform nameTextTransform; 
+    [SerializeField] private Vector2 leftNamePosition;
+    [SerializeField] private Vector2 rightNamePosition;
+
+    [SerializeField] private RectTransform dialogueTextTransform; 
+    [SerializeField] private Vector2 leftDialoguePosition;
+    [SerializeField] private Vector2 rightDialoguePosition;
 
     private Dictionary<string, Sprite> portraitLookup = new Dictionary<string, Sprite>();
 
     [System.Serializable]
-
     public class CharacterPortrait
     {
         public string characterName;
@@ -31,6 +39,7 @@ public class PortraitLineView : LineView
     }
 
     private DialogueRunner dialogueRunner;
+
 
     protected void Start()
     {
@@ -46,8 +55,25 @@ public class PortraitLineView : LineView
             }
         }
 
+        dialogueRunner = FindFirstObjectByType<DialogueRunner>();
+        if (dialogueRunner != null)
+            dialogueRunner.onNodeStart.AddListener(OnNodeStart);
+        else
+            Debug.LogWarning("No dialogue runner found in scene for PortraitLineView");
 
-        
+    }
+    private void OnNodeStart(string nodeName)
+    {
+        ClearLeftPortraits();
+    }
+
+    private void ClearLeftPortraits()
+    {
+        leftPortrait.sprite = emptyPortrait;
+        optionLeftPortrait.sprite = emptyPortrait;
+
+        leftPortrait.color = Color.white;
+        optionLeftPortrait.color = Color.white;
     }
 
     public override void RunLine(LocalizedLine dialogueLine, System.Action onFinished)
@@ -89,6 +115,12 @@ public class PortraitLineView : LineView
             setPortraitActive(optionRightPortrait, true);
             setPortraitActive(leftPortrait, false);
             setPortraitActive(optionLeftPortrait, false);
+
+            nameTextTransform.anchoredPosition = rightNamePosition;
+            nameTextTransform.GetComponent<TMPro.TextMeshProUGUI>().alignment = TMPro.TextAlignmentOptions.Right;
+
+            dialogueTextTransform.anchoredPosition = rightDialoguePosition;
+            dialogueTextTransform.GetComponent<TMPro.TextMeshProUGUI>().alignment = TMPro.TextAlignmentOptions.Right;
         }
         else
         {
@@ -98,6 +130,12 @@ public class PortraitLineView : LineView
             setPortraitActive(optionLeftPortrait, true);
             setPortraitActive(rightPortrait, false);
             setPortraitActive(optionRightPortrait, false);
+
+            nameTextTransform.anchoredPosition = leftNamePosition;
+            nameTextTransform.GetComponent<TMPro.TextMeshProUGUI>().alignment = TMPro.TextAlignmentOptions.Left;
+
+            dialogueTextTransform.anchoredPosition = leftDialoguePosition;
+            dialogueTextTransform.GetComponent<TMPro.TextMeshProUGUI>().alignment = TMPro.TextAlignmentOptions.Left;
         }
     }
 

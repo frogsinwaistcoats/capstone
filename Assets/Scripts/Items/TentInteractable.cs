@@ -120,9 +120,10 @@ public class TentInteractable : MonoBehaviour
                         dayTransition.gameObject.SetActive(true);
                         dayTransition.PlayTransition();
 
-                        DayManager.instance.StartNewDay(4);
+                        DayManager.instance.StartNewDay(5);
                         GameManager.instance.SetToDay();
                         MainDialogueManager.instance.Day5Intro();
+                        CampBorder.instance.EnableTriggerCollider();
                     }
                 }
                 

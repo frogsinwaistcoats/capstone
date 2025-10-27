@@ -23,6 +23,7 @@ TagManager:
   - Cheese
   - Avocado
   - Mushroom
+  - fallCollider
   layers:
   - Default
   - TransparentFX

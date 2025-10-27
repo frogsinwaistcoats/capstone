@@ -24,6 +24,12 @@ Ernest: I need to find somewhere that's out of their sight.
 <<set $campfireDay2 = true>>
 ===
 
+title: Ernest_Intro
+tags: #solo
+---
+Ernest: I can check my diary if I want to see what tasks I have to do today (press Q)
+===
+
 title: Ernest_SneakingPrompt
 tags: #solo
 ---
@@ -36,6 +42,12 @@ tags: #solo
 Ernest: I need to go see Alex again.
 ===
 
+title: Ernest_Flowers
+tags: #solo
+---
+Ernest: I can see what photos I've taken in my book (press TAB)
+===
+
 title: Ernest_BeforeSpotlight
 tags: #solo
 ---
@@ -46,8 +58,14 @@ Ernest: I think I heard some rustling in the trees. If I get my torchlight out I
 title: Ernest_Day5Sneaking
 tags: #solo
 ---
-Ernest: Thoughts: I need to say bye to Alex before we leave. 
+Ernest: I need to say bye to Alex before we leave. 
 Ernest: Everyone is distracted, I can probably sneak out when no one's looking.
 ===
 
+title: FallDialogue
+tags: #solo
+---
+Ernest: Woah... That was weird...
+Ernest: I'm sure thats normal and not a bug from the developers...
+===
 
