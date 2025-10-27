@@ -16,10 +16,8 @@ Ernest: I wonder if that story was really true…
 title: Ernest_SneakingOut
 tags: #solo
 ---
-Ernest: I wonder if that myth was really true… 
-Ernest: Whether it's true or not, I need to see what's in that forest before we leave. 
-Ernest: I need to find a way to sneak out. The teachers will see me if I walk right up to them. 
-Ernest: I need to find somewhere that's out of their sight.
+Ernest: I don't care if the forest is out of bounds. There's no way I can just leave without seeing what's through there for myself. 
+Ernest: I need to find a way to sneak past the teachers. If they see me, I'll never make it out. 
 <<set $triggerSneakOut = true>>
 <<set $campfireDay2 = true>>
 ===

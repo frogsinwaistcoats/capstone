@@ -14,30 +14,62 @@ Alex: yo.
 title: FirstMeeting
 ---
 ???: ...
-Ernest: Oh, I wasn't expecting to see anyone else out here!
-Ernest: Who are you?  
+Ernest: !!
+Ernest: Hello? Who are you?
 ???: ...
-Ernest: My name is Ernest. What's yours?
-???: You shouldn't be out here, it's dangerous.
-Ernest: If it's so dangerous, then what are you doing out here?
-???: .. I live here.
-Ernest: What? That's so cool! I've always wanted to live in the forest!
+Ernest: My name is Ernest, what's yours?
+???: It's dangerous out here. You should go back to your camp.
+Ernest: Are you talking about the wolf?
+???: Wolf? There are no wolves out here. I don't know what you're talking about
+Ernest: Oh..
+Ernest: What are you doing out here anyway?
+???: ... I live here.
+Ernest: What? That's so cool! I've always wanted to live in the forest.
 ???: You can't tell anyone you saw me out here!
-Ernest: I won't, I promise.
-Ernest: What were you doing anyway, standing there just now?
-???: It's been a long time since anyone has come out here. I had to come see who the new arrivals were.
-Ernest: Why don't you join us? We have a warm fire, and sandwiches!
-???: I have everything I need out here.
-Ernest: Ok...
-???: … 
+Ernest: I won't, I promise!
+???:...
 Alex: I'm Alex.
-Ernest: It's nice to meet you, Alex!
-Alex: I still think you should go back to your camp. Your friends would be waiting for you.
-Ernest: Wait, before you go, why don't we meet here again tomorrow?
-Alex: Why? 
-Ernest: You have to tell me all about what it's like living in the forest!
-Ernest: And I'll bring you a sandwich. 
-Alex: Ok
+Ernest: It's nice to meet you, Alex.
+Alex: ...
+Ernest: You should join us at the camp. There's a warm fire, and sandwiches! 
+Alex: I have everything I need out here.
+Ernest: Are you sure?
+Alex: Yes. 
+Ernest: Oh.
+Ernest: How long have you been out here? You can't have been living here forever. 
+Alex: It's safer out here. People have never been kind to me.
+Ernest: Oh. What about your parents?
+Alex: I was separated from them a long time ago. I've been alone this whole time. I don't know where they are.
+Ernest: I'm sorry. I couldn't imagine what it would be like if I didn't have my parents.
+Alex: You swear you won't tell anybody you saw me out here? 
+Ernest: I swear I won't.
+Alex: Good.
+Alex: ...
+Alex: Why did you come out here anyway? 
+Ernest: I've been so curious about the forest. I couldn't just leave here at the end of the week without seeing it for myself. 
+Alex: There's nothing really exciting about it.
+Ernest: What do you mean? I've found a new friend! 
+Alex: Friend?
+Ernest: If you want to be. You seem pretty friendly. 
+Alex: I'm not friendly. 
+Ernest: Oh…
+Ernest: Would you mind if I brought you a sandwich tomorrow?
+Alex: What?
+Ernest: Aren't you hungry out here? Or do you eat berries?
+Alex: ...
+Alex: I suppose a sandwich could be nice. 
+Ernest: Great! If you come to the same spot, I can meet you again tomorrow night.
+Alex: Why would you want to come out every night just to see me? Shouldn't you be spending time at your camp?
+Ernest: My friends at the camp, I enjoy their company. But it's always so loud. 
+Ernest: I've always preferred the quiet, and to spend time alone.
+Ernest: So I might as well come out here, where it's quiet.
+Ernest: I've also never had a friend like me.
+Alex: What do you mean? 
+Ernest: You seem to enjoy the quiet. And you obviously spend a lot of time by yourself.
+Alex: ... That's true.  
+Alex: Still though, I think you should go back to your camp. It's getting late.
+Ernest: You're right. I'll come see you tomorrow!
+Alex: Ok... 
 <<set $firstMeetingDone = true>>
 ===
 
@@ -57,19 +89,22 @@ Alex: I've been making these. There's some really nice looking leaves and sticks
 
 title: AfterLeaf
 ---
-Alex: Hey, those look pretty good!
-Alex: This is also a good way to make our presence known to the forest. 
-Ernest: It's like graffiti
-Alex: But way better. More natural. 
-Ernest: Were your nails always that long? They look really sharp. I'm sure they weren't like that yesterday.
-Alex: What do you expect me to cut my nails with? Does it look like I have any nail clippers around here? 
-Ernest: Oh… sorry. 
+Alex: Hey, those look pretty good! You're almost better than me.
+Ernest: (thinking) His nails looked extra sharp when he was showing me those leaves. Were they like that yesterday? 
+    -> Ask him about his nails
+        Ernest: Hey.. were your nails that long yesterday? They look extra sharp. 
+        Alex: What do you expect me to cut my nails with? Does it look like I have any nail clippers around here? 
+        Ernest: Oh… sorry. 
+    -> Leave it alone
+        Ernest: (thinking) Maybe I just didn't get a good enough look at them… I shouldn't judge.  
 Ernest: Where do you sleep each night? Surely you have somewhere to take shelter around here.
 Alex: It's over those mountains, it's too far away for you to see. 
 Alex: You can't stray too far from your camp.
 Ernest: You're right. I should probably be getting back anyways, it's late. 
 Ernest: I'll see you tomorrow though, right?
 Alex: Yes, I'll be here. 
+
+
 ===
 
 title: AfterSpotlight

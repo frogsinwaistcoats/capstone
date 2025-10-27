@@ -12,7 +12,7 @@
 
 title: Angler_Day1
 ---
-Angler: Hey Ernest. There's a lot of fish in here! You should come by the lake later.
+Hey Ernest. I've already seen so many fish swimming in the water. You should come by the lake later. 
 <<if $talkedToAngler == false>>
     <<set $talkedToAngler = true>>
     <<set $peopleMet = $peopleMet + 1>>
@@ -34,7 +34,7 @@ Angler: Hello Ernest, I heard you were on lunch duty. Lucky for you, I saw some 
 Angler: Have you ever used a fishing rod before?
     -> Ernest: Yes
     -> Ernest: No
-Angler: You should see if you can catch any.   
+Angler: You should see if you can catch any, I'm starving 
 <<if $hasFished == false>>
     <<set $hasFished = true>>
 <<endif>>

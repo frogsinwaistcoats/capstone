@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     public NightTransition nightTransitionPrefab;
 
+    public GameObject npcSprites;
+
     private void Awake()
     {
         if (instance == null)
@@ -292,6 +294,7 @@ public class GameManager : MonoBehaviour
         LoadYarnVariables.instance.SetYarnVariable("$isDaytime", true);
 
         RenderSettings.skybox = daySkybox;
+        RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Skybox;
         DynamicGI.UpdateEnvironment();
 
         dayIcon = GameObject.Find("---- UI ----/OtherCanvas/DayNightIndicator")?.GetComponent<Image>();
@@ -309,6 +312,8 @@ public class GameManager : MonoBehaviour
         {
             CampBorder.instance.EnableTriggerCollider();
         }
+
+        npcSprites.transform.position += new Vector3(-100f, 0f, 0f);
     }
 
     public void SetToNight(bool playTransition)
@@ -327,7 +332,10 @@ public class GameManager : MonoBehaviour
         }
 
         RenderSettings.skybox = nightSkybox;
+        RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
         DynamicGI.UpdateEnvironment();
+
+        
 
         dayIcon = GameObject.Find("---- UI ----/OtherCanvas/DayNightIndicator")?.GetComponent<Image>();
         if (dayIcon != null)
@@ -335,8 +343,6 @@ public class GameManager : MonoBehaviour
 
         AudioManager.instance.StopDayAudio();
         AudioManager.instance.PlayNightAudio();
-
-        
     }
 
     // ------- Sleep Conditions -------

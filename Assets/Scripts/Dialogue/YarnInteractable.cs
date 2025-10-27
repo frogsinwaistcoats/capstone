@@ -20,12 +20,16 @@ public class YarnInteractable : MonoBehaviour
 
     bool playerFound;
 
+    Vector3 startPos;
+
     void Start()
     {
         dialogueRunner = FindAnyObjectByType<DialogueRunner>();
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
         playerMovement = FindAnyObjectByType<PlayerMovement>();
         gameManager = FindAnyObjectByType<GameManager>();
+
+        startPos = transform.position;
     }
 
     public void OnMouseDown()
@@ -104,5 +108,15 @@ public class YarnInteractable : MonoBehaviour
     {
         playerFound = false;
         prompt.SetActive(false);
+    }
+
+    public void MoveWhileNight()
+    {
+        transform.position = new Vector3(100f, 0f, 0f);
+    }
+
+    public void ReturnToStart()
+    {
+        transform.position = startPos;
     }
 }
