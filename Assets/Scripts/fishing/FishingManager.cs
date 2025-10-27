@@ -18,6 +18,9 @@ public class FishingManager : MonoBehaviour
     public Sprite[] fishSprites;
     public Image fishImage;
 
+    public Vector2 normMin = new Vector2(0.45f, 0.2f);
+    public Vector2 normMax = new Vector2(0.85f, 0.4f);
+
     [SerializeField] private List<GameObject> activeKeys = new List<GameObject>();
 
     private void Awake()
@@ -33,14 +36,27 @@ public class FishingManager : MonoBehaviour
 
     private void StartFishing()
     {
-        //Instantiate(button, canvas.transform);
         InvokeRepeating("SpawnButton", 0f, spawnDelay);
     }
 
     public void SpawnButton()
     {
-        GameObject newKey = Instantiate(button);
-        activeKeys.Add(newKey);
+        Vector2 rnd = new Vector2(
+        Random.Range(normMin.x, normMax.x),
+        Random.Range(normMin.y, normMax.y)
+    );
+
+        // Convert normalized -> pixel
+        Vector2 screenPos = new Vector2(
+            rnd.x * Screen.width,
+            rnd.y * Screen.height
+        );
+
+        // Convert pixel -> world
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+        worldPos.z = 0f;
+
+        Instantiate(button, worldPos, Quaternion.identity);
     }
 
     public IEnumerator WinGame()
