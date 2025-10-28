@@ -126,7 +126,6 @@ public class TentInteractable : MonoBehaviour
                         GameManager.instance.SetToDay();
                         MainDialogueManager.instance.Day5Intro();
                         CampBorder.instance.CanEnter();
-                        PlayerMovement.instance.canMove = true;
                     }
                 }
                 

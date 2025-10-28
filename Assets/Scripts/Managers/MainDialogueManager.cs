@@ -13,6 +13,7 @@ public class MainDialogueManager : MonoBehaviour
     private InMemoryVariableStorage variableStorage;
 
     private bool isCurrentConversation = false;
+    public bool canInteract = true;
 
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class MainDialogueManager : MonoBehaviour
 
     private void StartConversation(string dialogueNode)
     {
+        canInteract = false;
         FindAnyObjectByType<PlayerMovement>().SetMovement(false);
         Debug.Log($"Started conversation with {name}.");
         isCurrentConversation = true;
@@ -43,11 +45,10 @@ public class MainDialogueManager : MonoBehaviour
 
             isCurrentConversation = false;
             Debug.Log($"Ended conversation with {name}.");
-            FindAnyObjectByType<PlayerMovement>().SetMovement(true);
 
             CampfireInteractable.instance.canInteract = true;
             TentInteractable.instance.canInteract = true;
-            PlayerMovement.instance.canMove = true;
+
 
             StartCoroutine(WaitToInteract());
         }
@@ -56,6 +57,7 @@ public class MainDialogueManager : MonoBehaviour
     public IEnumerator WaitToInteract()
     {
         yield return new WaitForSeconds(0.2f);
+        canInteract = true;
         PlayerMovement.instance.canMove = true;
     }
 

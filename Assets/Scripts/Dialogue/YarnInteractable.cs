@@ -38,7 +38,7 @@ public class YarnInteractable : MonoBehaviour
 
     private void Update()
     {
-        if (canInteract)
+        if (canInteract && MainDialogueManager.instance.canInteract)
         {
             if (playerFound && Input.GetKeyDown(KeyCode.E))
             {
@@ -82,6 +82,7 @@ public class YarnInteractable : MonoBehaviour
         Debug.Log($"Started conversation with {name}.");
         isCurrentConversation = true;
         dialogueRunner.StartDialogue(conversationStartNode);
+        playerMovement.canMove = false;
         interactable = false;
         canInteract = false;
     }
