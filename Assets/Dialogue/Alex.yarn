@@ -12,6 +12,7 @@ Alex: yo.
 ===
 
 title: FirstMeeting
+tags: meetingNight
 ---
 ???: ...
 Ernest: !!
@@ -74,6 +75,7 @@ Alex: Ok...
 ===
 
 title: SecondMeeting
+tags: meetingNight
 ---
 Alex: Ernest!!
 Ernest: Ah! You scared me! 
@@ -88,6 +90,7 @@ Alex: I've been making these. There's some really nice looking leaves and sticks
 ===
 
 title: AfterLeaf
+tags: meetingNight
 ---
 Alex: Hey, those look pretty good! You're almost better than me.
 Ernest: (thinking) His nails looked extra sharp when he was showing me those leaves. Were they like that yesterday? 
@@ -108,6 +111,7 @@ Alex: Yes, I'll be here.
 ===
 
 title: AfterSpotlight
+tags: meetingNight
 ---
 Ernest: What are you doing here?? You'll be seen.
 Alex: It's fine, everyone is asleep, you were taking too long, I had to come see what was the hold up. 
@@ -116,6 +120,7 @@ Ernest: Well I was just about to leave before you came over here. Let's go befor
 ===
 
 title: InForestDay4
+tags: meetingNight
 ---
 Ernest: (thinking) Hmm.. were Alex's eyes always glowing like that? 
     -> Ask Alex about his eyes 
@@ -151,10 +156,17 @@ Ernest: I'll make sure to visit you as soon as possible.
 ===
 
 title: FinalMeeting
+tags: reveal
 ---
+<<set $playRevealAnim = true>>
 Ernest: Alex, is that you?
-Alex: ...
-Ernest: It's been you this whole time, hasn't it? 
+<<jump FinalMeeting2>>
+===
+
+title: FinalMeeting2
+---
+<<set $hasSnuckOut = true>>
+Ernest: It's been you this whole time, hasn't it?
 Ernest: You're the wolf from the story? 
 Ernest: You aren't going to hurt me, are you? You're my friend
 Ernest: The signs were there the whole time. 

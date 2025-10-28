@@ -13,6 +13,8 @@ public class TentInteractable : MonoBehaviour
     public DayTransition dayTransition;
     public bool canInteract = true;
 
+    public bool hasSlept = false;
+
     private void Start()
     {
         instance = this;
@@ -123,7 +125,7 @@ public class TentInteractable : MonoBehaviour
                         DayManager.instance.StartNewDay(5);
                         GameManager.instance.SetToDay();
                         MainDialogueManager.instance.Day5Intro();
-                        CampBorder.instance.EnableTriggerCollider();
+                        CampBorder.instance.CanEnter();
                     }
                 }
                 

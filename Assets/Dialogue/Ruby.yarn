@@ -5,8 +5,16 @@
     <<jump Ruby_Day1>>
 <<elseif $day == 1 && $hasUnpacked == true>>
     <<jump Ruby_Day1_afterUnpacking>>
-<<elseif $day >= 2>>
+<<elseif $day == 2>>
     <<jump Ruby_Day2>>
+<<elseif $day == 3>>
+    <<jump Ruby_Day2>>
+<<elseif $day == 4>>
+    <<jump Ruby_Day2>>
+<<elseif $day == 5 && $hasSnuckOut == false>>
+    <<jump Ruby_Day2>>
+<<elseif $day == 5 && $hasSnuckOut == true>>
+    <<jump Ruby_Final>>
 <<endif>>
 ===
 

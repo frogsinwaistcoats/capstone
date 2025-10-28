@@ -75,4 +75,15 @@ public class DialogueBackgroundManager : MonoBehaviour
     {
         backgroundImage.enabled = false;
     }
+
+    public void PlayRevealAnim()
+    {
+        GetComponent<Animator>().Play("Reveal_Anim");
+    }
+
+    public void DisableAnimator()
+    {
+        GetComponent<Animator>().enabled = false;
+        ClearBackground();
+    }
 }

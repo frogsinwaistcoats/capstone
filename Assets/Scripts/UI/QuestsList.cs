@@ -28,13 +28,25 @@ public class QuestsList : MonoBehaviour
     public GameObject questsVisualHolder;
     DayManager dayManager;
 
+    public GameObject bus;
+    public GameObject ruby;
+
 
     [SerializeField] private bool addedSneakOutQuestDay2 = false;
     [SerializeField] private bool addedSneakOutQuestDay3 = false;
+
+
     [SerializeField] private bool addedCampfireQuestDay4 = false;
 
     [SerializeField] private bool addedCameraQuest = false;
     [SerializeField] private bool addedReturnToWilsonQuest = false;
+
+    [SerializeField] private bool addedLeaveCampQuest = false;
+
+    [SerializeField] private bool addedSleepQuestDay1 = false;
+    [SerializeField] private bool addedSleepQuestDay2 = false;
+    [SerializeField] private bool addedSleepQuestDay3 = false;
+    [SerializeField] private bool addedSleepQuestDay4 = false;
 
     private Dictionary<string, TextMeshProUGUI> questTextByName = new Dictionary<string, TextMeshProUGUI>();
 
@@ -137,7 +149,22 @@ public class QuestsList : MonoBehaviour
             if (LoadYarnVariables.instance.GetBool("$campfireStoryRead"))
             {
                 StrikeThroughQuest("Campfire_Day1");
+
+                if (!addedSleepQuestDay1)
+                {
+                    Quest sleep = (new Quest
+                    {
+                        questName = "Sleep_Day1",
+                        questDescription = "Go to sleep"
+                    });
+                    questsDay1.Add(sleep);
+                    AddQuestToList(sleep);
+                    addedSleepQuestDay1 = true;
+                }
+
             }
+
+            
         }
         else if (dayManager.dayCount == 2)
         {
@@ -157,7 +184,7 @@ public class QuestsList : MonoBehaviour
                 {
                     Quest sneak = (new Quest
                     {
-                        questName = "Sneak out",
+                        questName = "SneakOutDay2",
                         questDescription = "Sneak out of camp at night"
                     });
                     questsDay2.Add(sneak);
@@ -165,7 +192,25 @@ public class QuestsList : MonoBehaviour
                     addedSneakOutQuestDay2 = true;
                     
                 }
-                CampBorder.instance.EnableTriggerCollider();
+                CampBorder.instance.CanEnter();
+            }
+
+            if (GameManager.instance.hasSnuckOutDay2)
+            {
+                StrikeThroughQuest("SneakOutDay2");
+                //GameManager.instance.hasSnuckOut = false;
+
+                if (!addedSleepQuestDay2)
+                {
+                    Quest sleep = (new Quest
+                    {
+                        questName = "Sleep_Day2",
+                        questDescription = "Go to sleep"
+                    });
+                    questsDay2.Add(sleep);
+                    AddQuestToList(sleep);
+                    addedSleepQuestDay2 = true;
+                }
             }
 
         }
@@ -186,14 +231,31 @@ public class QuestsList : MonoBehaviour
                 {
                     Quest sneak = (new Quest
                     {
-                        questName = "Sneak out",
+                        questName = "Sneak out day3",
                         questDescription = "Sneak out to see Alex"
                     });
                     questsDay3.Add(sneak);
                     AddQuestToList(sneak);
                     addedSneakOutQuestDay3 = true;
                 }
-                CampBorder.instance.EnableTriggerCollider();
+                CampBorder.instance.CanEnter();
+            }
+
+            if (GameManager.instance.hasSnuckOutDay3)
+            {
+                StrikeThroughQuest("Sneak out day3");
+
+                if (!addedSleepQuestDay3)
+                {
+                    Quest sleep = (new Quest
+                    {
+                        questName = "Sleep_Day3",
+                        questDescription = "Go to sleep"
+                    });
+                    questsDay3.Add(sleep);
+                    AddQuestToList(sleep);
+                    addedSleepQuestDay3 = true;
+                }
             }
         }
         else if (dayManager.dayCount == 4)
@@ -240,19 +302,50 @@ public class QuestsList : MonoBehaviour
                         questName = "Campfire_Day4",
                         questDescription = "Go to the campfire"
                     });
-                    questsDay3.Add(campfire);
+                    questsDay4.Add(campfire);
                     AddQuestToList(campfire);
                     addedCampfireQuestDay4 = true;
                 }
-                CampBorder.instance.EnableTriggerCollider();
+                CampBorder.instance.CanEnter();
             }
             if (LoadYarnVariables.instance.GetBool("$campfireDay4"))
             {
                 StrikeThroughQuest("Campfire_Day4");
+
+                if (!addedSleepQuestDay4)
+                {
+                    Quest sleep = (new Quest
+                    {
+                        questName = "Sleep_Day4",
+                        questDescription = "Go to sleep"
+                    });
+                    questsDay4.Add(sleep);
+                    AddQuestToList(sleep);
+                    addedSleepQuestDay4 = true;
+                }
             }
         }
+        else if (DayManager.instance.dayCount == 5)
+        {
+            if (GameManager.instance.hasSnuckOutDay5)
+            {
+                StrikeThroughQuest("Sneak Out day5");
 
-        
+                if (!addedLeaveCampQuest)
+                {
+                    Quest leave = (new Quest
+                    {
+                        questName = "Leave",
+                        questDescription = "Get on the bus to leave camp"
+                    });
+                    questsDay5.Add(leave);
+                    AddQuestToList(leave);
+                    addedLeaveCampQuest = true;
+                    bus.SetActive(true);
+                    ruby.transform.position = new Vector3(-11.9700003f, -0.0799999982f, -20.8199997f);
+                }
+            }
+        }
     }
 
     public void AddQuestToList(Quest quest)
@@ -268,14 +361,25 @@ public class QuestsList : MonoBehaviour
 
     public void StrikeThroughQuest(string questName)
     {
-        InventoryManager.instance.newQuestsToSee = true;
-        if (questTextByName.TryGetValue(questName, out TextMeshProUGUI questTMP))
+        if (!questTextByName.TryGetValue(questName, out TextMeshProUGUI questTMP))
         {
-            if (!questTMP.text.Contains("<s>"))
-            {
-                questTMP.text = "<s>" + questTMP.text + "</s>";
-                questTMP.color = new Color(questTMP.color.r, questTMP.color.g, questTMP.color.b, 0.5f);
-            }
+            Debug.LogWarning($"Quest '{questName}' not found in dictionary — trying again next frame.");
+            StartCoroutine(StrikeNextFrame(questName));
+            return;
         }
+
+        if (!questTMP.text.Contains("<s>"))
+        {
+            questTMP.text = "<s>" + questTMP.text + "</s>";
+            questTMP.color = new Color(questTMP.color.r, questTMP.color.g, questTMP.color.b, 0.5f);
+            if (InventoryManager.instance != null)
+                InventoryManager.instance.newQuestsToSee = true;
+        }
+    }
+
+    private IEnumerator StrikeNextFrame(string questName)
+    {
+        yield return null;
+        StrikeThroughQuest(questName);
     }
 }

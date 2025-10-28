@@ -41,7 +41,7 @@ public class UnpackingItem : MonoBehaviour
             isPlaced = true;
             UnpackingManager.instance.CheckForFinished();
             transform.position = hit.collider.transform.position;
-            //FindAnyObjectByType<AudioManager>().Play("ItemPlaced");
+            FindAnyObjectByType<AudioManager>().Play("ItemPlaced");
 
             if (placedSprite != null)
             {

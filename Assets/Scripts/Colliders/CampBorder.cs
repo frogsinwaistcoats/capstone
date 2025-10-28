@@ -3,6 +3,7 @@ using UnityEngine;
 public class CampBorder : MonoBehaviour
 {
     public static CampBorder instance;
+    public bool canEnter = false;
 
     private void Awake()
     {
@@ -11,24 +12,34 @@ public class CampBorder : MonoBehaviour
 
     private void Start()
     {
-        EnableSolidCollider();
+        NotEnter();
     }
 
-    public void EnableSolidCollider()
+    public void CanEnter()
     {
-        GetComponent<BoxCollider>().isTrigger = false;
+        canEnter = true;
     }
 
-    public void EnableTriggerCollider()
+    public void NotEnter()
     {
-        GetComponent<BoxCollider>().isTrigger = true;
+        canEnter = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.instance.LoadSneaking();
+            if (!canEnter)
+            {
+                MainDialogueManager.instance.CantSneakYet();
+            }
+            else if (canEnter)
+            {
+
+                GameManager.instance.LoadSneaking();
+
+            }
+            
         }
     }
 }

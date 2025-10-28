@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject npcSprites;
 
+    public bool hasSnuckOutDay2;
+    public bool hasSnuckOutDay3;
+    public bool hasSnuckOutDay5;
+
     private void Awake()
     {
         if (instance == null)
@@ -107,6 +111,8 @@ public class GameManager : MonoBehaviour
         {
             PlayerMovement.instance.transform.position = lastPlayerPos;
             PlayerMovement.instance.canMove = true;
+
+            MainDialogueManager.instance.AfterSolitaire();
         }
         else if (previousScene == "Rhythm")
         {
@@ -144,6 +150,8 @@ public class GameManager : MonoBehaviour
             PlayerMovement.instance.transform.position = lastPlayerPos;
             PlayerMovement.instance.canMove = true;
             LoadYarnVariables.instance.SetYarnVariable("$hasFished", true);
+
+            MainDialogueManager.instance.AfterFishing();
         }
         else if (previousScene == "Cooking")
         {
@@ -192,6 +200,7 @@ public class GameManager : MonoBehaviour
     {
         previousScene = SceneManager.GetActiveScene().name;
         lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
+
         SceneManager.LoadScene("Sneaking");
     }
 
@@ -237,14 +246,18 @@ public class GameManager : MonoBehaviour
         LoadCampScene(() =>
         {
             PlayerMovement.instance.GoToForestPos();
+            
 
             if (DayManager.instance.dayCount == 2)
             {
+                hasSnuckOutDay2 = true;
                 SetToNight(false);
                 MainDialogueManager.instance.FirstMeetingDialogue();
+
             }
             if (DayManager.instance.dayCount == 3)
             {
+                hasSnuckOutDay3 = true;
                 SetToNight(false);
                 if (previousScene != "Leaf")
                 {
@@ -262,6 +275,7 @@ public class GameManager : MonoBehaviour
             }
             if (DayManager.instance.dayCount == 5)
             {
+                hasSnuckOutDay5 = true;
                 MainDialogueManager.instance.FinalAlexMeeting();
             }
         });
@@ -273,11 +287,6 @@ public class GameManager : MonoBehaviour
         PlayerMovement.instance.SetMovement(false);
         yield return new WaitForSeconds(1f);
         PlayerMovement.instance.SetMovement(true);
-
-        if (DayManager.instance.dayCount == 5)
-        {
-            MainDialogueManager.instance.FinalDialogue();
-        }
     }
 
     public void LoadEndScene()
@@ -306,13 +315,14 @@ public class GameManager : MonoBehaviour
         
         if (DayManager.instance.dayCount <= 4)
         {
-            CampBorder.instance.EnableSolidCollider();
+            CampBorder.instance.NotEnter();
         }
         else if (DayManager.instance.dayCount == 5)
         {
-            CampBorder.instance.EnableTriggerCollider();
+            CampBorder.instance.CanEnter();
         }
 
+        npcSprites = GameObject.Find("---- NPCs ----");
         npcSprites.transform.position += new Vector3(-100f, 0f, 0f);
     }
 
@@ -335,7 +345,8 @@ public class GameManager : MonoBehaviour
         RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
         DynamicGI.UpdateEnvironment();
 
-        
+        npcSprites = GameObject.Find("---- NPCs ----");
+        npcSprites.transform.position += new Vector3(100f, 0f, 0f);
 
         dayIcon = GameObject.Find("---- UI ----/OtherCanvas/DayNightIndicator")?.GetComponent<Image>();
         if (dayIcon != null)

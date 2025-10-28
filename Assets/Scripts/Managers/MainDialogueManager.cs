@@ -23,12 +23,14 @@ public class MainDialogueManager : MonoBehaviour
     {
         FindAnyObjectByType<DialogueRunner>().onDialogueComplete.AddListener(EndConversation);
 
+
         if (DayManager.instance.dayCount == 1 && !LoadYarnVariables.instance.GetBool("$hasDoneIntro"))
             StartConversation("MrWilson_Intro");
     }
 
     private void StartConversation(string dialogueNode)
     {
+
         FindAnyObjectByType<PlayerMovement>().SetMovement(false);
         Debug.Log($"Started conversation with {name}.");
         isCurrentConversation = true;
@@ -39,6 +41,7 @@ public class MainDialogueManager : MonoBehaviour
     {
         if (isCurrentConversation)
         {
+
             isCurrentConversation = false;
             Debug.Log($"Ended conversation with {name}.");
             FindAnyObjectByType<PlayerMovement>().SetMovement(true);
@@ -137,6 +140,21 @@ public class MainDialogueManager : MonoBehaviour
     public void FallDialogue()
     {
         StartConversation("FallDialogue");
+    }
+
+    public void CantSneakYet()
+    {
+        StartConversation("Ernest_CantSneakYet");
+    }
+
+    public void AfterFishing()
+    {
+        StartConversation("Angler_AfterFishing");
+    }
+
+    public void AfterSolitaire()
+    {
+        StartConversation("Talia_AfterSolitaire");
     }
 }
 

@@ -39,6 +39,12 @@ public class InventoryManager : MonoBehaviour
                 SpriteShaker.instance.StopShaking();
         }
 
+        if (menuActivated)
+        {
+            newPhotosToSee = false;
+            newQuestsToSee = false;
+        }
+
         // opens items menu
         if (Input.GetKeyDown(KeyCode.Tab) && menuActivated)
         {
@@ -54,7 +60,7 @@ public class InventoryManager : MonoBehaviour
             inventory.SetActive(true);
             menuActivated = true;
             OpenItems();
-            newPhotosToSee = false;
+
 
             FindAnyObjectByType<AudioManager>().Play("OpenBook");
         }
@@ -85,7 +91,7 @@ public class InventoryManager : MonoBehaviour
             inventory.SetActive(true);
             menuActivated = true;
             OpenQuests();
-            newQuestsToSee = false;
+
 
             FindAnyObjectByType<AudioManager>().Play("OpenBook");
         }
@@ -102,6 +108,7 @@ public class InventoryManager : MonoBehaviour
     public void OpenItems()
     {
         itemsMenu.SetActive(true);
+        newPhotosToSee = false;
 
         settingsMenu.SetActive(false);
         questsMenu.SetActive(false);
@@ -120,6 +127,7 @@ public class InventoryManager : MonoBehaviour
     public void OpenQuests()
     {
         questsMenu.SetActive(true);
+        newQuestsToSee = false;
 
         settingsMenu.SetActive(false);
         itemsMenu.SetActive(false);

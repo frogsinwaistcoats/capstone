@@ -38,6 +38,7 @@ public class LoadYarnVariables : MonoBehaviour
     bool caughtByTeacher;
     bool triggerSneakOut;
     bool firstMeetingDone;
+    bool hasSnuckOut;
 
     bool campfireDay3;
     bool hasFished;
@@ -53,6 +54,7 @@ public class LoadYarnVariables : MonoBehaviour
 
     bool endScene;
     bool ernestThinking;
+    bool playRevealAnim;
 
     private void Awake()
     {
@@ -148,6 +150,7 @@ public class LoadYarnVariables : MonoBehaviour
         vs.SetValue("$triggerSneakOut", triggerSneakOut);
         vs.SetValue("$firstMeetingDone", firstMeetingDone);
         vs.SetValue("$campfireDay2", campfireDay2);
+        vs.SetValue("$hasSnuckOut", hasSnuckOut);
 
         // day 3 progress
         vs.SetValue("$hasFished", hasFished);
@@ -166,6 +169,7 @@ public class LoadYarnVariables : MonoBehaviour
         //day 5 progress
         vs.SetValue("$endScene", endScene);
         vs.SetValue("$ernestThinking", ernestThinking);
+        vs.SetValue("$playRevealAnim", playRevealAnim);
     }
 
     // Yarn to C#
@@ -259,6 +263,7 @@ public class LoadYarnVariables : MonoBehaviour
         vs.TryGetValue("$triggerSneakOut", out triggerSneakOut);
         vs.TryGetValue("$firstMeetingDone", out firstMeetingDone);
         vs.TryGetValue("$campfireDay2", out campfireDay2);
+        vs.TryGetValue("$hasSnuckOut", out hasSnuckOut);
 
         vs.TryGetValue("$hasFished", out hasFished);
         vs.TryGetValue("$hasCooked", out hasCooked);
@@ -303,6 +308,11 @@ public class LoadYarnVariables : MonoBehaviour
                 MainDialogueManager.instance.ErnestThinking();
             }
         }
+        vs.TryGetValue("$playRevealAnim", out playRevealAnim);
+        if (playRevealAnim)
+        {
+            
+        }
     }
 
     // called from other scripts to set variables
@@ -338,6 +348,7 @@ public class LoadYarnVariables : MonoBehaviour
             case "$triggerSneakOut": triggerSneakOut = (bool)value; break;
             case "$firstMeetingDone": firstMeetingDone = (bool)value; break;
             case "$campfireDay2": campfireDay2 = (bool)value; break;
+            case "$hasSnuckOut": hasSnuckOut = (bool)value; break;
 
             case "$hasFished": hasFished = (bool)value; break;
             case "$hasCooked": hasCooked = (bool)value; break;
@@ -408,6 +419,7 @@ public class LoadYarnVariables : MonoBehaviour
             case "$triggerSneakOut": return triggerSneakOut;
             case "$firstMeetingDone": return firstMeetingDone;
             case "$campfireDay2": return campfireDay2;
+            case "$hasSnuckOut": return hasSnuckOut;
 
             case "$hasFished": return hasFished;
             case "$hasCooked": return hasCooked;

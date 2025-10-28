@@ -14,6 +14,7 @@ public class NightTransition : MonoBehaviour
 
     public void PlayTransition()
     {
+        gameObject.SetActive(true);
         if (isPlaying) return;
 
         isPlaying = true;

@@ -53,6 +53,7 @@ public class Item : MonoBehaviour
             {
                 CollectItem();
                 prompt.SetActive(false);
+                FindAnyObjectByType<AudioManager>().Play("CameraClick");
                 StartCoroutine(ShowPhoto());
             }
         }

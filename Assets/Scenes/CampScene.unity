@@ -2011,6 +2011,7 @@ GameObject:
   - component: {fileID: 88128044}
   - component: {fileID: 88128043}
   - component: {fileID: 88128046}
+  - component: {fileID: 88128047}
   m_Layer: 5
   m_Name: DialogueBackground
   m_TagString: Untagged
@@ -2113,6 +2114,34 @@ MonoBehaviour:
     backgroundSprite: {fileID: 21300000, guid: 7d8ff543a5c2e5c44b2c3c4ff40de24a, type: 3}
   - tagName: intro
     backgroundSprite: {fileID: 21300000, guid: b605a4e8d4ece0b49bdc204c9cec73d8, type: 3}
+  - tagName: meetingDay
+    backgroundSprite: {fileID: 21300000, guid: b68e45427fe3bf449b99ff41abdf5b1b, type: 3}
+  - tagName: meetingNight
+    backgroundSprite: {fileID: 21300000, guid: 4c069b6d8407d9e45af4c4549916e0a7, type: 3}
+  - tagName: reveal
+    backgroundSprite: {fileID: 21300000, guid: f1b53a879d2f6bb4fa15837806fc446e, type: 3}
+--- !u!95 &88128047
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88128041}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 61d9851e962ba4f4a8d275fb7d07b214, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &98464744
 GameObject:
   m_ObjectHideFlags: 0
@@ -5294,6 +5323,7 @@ Transform:
   - {fileID: 2131351212}
   - {fileID: 1429532478}
   - {fileID: 120221145}
+  - {fileID: 709886570}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &208118771
@@ -15310,6 +15340,8 @@ GameObject:
   m_Component:
   - component: {fileID: 709886570}
   - component: {fileID: 709886569}
+  - component: {fileID: 709886572}
+  - component: {fileID: 709886571}
   m_Layer: 0
   m_Name: Bus
   m_TagString: Untagged
@@ -15380,13 +15412,55 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709886568}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1208.9585, y: -592.71814, z: -20.128328}
+  m_LocalRotation: {x: -0, y: -0, z: 0.020620488, w: 0.9997874}
+  m_LocalPosition: {x: -9.69, y: 0.88, z: -20.54}
   m_LocalScale: {x: 0.39896, y: 0.39896, z: 0.39896}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2122002522}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 207135153}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.363}
+--- !u!65 &709886571
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709886568}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15.87, y: 12, z: -3.31}
+  m_Center: {x: 0, y: -3.7, z: 0}
+--- !u!65 &709886572
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709886568}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12, y: 5.92, z: 0.62}
+  m_Center: {x: 0, y: -1.4, z: 0}
 --- !u!1 &710005766
 GameObject:
   m_ObjectHideFlags: 0
@@ -25643,7 +25717,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: d502b1f99a16a7e43865d1657c656a95, type: 3}
     isRightSide: 0
   - characterName: ???
-    sprite: {fileID: 21300000, guid: c4734247520a7c24c9c983faa98eb46b, type: 3}
+    sprite: {fileID: 21300000, guid: 813f874ce497a02459a18607e80c30fb, type: 3}
     isRightSide: 0
   emptyPortrait: {fileID: 21300000, guid: 70c391096bca6494eac5d8458d95bef0, type: 3}
   nameTextTransform: {fileID: 1192371806}
@@ -29399,6 +29473,7 @@ GameObject:
   - component: {fileID: 1191444616}
   - component: {fileID: 1191444615}
   - component: {fileID: 1191444617}
+  - component: {fileID: 1191444618}
   m_Layer: 0
   m_Name: Alex
   m_TagString: Untagged
@@ -29498,6 +29573,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1191444618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191444614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ff93b26f7fcde45964381476a48944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wolf: {fileID: 21300000, guid: c48123eab4bc52345959e36e4907f59f, type: 3}
 --- !u!1 &1192371801 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7782294932235487527, guid: 643452bd49f467148afe75c7e9614a68, type: 3}
@@ -35771,6 +35859,7 @@ MonoBehaviour:
   notReadyPrompt: {fileID: 208118773}
   dayTransition: {fileID: 1729844568}
   canInteract: 1
+  hasSlept: 0
 --- !u!1 &1437905423
 GameObject:
   m_ObjectHideFlags: 0
@@ -41065,7 +41154,7 @@ Transform:
   m_GameObject: {fileID: 1677160112}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.79, y: -0.12, z: -19.55}
+  m_LocalPosition: {x: -16.17, y: 0.73, z: -16.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41676,7 +41765,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -41747,6 +41836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3673b9c7bf7348c4eaf90a0e4cccb625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canEnter: 0
 --- !u!1 &1719521670
 GameObject:
   m_ObjectHideFlags: 0
@@ -51009,7 +51099,6 @@ Transform:
   - {fileID: 1773961483}
   - {fileID: 1102733218}
   - {fileID: 1514193715}
-  - {fileID: 709886570}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2123895470
@@ -51496,7 +51585,7 @@ MonoBehaviour:
   - questName: Fishing
     questDescription: Catch a fish in the lake
   - questName: Cooking
-    questDescription: Make some burgers by the campfire
+    questDescription: Make some sandwiches at the table
   - questName: Campfire_Day3
     questDescription: Go to the campfire
   questsDay4:
@@ -51505,15 +51594,22 @@ MonoBehaviour:
   questsDay5:
   - questName: Final Activities
     questDescription: Do any camp activities if you want
-  - questName: Sneak Out
+  - questName: Sneak Out day5
     questDescription: Go say goodbye to Alex
   questsTextPrefab: {fileID: 2622580678982694682, guid: c3e4c3b2393ea86408b9fee1fe52e532, type: 3}
   questsVisualHolder: {fileID: 1089656462}
+  bus: {fileID: 709886568}
+  ruby: {fileID: 1995183423}
   addedSneakOutQuestDay2: 0
   addedSneakOutQuestDay3: 0
   addedCampfireQuestDay4: 0
   addedCameraQuest: 0
   addedReturnToWilsonQuest: 0
+  addedLeaveCampQuest: 0
+  addedSleepQuestDay1: 0
+  addedSleepQuestDay2: 0
+  addedSleepQuestDay3: 0
+  addedSleepQuestDay4: 0
 --- !u!1001 &2132594520
 PrefabInstance:
   m_ObjectHideFlags: 0

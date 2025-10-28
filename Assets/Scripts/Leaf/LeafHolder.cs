@@ -15,9 +15,14 @@ public class LeafHolder : MonoBehaviour
 
     public GameObject instructionScreen;
     public GameObject winScreen;
+    public GameObject winScreen2;
 
     public bool hasStarted = false;
     public int totalLeaves;
+
+    public int selectedGroup;
+    public bool hasPlayed = false;
+    public bool hasPlayedBoth = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -33,28 +38,32 @@ public class LeafHolder : MonoBehaviour
 
     private void StartLeaf()
     {
-        // Re-seed the random generator each time play starts
-        Random.InitState(System.Environment.TickCount);
+        if (!hasPlayed)
+        {
+            selectedGroup = 0;
+        }
+        else if (hasPlayed)
+        {
+            selectedGroup = 1;
+            hasPlayedBoth = true;
+        }
 
-        int selectedGroup = Random.Range(0, leafGroup.Length);
-        Debug.Log("Selected leaf group: " + selectedGroup);
-
-        leaves.AddRange(leafGroup[selectedGroup]
-            .GetComponentsInChildren<Transform>(true)
-            .Where(t => t != leafGroup[selectedGroup].transform)
-            .Select(t => t.gameObject)
-        );
+            leaves.AddRange(leafGroup[selectedGroup]
+                .GetComponentsInChildren<Transform>(true)
+                .Where(t => t != leafGroup[selectedGroup].transform)
+                .Select(t => t.gameObject)
+            );
 
         leafGroupOutlines[selectedGroup].SetActive(true);
         totalLeaves = leaves.Count;
 
         ShuffleLeaves();
         hasStarted = true;
+        hasPlayed = true;
     }
 
     private void Update()
     {
-
         if (hasStarted)
         {
             if (placedLeaves.Count >= totalLeaves)
@@ -62,12 +71,7 @@ public class LeafHolder : MonoBehaviour
                 hasStarted = false;
                 StartCoroutine(WaitAndShowWinScreen());
             }
-                
-        }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            StartCoroutine(WaitAndShowWinScreen());
         }
         
     }
@@ -75,7 +79,17 @@ public class LeafHolder : MonoBehaviour
     public IEnumerator WaitAndShowWinScreen()
     {
         yield return new WaitForSeconds(1f);
-        winScreen.SetActive(true);
+
+        if (!hasPlayedBoth)
+        {
+            winScreen.SetActive(true);
+        }
+        else if (hasPlayedBoth)
+        {
+            winScreen2.SetActive(true);
+        }
+        
+
     }
 
     private void ShuffleLeaves()
@@ -102,6 +116,12 @@ public class LeafHolder : MonoBehaviour
     public void PlayAgain()
     {
         winScreen.SetActive(false);
+
+        foreach (var leaf in placedLeaves)
+        {
+            leaf.gameObject.SetActive(false);
+        }
+
         leaves.Clear();
         placedLeaves.Clear();
 

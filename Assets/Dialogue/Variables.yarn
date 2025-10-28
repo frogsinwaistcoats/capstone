@@ -31,6 +31,7 @@
 <<declare $triggerSneakOut = false>>
 <<declare $firstMeetingDone = false>>
 <<declare $campfireDay2 = false>>
+<<declare $hasSnuckOut = false>>
 
 <<declare $hasFished = false>>
 <<declare $hasCooked = false>>
@@ -46,5 +47,6 @@
 
 <<declare $endScene = false>>
 <<declare $ernestThinking = false>>
+<<declare $playRevealAnim = false>>
 
 ===

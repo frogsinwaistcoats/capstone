@@ -22,8 +22,12 @@ public class YarnInteractable : MonoBehaviour
 
     Vector3 startPos;
 
+    private GameObject otherUI;
+
     void Start()
     {
+        otherUI = GameObject.Find("---- UI ----");
+
         dialogueRunner = FindAnyObjectByType<DialogueRunner>();
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
         playerMovement = FindAnyObjectByType<PlayerMovement>();
@@ -77,8 +81,12 @@ public class YarnInteractable : MonoBehaviour
 
     private void StartConversation()
     {
+        
+
         Debug.Log($"Started conversation with {name}.");
         isCurrentConversation = true;
+
+
         dialogueRunner.StartDialogue(conversationStartNode);
     }
 

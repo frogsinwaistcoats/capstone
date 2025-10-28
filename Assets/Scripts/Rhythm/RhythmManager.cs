@@ -23,8 +23,13 @@ public class RhythmManager : MonoBehaviour
     public int highestStreak = 0;
 
     public GameObject instructionScreen;
+    public GameObject instructionScreenAfter1;
     public GameObject startPrompt;
     public GameObject winScreen;
+
+    public TextMeshProUGUI endScoreText;
+    public TextMeshProUGUI endStreakText;
+    public TextMeshProUGUI endMissedText;
 
     public bool canPlay;
 
@@ -40,6 +45,18 @@ public class RhythmManager : MonoBehaviour
         instance = this;
 
         scoreText.text = "Score: 0";
+
+        if (DayManager.instance.dayCount == 1)
+        {
+            instructionScreen.SetActive(true);
+            instructionScreenAfter1.SetActive(false);
+        }
+        else
+        {
+            instructionScreen.SetActive(false);
+            instructionScreenAfter1.SetActive(true);
+
+        }
     }
 
     private void Update()
@@ -81,6 +98,10 @@ public class RhythmManager : MonoBehaviour
 
         currentScore += scorePerNote;
         currentStreak += scorePerNote;
+
+        if (currentStreak > highestStreak)
+            highestStreak = currentStreak;
+
         scoreText.text = "Hits: " + currentScore;
         streakText.text = "Streak: " + currentStreak;
     }
@@ -98,6 +119,7 @@ public class RhythmManager : MonoBehaviour
     public void CloseInstructions()
     {
         instructionScreen.SetActive(false);
+        instructionScreenAfter1.SetActive(false);
         canPlay = true;
         startPrompt.SetActive(true);
     }
@@ -123,7 +145,10 @@ public class RhythmManager : MonoBehaviour
     public void EndOfSong()
     {
         winScreen.SetActive(true);
-    }
+        endScoreText.text = currentScore.ToString();
+        endStreakText.text = highestStreak.ToString();
+        endMissedText.text = missCount.ToString();
+}
 
     public void Finished()
     {
@@ -134,6 +159,11 @@ public class RhythmManager : MonoBehaviour
     {
         yield return new WaitUntil(() => !music.isPlaying);
         EndOfSong();
+    }
+
+    public void SkipRhythm()
+    {
+        Finished();
     }
 }
 
