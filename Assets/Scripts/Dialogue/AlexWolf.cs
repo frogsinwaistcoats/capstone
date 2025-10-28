@@ -10,7 +10,7 @@ public class AlexWolf : MonoBehaviour
         if (DayManager.instance.dayCount == 5)
         {
             GetComponent<Animator>().enabled = false;
-            transform.localScale = transform.localScale / 2;
+            transform.localScale = new Vector3(0.14f, 0.14f, 1f);
             GetComponent<SpriteRenderer>().sprite = wolf;
         }
     }

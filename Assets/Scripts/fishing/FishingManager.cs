@@ -56,7 +56,8 @@ public class FishingManager : MonoBehaviour
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
         worldPos.z = 0f;
 
-        Instantiate(button, worldPos, Quaternion.identity);
+        GameObject newButton = Instantiate(button, worldPos, Quaternion.identity);
+        activeKeys.Add(newButton);
     }
 
     public IEnumerator WinGame()

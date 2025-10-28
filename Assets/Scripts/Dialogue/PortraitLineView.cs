@@ -1,8 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
-using System.Collections.Generic;
-using System.Linq;
 
 public class PortraitLineView : LineView
 {
@@ -79,11 +80,8 @@ public class PortraitLineView : LineView
     public override void RunLine(LocalizedLine dialogueLine, System.Action onFinished)
     {
         base.RunLine(dialogueLine, onFinished);
-
         string speakerName = dialogueLine.CharacterName;
-
         bool isSolo = dialogueLine.Metadata?.Contains("solo") ?? false;
-
         UpdatePortraits(speakerName, isSolo);
     }
 

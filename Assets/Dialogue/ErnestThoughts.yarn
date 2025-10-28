@@ -31,7 +31,8 @@ Ernest: I need to find a way to sneak past the teachers. If they see me, I'll ne
 title: Ernest_Intro
 tags: #solo
 ---
-Ernest: I can check my diary if I want to see what tasks I have to do today (press Q)
+Ernest: I can walk around camp (use WASD), I can check my diary to see what tasks I have to do today (press Q), and I can interact (press E) with my classmates and teachers.
+Ernest: I think my tent is the green one!
 ===
 
 title: Ernest_SneakingPrompt

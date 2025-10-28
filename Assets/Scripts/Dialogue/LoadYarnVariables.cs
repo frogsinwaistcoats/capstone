@@ -305,13 +305,13 @@ public class LoadYarnVariables : MonoBehaviour
 
             if (MainDialogueManager.instance != null)
             {
-                MainDialogueManager.instance.ErnestThinking();
+                //MainDialogueManager.instance.ErnestThinking();
             }
         }
         vs.TryGetValue("$playRevealAnim", out playRevealAnim);
         if (playRevealAnim)
         {
-            
+            DialogueBackgroundManager.instance.PlayRevealAnim();
         }
     }
 

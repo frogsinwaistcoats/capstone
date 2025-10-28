@@ -3558,7 +3558,7 @@ PrefabInstance:
       objectReference: {fileID: 633687618}
     - target: {fileID: 219693529031266221, guid: 0247f1834513e75429147eebdbe95ad9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowInstructions
+      value: QuitMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 219693529031266221, guid: 0247f1834513e75429147eebdbe95ad9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -3570,7 +3570,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2551901654965998384, guid: 0247f1834513e75429147eebdbe95ad9, type: 3}
       propertyPath: m_text
-      value: Instructions
+      value: 'Return to
+
+        Camp'
       objectReference: {fileID: 0}
     - target: {fileID: 5326440454679105683, guid: 0247f1834513e75429147eebdbe95ad9, type: 3}
       propertyPath: m_Name

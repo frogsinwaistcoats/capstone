@@ -15,7 +15,7 @@
 title: MrWilson_Intro
 tags: intro
 ---
-Mr Wilson: Good afternoon students! I want to give you all a warm welcome to where we'll be spending the rest of our week together. 
+Mr Wilson: Good afternoon students! I want to give you all a warm welcome to where we'll be spending the rest of our week together.     (E to continue)
 Mr Wilson: We'll be leaving on Friday, so I hope you can make the most of the natural scenery while you're here.
 Mr Wilson: You are encouraged to explore the camp at your own leisure, however, for you own safety the forest has been made out of bounds. You are NOT to enter. 
 Mr Wilson: Whaea Nyrie will be on guard at all times. 
@@ -66,5 +66,5 @@ title: MrWilson_Day5Intro
 Mr Wilson: I hope you all slept well on your last night in your tents. We will aim to be packed up by the afternoon, you are all on the bus by then or else you will be left behind…
 Mr Wilson: …
 Mr Wilson: Just kidding! We'll do a head count.
-<<set $ernestThinking = true>>
+<<jump Ernest_Day5Sneaking>>
 ===

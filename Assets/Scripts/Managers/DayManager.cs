@@ -110,5 +110,7 @@ public class DayManager : MonoBehaviour//, IDataPersistence
         {
             UpdateDayText();
         }
+
+        
     }
 }

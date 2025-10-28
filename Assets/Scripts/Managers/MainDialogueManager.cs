@@ -30,7 +30,6 @@ public class MainDialogueManager : MonoBehaviour
 
     private void StartConversation(string dialogueNode)
     {
-
         FindAnyObjectByType<PlayerMovement>().SetMovement(false);
         Debug.Log($"Started conversation with {name}.");
         isCurrentConversation = true;
@@ -48,7 +47,16 @@ public class MainDialogueManager : MonoBehaviour
 
             CampfireInteractable.instance.canInteract = true;
             TentInteractable.instance.canInteract = true;
+            PlayerMovement.instance.canMove = true;
+
+            StartCoroutine(WaitToInteract());
         }
+    }
+
+    public IEnumerator WaitToInteract()
+    {
+        yield return new WaitForSeconds(0.2f);
+        PlayerMovement.instance.canMove = true;
     }
 
     public void StartCampfireDialogue()

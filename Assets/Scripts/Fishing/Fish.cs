@@ -15,6 +15,9 @@ public class Fish : MonoBehaviour
     public float movesLeft;
     public bool pullsBack = false;
 
+    private float totalMovesNeeded = 6f;
+    private float progress = 0f;
+
     private void Awake()
     {
         instance = this;
@@ -26,50 +29,24 @@ public class Fish : MonoBehaviour
         startPos = transform.position;
     }
 
-    private void Update()
-    {
-        if(movesLeft <= 0)
-        {
-            movesLeft = 6;
-            StartCoroutine(FishingManager.instance.WinGame());
-        }
-        if (movesLeft >= 7)
-        {
-            movesLeft = 6;
-            
-            StartCoroutine(FishingManager.instance.FailGame());
-        }
-    }
-
     public void ResetBobber()
     {
         transform.position = startPos;
+        progress = 0f;
     }
 
     public void MoveForward()
     {
-        Vector3 start = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        Vector3 end = new Vector3(finalTargetPos.position.x, finalTargetPos.position.y, finalTargetPos.position.z);
-
-        Vector3 targetPos = Vector3.Lerp(start, end, 1 / movesLeft);
-
-        StartCoroutine(MoveFish(start, targetPos));
-        movesLeft--;
+        progress += 1f / totalMovesNeeded;
+        progress = Mathf.Clamp01(progress);
+        StartCoroutine(MoveFish(transform.position, Vector3.Lerp(startPos, finalTargetPos.position, progress)));
     }
 
     public void MoveBack()
     {
-        movesLeft++;
-        Vector3 start = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        float startx = transform.position.x;
-        float endx = finalTargetPos.position.x;
-        float xdistance = Mathf.Abs(startx - endx);
-        Vector3 end = new Vector3(startx + xdistance, transform.position.y, transform.position.z);
-
-        Vector3 targetPos = Vector3.Lerp(start, end, 1 / movesLeft);
-
-        StartCoroutine(MoveFish(start, targetPos));
-        
+        progress -= 1f / totalMovesNeeded;
+        progress = Mathf.Clamp01(progress);
+        StartCoroutine(MoveFish(transform.position, Vector3.Lerp(startPos, finalTargetPos.position, progress)));
     }
 
     //makes fish move smoothly
@@ -83,5 +60,16 @@ public class Fish : MonoBehaviour
             yield return null;
         }
         transform.position = targetPos;
+
+        if (progress >= 1f)
+        {
+            movesLeft = 6;
+            StartCoroutine(FishingManager.instance.WinGame());
+        }
+        if (progress <= 0f)
+        {
+            movesLeft = 6;
+            StartCoroutine(FishingManager.instance.FailGame());
+        }
     }
 }

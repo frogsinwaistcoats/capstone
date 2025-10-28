@@ -185,7 +185,7 @@ public class QuestsList : MonoBehaviour
                     Quest sneak = (new Quest
                     {
                         questName = "SneakOutDay2",
-                        questDescription = "Sneak out of camp at night"
+                        questDescription = "Sneak out using the path on the left"
                     });
                     questsDay2.Add(sneak);
                     AddQuestToList(sneak);

@@ -6,6 +6,8 @@ using Yarn.Unity;
 
 public class DialogueBackgroundManager : MonoBehaviour
 {
+    public static DialogueBackgroundManager instance;
+
     [SerializeField] private Image backgroundImage;
     [SerializeField] private List<DialogueBackground> backgrounds;
 
@@ -21,6 +23,8 @@ public class DialogueBackgroundManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+
         foreach (var bg in backgrounds)
         {
             if (!backgroundLookup.ContainsKey(bg.tagName))

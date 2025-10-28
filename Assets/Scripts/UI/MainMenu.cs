@@ -1,14 +1,23 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private PlayableDirector playableDirector;
+    public GameObject loadScreen;
 
     public void PlayGame()
     {
-        playableDirector.Play();
+        loadScreen.SetActive(true);
+        loadScreen.GetComponent<Animator>().Play("Bus_Anim");
+        StartCoroutine(GoToCampScene());
+    }
+
+    public IEnumerator GoToCampScene()
+    {
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene("CampScene");
     }
 
     public void QuitGame()

@@ -2,6 +2,7 @@ using UnityEngine;
 using Yarn.Unity;
 using UnityEngine.SceneManagement;
 using Yarn;
+using System.Collections;
 
 public class YarnInteractable : MonoBehaviour
 {
@@ -22,12 +23,11 @@ public class YarnInteractable : MonoBehaviour
 
     Vector3 startPos;
 
-    private GameObject otherUI;
+    bool canInteract = true;
+
 
     void Start()
     {
-        otherUI = GameObject.Find("---- UI ----");
-
         dialogueRunner = FindAnyObjectByType<DialogueRunner>();
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
         playerMovement = FindAnyObjectByType<PlayerMovement>();
@@ -36,21 +36,19 @@ public class YarnInteractable : MonoBehaviour
         startPos = transform.position;
     }
 
-    public void OnMouseDown()
-    {
-        
-    }
-
     private void Update()
     {
-        if (playerFound && Input.GetKeyDown(KeyCode.E))
+        if (canInteract)
         {
-            prompt.SetActive(false);
-            playerMovement.canMove = false;
-            playerMovement.animator.SetBool("isMoving", false);
-            if (interactable && !dialogueRunner.IsDialogueRunning)
+            if (playerFound && Input.GetKeyDown(KeyCode.E))
             {
-                StartConversation();
+                prompt.SetActive(false);
+                playerMovement.canMove = false;
+                playerMovement.animator.SetBool("isMoving", false);
+                if (interactable && !dialogueRunner.IsDialogueRunning)
+                {
+                    StartConversation();
+                }
             }
         }
 
@@ -81,13 +79,11 @@ public class YarnInteractable : MonoBehaviour
 
     private void StartConversation()
     {
-        
-
         Debug.Log($"Started conversation with {name}.");
         isCurrentConversation = true;
-
-
         dialogueRunner.StartDialogue(conversationStartNode);
+        interactable = false;
+        canInteract = false;
     }
 
     private void EndConversation()
@@ -97,7 +93,16 @@ public class YarnInteractable : MonoBehaviour
             isCurrentConversation = false;
             Debug.Log($"Ended conversation with {name}.");
             playerMovement.SetMovement(true);
+            StartCoroutine(WaitToInteract());
+            canInteract = true;
         }
+    }
+
+    public IEnumerator WaitToInteract()
+    {
+        yield return new WaitForSeconds(0.2f);
+        interactable = true;
+        PlayerMovement.instance.canMove = true;
     }
 
     [YarnCommand("disable")]

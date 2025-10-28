@@ -168,12 +168,13 @@ public class GameManager : MonoBehaviour
 
     public void LoadSolitaire()
     {
+        previousScene = SceneManager.GetActiveScene().name;
+        lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
         Debug.Log("playing solitaire");
         if (!hasPlayedSolitaire)
             hasPlayedSolitaire = true;
         LoadYarnVariables.instance.SetYarnVariable("$playSolitaire", false);
-        previousScene = SceneManager.GetActiveScene().name;
-        lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
+
         SceneManager.LoadScene("Solitaire");
     }
 
@@ -316,10 +317,6 @@ public class GameManager : MonoBehaviour
         if (DayManager.instance.dayCount <= 4)
         {
             CampBorder.instance.NotEnter();
-        }
-        else if (DayManager.instance.dayCount == 5)
-        {
-            CampBorder.instance.CanEnter();
         }
 
         npcSprites = GameObject.Find("---- NPCs ----");
