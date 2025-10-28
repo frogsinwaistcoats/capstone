@@ -135,6 +135,8 @@ public class MainDialogueManager : MonoBehaviour
     public void FinalAlexMeeting()
     {
         StartConversation("FinalMeeting");
+        AudioManager.instance.StopAll();
+        AudioManager.instance.PlayRevealAudio();
     }
 
     public void ErnestThinking()
@@ -145,6 +147,7 @@ public class MainDialogueManager : MonoBehaviour
     public void FinalDialogue()
     {
         StartConversation("Ruby_Final");
+
     }
 
     public void FallDialogue()

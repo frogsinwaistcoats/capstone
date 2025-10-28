@@ -10,6 +10,7 @@ public class EndManager : MonoBehaviour
     public void Start()
     {
         loadScreen.GetComponent<Animator>().Play("BusEnd_Anim");
+        AudioManager.instance.Play("Bus");
         StartCoroutine(GoToEndScene());
     }
 

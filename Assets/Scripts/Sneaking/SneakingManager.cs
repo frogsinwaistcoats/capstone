@@ -21,6 +21,12 @@ public class SneakingManager : MonoBehaviour
         teacher = FindFirstObjectByType<SneakingTeacherController>();
     }
 
+    private void Start()
+    {
+        AudioManager.instance.StopAll();
+        AudioManager.instance.Play("Sneaking");
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -62,6 +68,8 @@ public class SneakingManager : MonoBehaviour
 
     public void GoToForest()
     {
+        AudioManager.instance.StopAll();
+        AudioManager.instance.PlayNightAudio();
         GameManager.instance.GoToForestScene();
     }
 }

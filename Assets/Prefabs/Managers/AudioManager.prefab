@@ -71,7 +71,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ItemPlaced
     clip: {fileID: 8300000, guid: 1a9ff36fec5969d4598416e94543c020, type: 3}
-    volume: 0.725
+    volume: 0.497
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -84,6 +84,54 @@ MonoBehaviour:
   - name: CameraClick
     clip: {fileID: 8300000, guid: 047c62b26e636824cbda813eda5f11c6, type: 3}
     volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Campfire
+    clip: {fileID: 8300000, guid: 1beb78a7c1430504abe47779d8dacc3e, type: 3}
+    volume: 0.034
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Ruru
+    clip: {fileID: 8300000, guid: 075a8936d7ed5cd488794a172dc2cd1b, type: 3}
+    volume: 0.075
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Tui
+    clip: {fileID: 8300000, guid: 8a3fd041f306edb4789fc8bfe3a51e28, type: 3}
+    volume: 0.075
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Crickets
+    clip: {fileID: 8300000, guid: ed100dc1cd7e2804d80ad1249af09bfd, type: 3}
+    volume: 0.075
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Sneaking
+    clip: {fileID: 8300000, guid: 43082a88cccf66e4b8df42ff740a7e8d, type: 3}
+    volume: 0.082
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Reveal
+    clip: {fileID: 8300000, guid: b18a91e6d3f00304aa9e2db071cdb87e, type: 3}
+    volume: 0.497
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Cards
+    clip: {fileID: 8300000, guid: 2ac684fa3123e9d4cb5d0b7df93abbaf, type: 3}
+    volume: 0.136
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bus
+    clip: {fileID: 8300000, guid: 556dbbe6225925847b7bd5636ae18e76, type: 3}
+    volume: 0.136
     pitch: 1
     loop: 0
     source: {fileID: 0}

@@ -103,6 +103,7 @@ public class Solitaire : MonoBehaviour
     // deals cards onto screen
     IEnumerator SolitaireDeal()
     {
+        AudioManager.instance.Play("Cards");
         // deals cards in bottoms list to correct locations
         for (int i = 0; i < 7; i++)
         {

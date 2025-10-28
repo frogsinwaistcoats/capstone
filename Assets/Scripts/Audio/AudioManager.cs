@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using System;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Play("DaytimeBGMusic");
+        PlayDayAudio();
     }
 
     public void Play (string name)
@@ -75,20 +76,32 @@ public class AudioManager : MonoBehaviour
     public void PlayDayAudio()
     {
         Play("DaytimeBGMusic");
+        Play("Tui");
     }
 
     public void StopDayAudio()
     {
         Stop("DaytimeBGMusic");
+        Stop("Tui");
     }
 
     public void PlayNightAudio()
     {
         Play("NighttimeBGMusic");
+        Play("Ruru");
+        Play("Crickets");
     }
 
     public void StopNightAudio()
     {
         Stop("NighttimeBGMusic");
+        Stop("Ruru");
+        Stop("Crickets");
+    }
+
+    public void PlayRevealAudio()
+    {
+        Play("RevealSound");
+        
     }
 }

@@ -189,7 +189,8 @@ public class GameManager : MonoBehaviour
     {
         previousScene = SceneManager.GetActiveScene().name;
         lastPlayerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
-        
+
+        AudioManager.instance.Stop("Campfire");
         //LoadYarnVariables.instance.SetYarnVariable("$campfireStoryRead", true);
 
         SceneManager.LoadScene("Rhythm");

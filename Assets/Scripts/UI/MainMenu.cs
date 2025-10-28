@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     {
         loadScreen.SetActive(true);
         loadScreen.GetComponent<Animator>().Play("Bus_Anim");
+        AudioManager.instance.Play("Bus");
         StartCoroutine(GoToCampScene());
     }
 

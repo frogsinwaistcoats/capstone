@@ -39,6 +39,7 @@ public class CampfireInteractable : MonoBehaviour
                         GameManager.instance.SetToNight(true);
                         
                         MainDialogueManager.instance.StartCampfireDialogue();
+                        AudioManager.instance.Play("Campfire");
                     }
                     else
                     {
