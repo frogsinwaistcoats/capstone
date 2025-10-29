@@ -101,7 +101,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayRevealAudio()
     {
-        Play("RevealSound");
+        Play("Reveal");
         
     }
 }

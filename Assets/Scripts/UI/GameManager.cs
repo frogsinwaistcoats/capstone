@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
 
         if (previousScene == "Solitaire")
         {
-            PlayerMovement.instance.transform.position = lastPlayerPos;
+            PlayerMovement.instance.transform.position = PlayerMovement.instance.solitairePlayerPos.position;
             PlayerMovement.instance.canMove = true;
 
             MainDialogueManager.instance.AfterSolitaire();

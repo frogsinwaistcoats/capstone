@@ -6,12 +6,24 @@
     <<jump WhaeaNyrie_OutOfBounds>>
 <<elseif $campfireStoryRead == false && $day == 1>>
     <<jump WhaeaNyrie_Day1>>
+<<elseif $day == 2>>
+    <<jump WhaeaNyrie_OutOfBounds>>
+<<elseif $day == 3>>
+    <<jump WhaeaNyrie_OutOfBounds>>
+<<elseif $day == 4>>
+    <<jump WhaeaNyrie_OutOfBounds>>
+<<elseif $day == 5>>
+    <<jump WhaeaNyrie_OutOfBounds>>
 <<endif>>
 ===
 
 title: WhaeaNyrie_Day1
 ---
 Whaea Nyrie: Where do you think you're going?
+Ernest: I'm just exploring. 
+Whaea Nyrie: You are not allowed into the forest, remember?
+Ernest: I know.. sorry
+Whaea Nyrie: If I catch you doing that again you'll be in serious trouble. 
 <<if $talkedToNyrie == false>>
     <<set $talkedToNyrie = true>>
     <<set $peopleMet = $peopleMet + 1>>

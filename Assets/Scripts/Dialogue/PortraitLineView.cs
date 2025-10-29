@@ -35,6 +35,7 @@ public class PortraitLineView : LineView
     public class CharacterPortrait
     {
         public string characterName;
+        public string variantName;
         public Sprite sprite;
         public bool isRightSide;
     }
@@ -178,13 +179,15 @@ public class PortraitLineView : LineView
     }
 
     [YarnCommand("show")]
-    public void ShowPortrait(string characterName)
+    public void ShowPortrait(string characterName, string variantName = "default")
     {
-        CharacterPortrait portrait = portraits.Find(p => p.characterName == characterName);
+        var portrait = portraits.Find(p =>
+        p.characterName == characterName && p.variantName == variantName
+    );
 
         if (portrait == null)
         {
-            Debug.LogWarning($"no portrait found for '{characterName}'");
+            Debug.LogWarning($"No portrait found for '{characterName}' with variant '{variantName}'");
             return;
         }
 
@@ -193,12 +196,16 @@ public class PortraitLineView : LineView
             rightPortrait.sprite = portrait.sprite;
             setPortraitActive(rightPortrait, true);
             setPortraitActive(optionRightPortrait, true);
+            setPortraitActive(leftPortrait, false);
+            setPortraitActive(optionLeftPortrait, false);
         }
         else
         {
             leftPortrait.sprite = portrait.sprite;
             setPortraitActive(leftPortrait, true);
             setPortraitActive(optionLeftPortrait, true);
+            setPortraitActive(rightPortrait, false);
+            setPortraitActive(optionRightPortrait, false);
         }
     }
 }

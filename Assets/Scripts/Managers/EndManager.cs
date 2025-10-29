@@ -23,6 +23,6 @@ public class EndManager : MonoBehaviour
 
     public void ReturnToTitle()
     {
-        SceneManager.LoadScene("MainMenu");
+        Application.Quit();
     }
 }

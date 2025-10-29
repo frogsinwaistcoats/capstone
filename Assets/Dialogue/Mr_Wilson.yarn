@@ -9,6 +9,12 @@
     <<elseif $hasGotFlowers == true>>
         <<jump MrWilson_Flowers>>
     <<endif>>
+<<elseif $day == 2>>
+    <<jump MrWilson_Day1>>
+<<elseif $day == 3>>
+    <<jump MrWilson_Day1>>
+<<elseif $day == 5>>
+    <<jump MrWilson_Day5>>
 <<endif>>
 ===
 
@@ -17,7 +23,7 @@ tags: intro
 ---
 Mr Wilson: Good afternoon students! I want to give you all a warm welcome to where we'll be spending the rest of our week together.     (E to continue)
 Mr Wilson: We'll be leaving on Friday, so I hope you can make the most of the natural scenery while you're here.
-Mr Wilson: You are encouraged to explore the camp at your own leisure, however, for you own safety the forest has been made out of bounds. You are NOT to enter. 
+Mr Wilson: You are encouraged to explore the camp at your own leisure, however, for your own safety the forest has been made out of bounds. You are NOT to enter. 
 Mr Wilson: Whaea Nyrie will be on guard at all times. 
 Mr Wilson: On a lighter note, we'll hold a campfire each night where we will sing and tell stories
 Mr Wilson: Now go to your assigned tents to unpack your bags. 
@@ -67,4 +73,9 @@ Mr Wilson: I hope you all slept well on your last night in your tents. We will a
 Mr Wilson: …
 Mr Wilson: Just kidding! We'll do a head count.
 <<jump Ernest_Day5Sneaking>>
+===
+
+title: MrWilson_Day5
+---
+Mr Wilson: Are you all packed yet?
 ===

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using Yarn;
 using Yarn.Unity;
 
@@ -134,9 +135,10 @@ public class MainDialogueManager : MonoBehaviour
 
     public void FinalAlexMeeting()
     {
-        StartConversation("FinalMeeting");
         AudioManager.instance.StopAll();
         AudioManager.instance.PlayRevealAudio();
+        StartConversation("FinalMeeting");
+        
     }
 
     public void ErnestThinking()
@@ -153,6 +155,11 @@ public class MainDialogueManager : MonoBehaviour
     public void FallDialogue()
     {
         StartConversation("FallDialogue");
+    }
+
+    public void OutOfBoundsDialogue()
+    {
+        StartConversation("OutOfBounds");
     }
 
     public void CantSneakYet()

@@ -1,9 +1,7 @@
 ﻿title: Lily
 ---
 <<wait 0.1>>
-<<if $day == 1>>
-    <<jump Lily_Day1>>
-<<endif>>
+<<jump Lily_Day1>>
 ===
 
 title: Lily_Day1

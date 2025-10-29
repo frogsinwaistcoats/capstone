@@ -5,6 +5,12 @@
     <<jump Poppy_Day1>>
 <<elseif $day == 2>>
     <<jump Poppy_Day2>>
+<<elseif $day == 3>>
+    <<jump Poppy_Day1>>
+<<elseif $day == 4>>
+    <<jump Poppy_Day1>>
+<<elseif $day == 5>>
+    <<jump Poppy_Day1>>
 <<endif>>
 ===
 

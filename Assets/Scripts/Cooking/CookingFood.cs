@@ -141,6 +141,7 @@ public class CookingFood : MonoBehaviour
 
     public void ReturnToBoard()
     {
+        isOnBoard = false;
         pivotOffset = originalOffset;
         transform.position = startPos;
         transform.rotation = originalRotation;

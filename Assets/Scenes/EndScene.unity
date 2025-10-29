@@ -972,9 +972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2551901654965998384, guid: 0247f1834513e75429147eebdbe95ad9, type: 3}
       propertyPath: m_text
-      value: 'Return to
-
-        Title Screen'
+      value: Quit Game
       objectReference: {fileID: 0}
     - target: {fileID: 2551901654965998384, guid: 0247f1834513e75429147eebdbe95ad9, type: 3}
       propertyPath: m_fontSize

@@ -18,13 +18,7 @@ public class FishingButton : MonoBehaviour
     public Animator animator;
 
     private void Start()
-    {
-        int spawnPointX = UnityEngine.Random.Range(-14, 14);
-        int spawnPointY = UnityEngine.Random.Range(-5, -8);
-
-        Vector2 spawnPos = new Vector2(spawnPointX, spawnPointY);
-        transform.position = spawnPos;
-
+    { 
         GenerateRandomKeyCode();
     }
 

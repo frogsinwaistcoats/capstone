@@ -41,23 +41,33 @@ public class FishingManager : MonoBehaviour
 
     public void SpawnButton()
     {
-        Vector2 rnd = new Vector2(
-        Random.Range(normMin.x, normMax.x),
-        Random.Range(normMin.y, normMax.y)
-    );
+        //Vector2 rnd = new Vector2(
+        //Random.Range(normMin.x, normMax.x),
+        //Random.Range(normMin.y, normMax.y)
+        //);
 
-        // Convert normalized -> pixel
-        Vector2 screenPos = new Vector2(
-            rnd.x * Screen.width,
-            rnd.y * Screen.height
-        );
+        //// Convert normalized -> pixel
+        //Vector2 screenPos = new Vector2(
+        //    rnd.x * Screen.width,
+        //    rnd.y * Screen.height
+        //);
 
-        // Convert pixel -> world
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-        worldPos.z = 0f;
+        //// Convert pixel -> world
+        //Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+        //worldPos.z = 0f;
 
-        GameObject newButton = Instantiate(button, worldPos, Quaternion.identity);
+        int spawnPointX = Random.Range(-7, 15);
+        int spawnPointY = Random.Range(-8, -6);
+
+        Debug.Log("X " + spawnPointX + ", Y " + spawnPointY);
+
+        Vector3 spawnPos = new Vector3(spawnPointX, spawnPointY, 0f);
+
+
+        GameObject newButton = Instantiate(button, spawnPos, Quaternion.identity);
         activeKeys.Add(newButton);
+
+        Debug.Log("Spawned at: " + newButton.transform.position);
     }
 
     public IEnumerator WinGame()

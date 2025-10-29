@@ -31,7 +31,6 @@ public class QuestsList : MonoBehaviour
     public GameObject bus;
     public GameObject ruby;
 
-
     [SerializeField] private bool addedSneakOutQuestDay2 = false;
     [SerializeField] private bool addedSneakOutQuestDay3 = false;
 
@@ -342,7 +341,8 @@ public class QuestsList : MonoBehaviour
                     AddQuestToList(leave);
                     addedLeaveCampQuest = true;
                     bus.SetActive(true);
-                    ruby.transform.position = new Vector3(-11.9700003f, -0.0799999982f, -20.8199997f);
+                    ruby.transform.position = new Vector3(-11.97f, -0.08f, -20.82f);
+
                 }
             }
         }

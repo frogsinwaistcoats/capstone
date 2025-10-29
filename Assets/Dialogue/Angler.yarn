@@ -7,6 +7,10 @@
     <<jump Angler_Day2>>
 <<elseif $day == 3>>
     <<jump Angler_Day3>>
+<<elseif $day == 4>>
+    <<jump Angler_Day4>>
+<<elseif $day == 5>>
+    <<jump Angler_Day4>>
 <<endif>>
 ===
 
@@ -44,4 +48,15 @@ Angler: You should see if you can catch any, I'm starving
 title: Angler_AfterFishing
 ---
 Angler: Come back to fish whenever you want!
+===
+
+title: Angler_Day4
+---
+Angler: Are you here to fish again?
+    -> Ernest: Yes
+        <<if $hasFished == false>>
+            <<set $hasFished = true>>
+        <<endif>>
+        <<set $playFishing = true>>
+    -> Ernest: No
 ===

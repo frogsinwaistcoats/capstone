@@ -9,12 +9,19 @@ public class PlayerMovement : MonoBehaviour//, IDataPersistence
     public float vertical;
     private Rigidbody rb;
     public bool canMove;
+
     public Transform startPlayerPos;
     public Transform campPlayerPos;
     public Transform forestPlayerPos;
+    public Transform solitairePlayerPos;
+
     public SpriteRenderer sr;
 
     public Animator animator;
+
+    public GameObject whaeaNyrie;
+    public GameObject mrWilson;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -92,5 +99,11 @@ public class PlayerMovement : MonoBehaviour//, IDataPersistence
     public void GoToForestPos()
     {
         transform.position = forestPlayerPos.position;
+    }
+
+    public void MoveTeachers()
+    {
+        whaeaNyrie.transform.position = new Vector3(-3.6f, 0.8f, -14.61f);
+        mrWilson.transform.position = new Vector3(-2.37f, 0.77f, -14.68f);
     }
 }

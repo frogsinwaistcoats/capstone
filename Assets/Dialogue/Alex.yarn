@@ -21,7 +21,7 @@ Ernest: Hello? Who are you?
 Ernest: My name is Ernest, what's yours?
 ???: It's dangerous out here. You should go back to your camp.
 Ernest: Are you talking about the wolf?
-???: Wolf? There are no wolves out here. I don't know what you're talking about
+???: Wolf? There are no wolves out here. I don't know what you're talking about.
 Ernest: Oh..
 Ernest: What are you doing out here anyway?
 ???: ... I live here.
@@ -85,7 +85,8 @@ Ernest: You're the one who snuck up on me!
     -> Ernest: How'd you get behind me? 
 Alex: I have something I want to show you! Follow me. 
 Ernest: What's this? 
-Alex: I've been making these. There's some really nice looking leaves and sticks around here. If you collect them, you can make these cool patterns. You should try it for yourself! 
+Alex: I've been making these. There's some really nice looking leaves and sticks around here. If you collect them, you can make these cool patterns. 
+Alex: You should try it for yourself! 
 <<set $playLeaf = true>>
 ===
 
@@ -94,12 +95,12 @@ tags: meetingNight
 ---
 Alex: Hey, those look pretty good! You're almost better than me.
 Ernest: (thinking) His nails looked extra sharp when he was showing me those leaves. Were they like that yesterday? 
-    -> Ask him about his nails
+    -> Ask Alex about his nails.
         Ernest: Hey.. were your nails that long yesterday? They look extra sharp. 
         Alex: What do you expect me to cut my nails with? Does it look like I have any nail clippers around here? 
         Ernest: Oh… sorry. 
-    -> Leave it alone
-        Ernest: (thinking) Maybe I just didn't get a good enough look at them… I shouldn't judge.  
+    -> Leave it alone.
+        Ernest: (thinking) Maybe I just didn't get a good enough look at them... I shouldn't judge.  
 Ernest: Where do you sleep each night? Surely you have somewhere to take shelter around here.
 Alex: It's over those mountains, it's too far away for you to see. 
 Alex: You can't stray too far from your camp.
@@ -122,18 +123,17 @@ Ernest: Well I was just about to leave before you came over here. Let's go befor
 title: InForestDay4
 tags: meetingNight
 ---
-Alex: ...
+Alex.: ...
 Ernest: (thinking) Hmm.. were Alex's eyes always glowing like that? 
     -> Ask Alex about his eyes 
         Ernest: Hey, were your eyes always that bright?
-        Alex: What do you mean? 
+        Alex.: What do you mean? 
         Ernest: Your eyes, they're almost glowing bright red!
-        Alex: I don't know what you're talking about. It's probably just the lighting. 
+        Alex.: I don't know what you're talking about. It's probably just the lighting. 
         Alex: See?
         Ernest: Maybe you're right, the moon is shining quite brightly tonight. 
     -> Don't mention it 
         Ernest: (thinking) It's probably just the lighting. The moon is shining quite brightly tonight. 
-
 Ernest: I took some pictures today! There's a lot of nice flowers around the camp. 
 Alex: Huh, those look pretty good. Maybe you could become a photographer.
 Ernest: I've never thought about a job. I've kind of always just wanted to live in nature. 
@@ -161,6 +161,7 @@ tags: reveal
 ---
 <<set $playRevealAnim = true>>
 Ernest: Alex, is that you?
+Ernest: ...
 <<jump FinalMeeting2>>
 ===
 
@@ -172,6 +173,7 @@ Ernest: You're the wolf from the story?
 Ernest: You aren't going to hurt me, are you? You're my friend
 Ernest: The signs were there the whole time. 
 Ernest: I won't tell anyone about you, I promise. 
-Ernest: You will be alright here. You are where you belong, in the woods, free from any harm from people.
+Ernest: You will be alright here. 
+Ernest: You are where you belong, in the woods, free from any harm from people.
 Ernest: I promise I'll return in the future, okay? Wait for me here. 
 ===
