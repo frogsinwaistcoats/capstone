@@ -17861,7 +17861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a853d1de13f4c149b532f196c939307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Pohutukawa
+  itemName: Dwarf Pohutukawa
   quantity: 1
   sprite: {fileID: 21300000, guid: cd4fbe0eed3706a4583ee8e6b2ad1ce7, type: 3}
   itemDescription: 
@@ -26061,7 +26061,7 @@ MonoBehaviour:
     variantName: 
     sprite: {fileID: 21300000, guid: 70c391096bca6494eac5d8458d95bef0, type: 3}
     isRightSide: 0
-  - characterName: Alex.
+  - characterName: AIex
     variantName: redEyes
     sprite: {fileID: 21300000, guid: a0c8a24c3ae733544bb3010836218e2c, type: 3}
     isRightSide: 0
@@ -44798,7 +44798,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pohutukawa
+  m_text: Dwarf Pohutukawa
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 36ad0df382250824d8f32f71594fd210, type: 2}
   m_sharedMaterial: {fileID: 2403842785190393640, guid: 36ad0df382250824d8f32f71594fd210, type: 2}
@@ -52754,7 +52754,7 @@ MonoBehaviour:
     questDescription: Go talk to Mr Wilson
   questsDay5:
   - questName: Final Activities
-    questDescription: Do any camp activities if you want
+    questDescription: Do any camp activities (optional)
   - questName: Sneak Out day5
     questDescription: Go say goodbye to Alex
   questsTextPrefab: {fileID: 2622580678982694682, guid: c3e4c3b2393ea86408b9fee1fe52e532, type: 3}

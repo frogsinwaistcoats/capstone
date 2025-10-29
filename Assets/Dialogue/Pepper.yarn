@@ -49,7 +49,7 @@ Pepper: Are you here to make sandwiches?
     -> Ernest: Yep!
         <<set $playCooking = true>>
     -> Ernest: No, sorry
-        Pepper: All good
+        Pepper: Oh, maybe later then?
 ===
 
 title: Pepper_Day5

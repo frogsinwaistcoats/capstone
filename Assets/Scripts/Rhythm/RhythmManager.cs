@@ -85,11 +85,6 @@ public class RhythmManager : MonoBehaviour
         {
             StartPlaying();
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Finished();
-        }
     }
 
     public void NoteHit()

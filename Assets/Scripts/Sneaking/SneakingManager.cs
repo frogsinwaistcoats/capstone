@@ -27,14 +27,6 @@ public class SneakingManager : MonoBehaviour
         AudioManager.instance.Play("Sneaking");
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Succeed();
-        }
-    }
-
     public void StartGame()
     {
         instructionScreen.SetActive(false);

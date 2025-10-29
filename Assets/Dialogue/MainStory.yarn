@@ -5,7 +5,7 @@ tags: campfire
 <<if $campfireStoryRead == false>>
     Mr Wilson: When I was young, it'd be tradition to gather around the campfire and share spooky stories.
     Mr Wilson: I remember telling a few good ones that kept the other kids awake for days.
-    Mr Wilson: Ruby, Why don't you start.   
+    Mr Wilson: Ruby, why don't you start.   
     Ruby: Do you wanna know the real reason we're not allowed in the forest?
     Pepper: Why?
     Ruby: Those mountains you see on the horizon, they're said to be home to a big, ferocious wolf!

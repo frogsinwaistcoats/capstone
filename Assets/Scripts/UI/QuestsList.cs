@@ -342,7 +342,7 @@ public class QuestsList : MonoBehaviour
                     addedLeaveCampQuest = true;
                     bus.SetActive(true);
                     ruby.transform.position = new Vector3(-11.97f, -0.08f, -20.82f);
-
+                    PlayerMovement.instance.MoveTeachers();
                 }
             }
         }

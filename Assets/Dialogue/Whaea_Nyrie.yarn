@@ -22,7 +22,7 @@ title: WhaeaNyrie_Day1
 Whaea Nyrie: Where do you think you're going?
 Ernest: I'm just exploring. 
 Whaea Nyrie: You are not allowed into the forest, remember?
-Ernest: I know.. sorry
+Ernest: I know.. sorry.
 Whaea Nyrie: If I catch you doing that again you'll be in serious trouble. 
 <<if $talkedToNyrie == false>>
     <<set $talkedToNyrie = true>>
@@ -35,7 +35,7 @@ title: WhaeaNyrie_OutOfBounds
 Whaea Nyrie: Where do you think you're going?
 Ernest: I'm just exploring. 
 Whaea Nyrie: You are not allowed into the forest, remember?
-Ernest: I know.. sorry
+Ernest: I know.. sorry.
 Whaea Nyrie: If I catch you doing that again you'll be in serious trouble. 
 <<set $caughtByTeacher = true>>
 ===

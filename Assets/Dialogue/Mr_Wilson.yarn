@@ -25,7 +25,7 @@ Mr Wilson: Good afternoon students! I want to give you all a warm welcome to whe
 Mr Wilson: We'll be leaving on Friday, so I hope you can make the most of the natural scenery while you're here.
 Mr Wilson: You are encouraged to explore the camp at your own leisure, however, for your own safety the forest has been made out of bounds. You are NOT to enter. 
 Mr Wilson: Whaea Nyrie will be on guard at all times. 
-Mr Wilson: On a lighter note, we'll hold a campfire each night where we will sing and tell stories
+Mr Wilson: On a lighter note, we'll hold a campfire each night where we will sing and tell stories.
 Mr Wilson: Now go to your assigned tents to unpack your bags. 
 <<set $hasDoneIntro = true>>
 <<set $day = 1>>

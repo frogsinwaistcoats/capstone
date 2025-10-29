@@ -123,16 +123,16 @@ Ernest: Well I was just about to leave before you came over here. Let's go befor
 title: InForestDay4
 tags: meetingNight
 ---
-Alex.: ...
+AIex: ...
 Ernest: (thinking) Hmm.. were Alex's eyes always glowing like that? 
-    -> Ask Alex about his eyes 
+    -> Ask Alex about his eyes.
         Ernest: Hey, were your eyes always that bright?
-        Alex.: What do you mean? 
+        AIex: What do you mean? 
         Ernest: Your eyes, they're almost glowing bright red!
-        Alex.: I don't know what you're talking about. It's probably just the lighting. 
+        AIex: I don't know what you're talking about. It's probably just the lighting. 
         Alex: See?
         Ernest: Maybe you're right, the moon is shining quite brightly tonight. 
-    -> Don't mention it 
+    -> Don't mention it.
         Ernest: (thinking) It's probably just the lighting. The moon is shining quite brightly tonight. 
 Ernest: I took some pictures today! There's a lot of nice flowers around the camp. 
 Alex: Huh, those look pretty good. Maybe you could become a photographer.

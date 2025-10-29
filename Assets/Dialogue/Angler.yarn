@@ -27,8 +27,8 @@ title: Angler_Day2
 ---
 Angler: Did you really believe that story last night? 
 Angler: What if there really is a wolf out there? And it comes to eat us all in the night! 
-    -> Ernest: That's impossible, wolves don't eat people 
-    -> Ernest: It was just a myth
+    -> Ernest: That's impossible, wolves don't eat people.
+    -> Ernest: It was just a myth.
 Angler: I guess you're right. I'm worried over nothing. 
 ===
 
@@ -38,7 +38,7 @@ Angler: Hello Ernest, I heard you were on lunch duty. Lucky for you, I saw some 
 Angler: Have you ever used a fishing rod before?
     -> Ernest: Yes
     -> Ernest: No
-Angler: You should see if you can catch any, I'm starving 
+Angler: You should see if you can catch any, I'm starving.
 <<if $hasFished == false>>
     <<set $hasFished = true>>
 <<endif>>
